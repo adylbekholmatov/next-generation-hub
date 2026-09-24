@@ -5,15 +5,14 @@
 <section class="page-hero">
   <div class="container">
     <nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}"><a href="{% url 'core:home' %}">{% trans "Home" %}</a> {% icon "chevron-right" 14 %} <span>{% trans "About us" %}</span></nav>
-    <h1>{% trans "A place where children create technology" %}</h1>
-    <p>{% trans "Next-Generation-Hub is a learning center in Bishkek where kids and teens learn engineering and digital professions through practice." %}</p>
+    <h1>{% trans "About us" %}</h1>
+    <p>{% trans "A learning center in Osh for kids and teens aged 8–17." %}</p>
   </div>
 </section>
 <section class="section">
   <div class="container about-grid">
     <div>
-      <p class="big-quote">{% trans "We believe that every child can not only consume technology, but also create it. Our task is to give tools, a mentor and an environment where it is interesting to try." %}</p>
-      <p class="muted" style="margin-top:28px;font-size:17px">{% trans "We started in 2021 with a small robotics club. Today there are five directions, our own laboratory with 3D printers and electronics kits, and graduates who win olympiads and enter technical universities." %}</p>
+      <p class="big-quote">{% trans "We started in 2021 with a small robotics club. Today we have five directions and our own laboratory with 3D printers and electronics kits." %}</p>
     </div>
     <div class="numbers">
       <div class="number-card is-ink reveal"><b>5</b><span>{% trans "directions of study" %}</span></div>
@@ -25,7 +24,7 @@
 </section>
 <section class="section section-soft">
   <div class="container">
-    <div class="section-head"><div><span class="eyebrow">{% trans "Directions" %}</span><h2>{% trans "What we teach" %}</h2></div></div>
+    <div class="section-head"><h2>{% trans "Directions" %}</h2></div>
     <div class="directions">
       {% for d in directions %}
       <a class="direction-card reveal" href="{% url 'core:course_list' %}?direction={{ d.code }}">
@@ -42,7 +41,7 @@
 {% if teachers %}
 <section class="section">
   <div class="container">
-    <div class="section-head"><div><span class="eyebrow">{% trans "Team" %}</span><h2>{% trans "Our teachers" %}</h2></div></div>
+    <div class="section-head"><h2>{% trans "Teachers" %}</h2></div>
     <div class="teacher-grid">
       {% for t in teachers %}
       <article class="teacher-card reveal">
@@ -58,9 +57,8 @@
   <div class="container">
     <div class="cta">
       <div>
-        <span class="eyebrow">{% trans "Enrollment is open" %}</span>
-        <h2 style="margin-top:14px">{% trans "Come to a trial lesson" %}</h2>
-        <p>{% trans "Meet the teacher, see the laboratory and choose a direction together with your child." %}</p>
+        <h2>{% trans "Free trial lesson" %}</h2>
+        <p>{% trans "Meet the teacher and try the equipment — free and without obligations." %}</p>
       </div>
       {% include "partials/enroll_form.html" %}
     </div>

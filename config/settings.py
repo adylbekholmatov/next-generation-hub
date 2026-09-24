@@ -213,7 +213,7 @@ SITE_HOURS = env("SITE_HOURS", "")
 SITE_INSTAGRAM = env("SITE_INSTAGRAM", "https://instagram.com/nextgenhub.kg")
 SITE_TELEGRAM = env("SITE_TELEGRAM", "https://t.me/nextgenhub_kg")
 SITE_WHATSAPP = env("SITE_WHATSAPP", "https://wa.me/996555123456")
-SITE_MAP_URL = env("SITE_MAP_URL", "https://2gis.kg/bishkek")
+SITE_MAP_URL = env("SITE_MAP_URL", "https://2gis.kg/osh")
 
 # --- Сообщения --------------------------------------------------------------
 from django.contrib.messages import constants as message_constants  # noqa: E402

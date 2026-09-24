@@ -7,7 +7,7 @@
   <div class="container" style="max-width:880px">
     <a class="back-link" href="{% url 'core:news_list' %}">{% icon "arrow-left" 16 %} {% trans "All news" %}</a>
     <div class="news-date" style="margin-top:8px">{% if item.is_pinned %}<span class="badge badge-accent no-dot">{% icon "pin" 12 %}{% trans "Pinned" %}</span>{% endif %}<time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"j E Y" }}</time></div>
-    <h1 style="margin:16px 0 0;font-size:clamp(1.9rem,4.4vw,3.4rem)">{{ item|tr:"title" }}</h1>
+    <h1 style="margin:14px 0 0;font-size:clamp(1.5rem,3.2vw,2.3rem)">{{ item|tr:"title" }}</h1>
     {% if item.image %}<figure class="article-cover"><img src="{{ item.image.url }}" alt=""></figure>{% else %}<hr style="margin:32px 0">{% endif %}
     <div class="prose">{{ item|tr:"body"|linebreaks }}</div>
   </div>
@@ -15,7 +15,7 @@
 {% if more %}
 <section class="section section-soft">
   <div class="container">
-    <div class="section-head"><div><span class="eyebrow">{% trans "News" %}</span><h2>{% trans "Read also" %}</h2></div></div>
+    <div class="section-head"><h2>{% trans "Read also" %}</h2></div>
     <div class="news-grid">{% for item in more %}{% include "partials/news_card.html" %}{% endfor %}</div>
   </div>
 </section>

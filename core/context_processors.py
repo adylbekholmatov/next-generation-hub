@@ -9,7 +9,7 @@ def site(request):
             "phone": settings.SITE_PHONE,
             "phone_href": "tel:" + "".join(ch for ch in settings.SITE_PHONE if ch.isdigit() or ch == "+"),
             "email": settings.SITE_EMAIL,
-            "address": settings.SITE_ADDRESS or _("Bishkek, Chui Avenue 155, 3rd floor"),
+            "address": settings.SITE_ADDRESS or _("Osh, Lenin street 205, 2nd floor"),
             "hours": settings.SITE_HOURS or _("Mon–Sat, 9:00–20:00"),
             "instagram": settings.SITE_INSTAGRAM,
             "telegram": settings.SITE_TELEGRAM,

@@ -1,5 +1,5 @@
-# Next-Generation-Hub translations.
-# После правок выполните: python manage.py compilemo
+# Next-Generation-Hub — Kyrgyz translation.
+# Этот файл можно редактировать; после правок выполните: python manage.py compilemo
 msgid ""
 msgstr ""
 "Project-Id-Version: Next-Generation-Hub 1.0\n"
@@ -17,21 +17,29 @@ msgstr "Окуу борборундагы профиль"
 msgid "Accounts"
 msgstr "Аккаунттар"
 
-#: accounts/forms.py
-msgid "About me"
-msgstr "Өзүм жөнүндө"
+#: accounts/forms.py templates/accounts/profile.html
+msgid "Login"
+msgstr "Логин"
 
-#: accounts/forms.py
-msgid "At least 6 characters, not too simple."
-msgstr "Кеминде 6 белги, өтө жөнөкөй болбосун."
+#: accounts/forms.py cabinet/forms.py cabinet/navigation.py
+msgid "Password"
+msgstr "Сырсөз"
 
 #: accounts/forms.py
 msgid "Current password"
 msgstr "Учурдагы сырсөз"
 
-#: accounts/forms.py core/forms.py
-msgid "Email"
-msgstr "Email"
+#: accounts/forms.py cabinet/forms.py
+msgid "New password"
+msgstr "Жаңы сырсөз"
+
+#: accounts/forms.py
+msgid "Repeat new password"
+msgstr "Жаңы сырсөздү кайталаңыз"
+
+#: accounts/forms.py
+msgid "At least 6 characters, not too simple."
+msgstr "Кеминде 6 белги, өтө жөнөкөй болбосун."
 
 #: accounts/forms.py
 msgid "First name"
@@ -41,17 +49,9 @@ msgstr "Аты"
 msgid "Last name"
 msgstr "Фамилиясы"
 
-#: accounts/forms.py templates/accounts/profile.html
-msgid "Login"
-msgstr "Логин"
-
-#: accounts/forms.py cabinet/forms.py
-msgid "New password"
-msgstr "Жаңы сырсөз"
-
-#: accounts/forms.py cabinet/forms.py cabinet/navigation.py
-msgid "Password"
-msgstr "Сырсөз"
+#: accounts/forms.py core/forms.py
+msgid "Email"
+msgstr "Email"
 
 #: accounts/forms.py core/forms.py templates/accounts/profile.html templates/cabinet/manager/group_detail.html
 msgid "Phone"
@@ -62,32 +62,24 @@ msgid "Photo"
 msgstr "Сүрөт"
 
 #: accounts/forms.py
-msgid "Repeat new password"
-msgstr "Жаңы сырсөздү кайталаңыз"
-
-#: accounts/forms.py
 msgid "Specialization"
 msgstr "Адистиги"
 
-#: accounts/models.py
-msgid "Administrator"
-msgstr "Администратор"
-
-#: accounts/models.py
-msgid "Manager"
-msgstr "Менеджер"
-
-#: accounts/models.py cabinet/journal.py templates/cabinet/manager/group_detail.html templates/cabinet/manager/request_list.html
-msgid "Student"
-msgstr "Окуучу"
+#: accounts/forms.py
+msgid "About me"
+msgstr "Өзүм жөнүндө"
 
 #: accounts/models.py templates/cabinet/manager/group_detail.html
 msgid "Teacher"
 msgstr "Мугалим"
 
+#: accounts/models.py cabinet/journal.py templates/cabinet/manager/group_detail.html templates/cabinet/manager/request_list.html
+msgid "Student"
+msgstr "Окуучу"
+
 #: accounts/models.py
-msgid "about"
-msgstr "өзү жөнүндө"
+msgid "role"
+msgstr "ролу"
 
 #: accounts/models.py core/models.py
 msgid "phone"
@@ -98,12 +90,12 @@ msgid "photo"
 msgstr "сүрөт"
 
 #: accounts/models.py
-msgid "role"
-msgstr "ролу"
-
-#: accounts/models.py
 msgid "specialization"
 msgstr "адистиги"
+
+#: accounts/models.py
+msgid "about"
+msgstr "өзү жөнүндө"
 
 #: accounts/models.py
 msgid "user"
@@ -113,6 +105,14 @@ msgstr "колдонуучу"
 msgid "users"
 msgstr "колдонуучулар"
 
+#: accounts/models.py
+msgid "Administrator"
+msgstr "Администратор"
+
+#: accounts/models.py
+msgid "Manager"
+msgstr "Менеджер"
+
 #: accounts/views.py templates/accounts/password_change.html templates/accounts/profile.html
 msgid "Change password"
 msgstr "Сырсөздү өзгөртүү"
@@ -121,102 +121,106 @@ msgstr "Сырсөздү өзгөртүү"
 msgid "Password changed."
 msgstr "Сырсөз өзгөртүлдү."
 
-#: accounts/views.py cabinet/navigation.py templates/accounts/password_change.html templates/accounts/profile.html
-msgid "Profile"
-msgstr "Профиль"
-
 #: accounts/views.py
 msgid "Profile saved."
 msgstr "Профиль сакталды."
+
+#: accounts/views.py cabinet/navigation.py templates/accounts/password_change.html templates/accounts/profile.html
+msgid "Profile"
+msgstr "Профиль"
 
 #: cabinet/apps.py
 msgid "Cabinets"
 msgstr "Кабинеттер"
 
 #: cabinet/forms.py
-msgid "About"
-msgstr "Өзү жөнүндө"
-
-#: cabinet/forms.py
-msgid "Account is active"
-msgstr "Аккаунт активдүү"
-
-#: cabinet/forms.py
-msgid "All groups of the course"
-msgstr "Курстун бардык топтору"
-
-#: cabinet/forms.py
-msgid "Call results, agreements…"
-msgstr "Чалуунун жыйынтыгы, макулдашуулар…"
+msgid "Text"
+msgstr "Текст"
 
 #: cabinet/forms.py
 msgid "Days of week"
 msgstr "Жума күндөрү"
 
 #: cabinet/forms.py
-msgid "Full description"
-msgstr "Толук сүрөттөмө"
-
-#: cabinet/forms.py cabinet/navigation.py cabinet/views/manager.py templates/cabinet/admin/course_list.html
-msgid "Groups"
-msgstr "Топтор"
+msgid "The lesson must end after it starts."
+msgstr "Сабак башталгандан кийин бүтүшү керек."
 
 #: cabinet/forms.py
-msgid "Latin letters, digits and . _ - only."
-msgstr "Латын тамгалары, сандар жана . _ - гана."
-
-#: cabinet/forms.py
-msgid "Leave empty to generate"
-msgstr "Түзүү үчүн бош калтырыңыз"
-
-#: cabinet/forms.py
-msgid "Leave empty to generate a password automatically."
-msgstr "Бош калтырсаңыз, сырсөз автоматтык түрдө түзүлөт."
-
-#: cabinet/forms.py
-msgid "Leave empty to keep the current password."
-msgstr "Сырсөздү өзгөртпөө үчүн бош калтырыңыз."
+msgid "All groups of the course"
+msgstr "Курстун бардык топтору"
 
 #: cabinet/forms.py
 #, python-format
 msgid "MP4, WebM or MOV, up to %(size)s MB."
 msgstr "MP4, WebM же MOV, %(size)s МБ чейин."
 
-#: cabinet/forms.py
-msgid "Note"
-msgstr "Эскертме"
-
-#: cabinet/forms.py
-msgid "Part of the page address. Leave empty to generate from the title."
-msgstr "Барактын дарегинин бөлүгү. Бош калтырсаңыз, аталыштан түзүлөт."
-
-#: cabinet/forms.py
-msgid "Short description"
-msgstr "Кыскача сүрөттөмө"
-
-#: cabinet/forms.py
-msgid "Text"
-msgstr "Текст"
+#: cabinet/forms.py core/models.py
+msgid "Upload a video file or paste a YouTube link."
+msgstr "Видеофайл жүктөңүз же YouTube шилтемесин кошуңуз."
 
 #: cabinet/forms.py core/models.py
 msgid "The group belongs to a different course."
 msgstr "Бул топ башка курска тиешелүү."
 
 #: cabinet/forms.py
-msgid "The lesson must end after it starts."
-msgstr "Сабак башталгандан кийин бүтүшү керек."
+msgid "Call results, agreements…"
+msgstr "Чалуунун жыйынтыгы, макулдашуулар…"
 
 #: cabinet/forms.py
-msgid "The maximum age must not be less than the minimum."
-msgstr "Эң жогорку жаш эң төмөнкүдөн кичине болбошу керек."
+msgid "Latin letters, digits and . _ - only."
+msgstr "Латын тамгалары, сандар жана . _ - гана."
+
+#: cabinet/forms.py
+msgid "Leave empty to keep the current password."
+msgstr "Сырсөздү өзгөртпөө үчүн бош калтырыңыз."
+
+#: cabinet/forms.py
+msgid "Leave empty to generate a password automatically."
+msgstr "Бош калтырсаңыз, сырсөз автоматтык түрдө түзүлөт."
+
+#: cabinet/forms.py cabinet/navigation.py cabinet/views/manager.py templates/cabinet/admin/course_list.html
+msgid "Groups"
+msgstr "Топтор"
+
+#: cabinet/forms.py
+msgid "Account is active"
+msgstr "Аккаунт активдүү"
+
+#: cabinet/forms.py
+msgid "Note"
+msgstr "Эскертме"
+
+#: cabinet/forms.py
+msgid "About"
+msgstr "Өзү жөнүндө"
+
+#: cabinet/forms.py
+msgid "Leave empty to generate"
+msgstr "Түзүү үчүн бош калтырыңыз"
 
 #: cabinet/forms.py templates/cabinet/manager/news_list.html
 msgid "Title"
 msgstr "Аталышы"
 
-#: cabinet/forms.py core/models.py
-msgid "Upload a video file or paste a YouTube link."
-msgstr "Видеофайл жүктөңүз же YouTube шилтемесин кошуңуз."
+#: cabinet/forms.py
+msgid "Short description"
+msgstr "Кыскача сүрөттөмө"
+
+#: cabinet/forms.py
+msgid "Full description"
+msgstr "Толук сүрөттөмө"
+
+#: cabinet/forms.py
+msgid "Part of the page address. Leave empty to generate from the title."
+msgstr "Барактын дарегинин бөлүгү. Бош калтырсаңыз, аталыштан түзүлөт."
+
+#: cabinet/forms.py
+msgid "The maximum age must not be less than the minimum."
+msgstr "Эң жогорку жаш эң төмөнкүдөн кичине болбошу керек."
+
+#: cabinet/journal.py templates/cabinet/manager/group_form.html templates/cabinet/manager/student_list.html templates/cabinet/shared/journal_month.html
+msgid "Group"
+msgstr "Топ"
 
 #: cabinet/journal.py
 msgid "Attendance, %"
@@ -226,57 +230,21 @@ msgstr "Катышуу, %"
 msgid "Average grade"
 msgstr "Орточо баа"
 
-#: cabinet/journal.py templates/cabinet/manager/group_form.html templates/cabinet/manager/student_list.html templates/cabinet/shared/journal_month.html
-msgid "Group"
-msgstr "Топ"
-
-#: cabinet/navigation.py templates/cabinet/manager/student_form.html
-msgid "Account"
-msgstr "Аккаунт"
-
 #: cabinet/navigation.py
 msgid "Administration"
 msgstr "Администрациялоо"
-
-#: cabinet/navigation.py cabinet/views/manager.py
-msgid "Attendance journals"
-msgstr "Катышуу журналдары"
-
-#: cabinet/navigation.py cabinet/views/admin.py templates/404.html templates/base.html
-msgid "Courses"
-msgstr "Курстар"
 
 #: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/dashboard.html
 msgid "Dashboard"
 msgstr "Башкаруу панели"
 
-#: cabinet/navigation.py
-msgid "Django admin"
-msgstr "Django-админка"
+#: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
+msgid "Users"
+msgstr "Колдонуучулар"
 
-#: cabinet/navigation.py core/apps.py
-msgid "Learning center"
-msgstr "Окуу борбору"
-
-#: cabinet/navigation.py
-msgid "Management"
-msgstr "Башкаруу"
-
-#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/dashboard.html templates/cabinet/teacher/mark.html
-msgid "Mark attendance"
-msgstr "Сабакты белгилөө"
-
-#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/mark.html
-msgid "Monthly journal"
-msgstr "Айлык журнал"
-
-#: cabinet/navigation.py cabinet/views/student.py templates/cabinet/student/attendance.html templates/cabinet/student/dashboard.html
-msgid "My attendance"
-msgstr "Менин катышуум"
-
-#: cabinet/navigation.py cabinet/views/manager.py templates/base.html templates/cabinet/admin/dashboard.html
-msgid "News"
-msgstr "Жаңылыктар"
+#: cabinet/navigation.py cabinet/views/admin.py templates/404.html templates/base.html
+msgid "Courses"
+msgstr "Курстар"
 
 #: cabinet/navigation.py cabinet/views/manager.py cabinet/views/student.py cabinet/views/teacher.py
 msgid "Overview"
@@ -290,25 +258,89 @@ msgstr "Өтүнмөлөр"
 msgid "Students"
 msgstr "Окуучулар"
 
-#: cabinet/navigation.py
-msgid "Studying"
-msgstr "Окуу"
+#: cabinet/navigation.py cabinet/views/manager.py templates/base.html templates/cabinet/admin/dashboard.html
+msgid "News"
+msgstr "Жаңылыктар"
+
+#: cabinet/navigation.py cabinet/views/manager.py
+msgid "Attendance journals"
+msgstr "Катышуу журналдары"
+
+#: cabinet/navigation.py core/apps.py
+msgid "Learning center"
+msgstr "Окуу борбору"
 
 #: cabinet/navigation.py
-msgid "Teaching"
-msgstr "Сабак берүү"
-
-#: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
-msgid "Users"
-msgstr "Колдонуучулар"
+msgid "Management"
+msgstr "Башкаруу"
 
 #: cabinet/navigation.py cabinet/views/student.py cabinet/views/teacher.py templates/cabinet/admin/dashboard.html
 msgid "Video lessons"
 msgstr "Видеосабактар"
 
+#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/dashboard.html templates/cabinet/teacher/mark.html
+msgid "Mark attendance"
+msgstr "Сабакты белгилөө"
+
+#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/mark.html
+msgid "Monthly journal"
+msgstr "Айлык журнал"
+
+#: cabinet/navigation.py
+msgid "Teaching"
+msgstr "Сабак берүү"
+
+#: cabinet/navigation.py
+msgid "Studying"
+msgstr "Окуу"
+
+#: cabinet/navigation.py cabinet/views/student.py templates/cabinet/student/attendance.html templates/cabinet/student/dashboard.html
+msgid "My attendance"
+msgstr "Менин катышуум"
+
+#: cabinet/navigation.py
+msgid "Django admin"
+msgstr "Django-админка"
+
+#: cabinet/navigation.py templates/cabinet/manager/student_form.html
+msgid "Account"
+msgstr "Аккаунт"
+
 #: cabinet/views/admin.py
-msgid "Course deleted."
-msgstr "Курс өчүрүлдү."
+#, python-format
+msgid "User created. Login: %(login)s, password: %(password)s"
+msgstr "Колдонуучу түзүлдү. Логин: %(login)s, сырсөз: %(password)s"
+
+#: cabinet/views/admin.py
+msgid "User created."
+msgstr "Колдонуучу түзүлдү."
+
+#: cabinet/views/admin.py templates/cabinet/admin/dashboard.html templates/cabinet/admin/user_list.html
+msgid "New user"
+msgstr "Жаңы колдонуучу"
+
+#: cabinet/views/admin.py
+msgid "User saved."
+msgstr "Колдонуучу сакталды."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "New password for %(login)s: %(password)s"
+msgstr "%(login)s үчүн жаңы сырсөз: %(password)s"
+
+#: cabinet/views/admin.py
+msgid "You cannot block yourself."
+msgstr "Өзүңүздү бөгөттөй албайсыз."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User %(name)s unblocked."
+msgstr "%(name)s колдонуучусу бөгөттөн чыгарылды."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User %(name)s blocked."
+msgstr "%(name)s колдонуучусу бөгөттөлдү."
 
 #: cabinet/views/admin.py
 msgid "Course saved."
@@ -319,61 +351,46 @@ msgid "New course"
 msgstr "Жаңы курс"
 
 #: cabinet/views/admin.py
-#, python-format
-msgid "New password for %(login)s: %(password)s"
-msgstr "%(login)s үчүн жаңы сырсөз: %(password)s"
-
-#: cabinet/views/admin.py templates/cabinet/admin/dashboard.html templates/cabinet/admin/user_list.html
-msgid "New user"
-msgstr "Жаңы колдонуучу"
-
-#: cabinet/views/admin.py
 msgid "The course has groups, so it was hidden from the site instead of being deleted."
 msgstr "Курстун топтору бар, ошондуктан ал өчүрүлгөн жок, сайттан жашырылды."
 
 #: cabinet/views/admin.py
+msgid "Course deleted."
+msgstr "Курс өчүрүлдү."
+
+#: cabinet/views/manager.py
 #, python-format
-msgid "User %(name)s blocked."
-msgstr "%(name)s колдонуучусу бөгөттөлдү."
+msgid "Status changed: %(status)s."
+msgstr "Статус өзгөртүлдү: %(status)s."
 
-#: cabinet/views/admin.py
-#, python-format
-msgid "User %(name)s unblocked."
-msgstr "%(name)s колдонуучусу бөгөттөн чыгарылды."
-
-#: cabinet/views/admin.py
-msgid "User created."
-msgstr "Колдонуучу түзүлдү."
-
-#: cabinet/views/admin.py
-#, python-format
-msgid "User created. Login: %(login)s, password: %(password)s"
-msgstr "Колдонуучу түзүлдү. Логин: %(login)s, сырсөз: %(password)s"
-
-#: cabinet/views/admin.py
-msgid "User saved."
-msgstr "Колдонуучу сакталды."
-
-#: cabinet/views/admin.py
-msgid "You cannot block yourself."
-msgstr "Өзүңүздү бөгөттөй албайсыз."
+#: cabinet/views/manager.py
+msgid "Request deleted."
+msgstr "Өтүнмө өчүрүлдү."
 
 #: cabinet/views/manager.py
 msgid "A student account has already been created for this request."
 msgstr "Бул өтүнмө боюнча окуучунун аккаунту мурун эле түзүлгөн."
 
 #: cabinet/views/manager.py
+msgid "Student created."
+msgstr "Окуучу түзүлдү."
+
+#: cabinet/views/manager.py
+msgid "Student from request"
+msgstr "Өтүнмөдөн окуучу"
+
+#: cabinet/views/manager.py templates/cabinet/manager/dashboard.html templates/cabinet/manager/student_list.html
+msgid "New student"
+msgstr "Жаңы окуучу"
+
+#: cabinet/views/manager.py
+msgid "Student saved."
+msgstr "Окуучу сакталды."
+
+#: cabinet/views/manager.py
 #, python-format
 msgid "Account created. Login: %(login)s, password: %(password)s — pass them to the student."
 msgstr "Аккаунт түзүлдү. Логин: %(login)s, сырсөз: %(password)s — аларды окуучуга бериңиз."
-
-#: cabinet/views/manager.py
-msgid "Edit news"
-msgstr "Жаңылыкты түзөтүү"
-
-#: cabinet/views/manager.py
-msgid "Group deleted."
-msgstr "Топ өчүрүлдү."
 
 #: cabinet/views/manager.py
 msgid "Group saved."
@@ -384,62 +401,40 @@ msgid "New group"
 msgstr "Жаңы топ"
 
 #: cabinet/views/manager.py
-msgid "New news item"
-msgstr "Жаңы жаңылык"
-
-#: cabinet/views/manager.py templates/cabinet/manager/dashboard.html templates/cabinet/manager/student_list.html
-msgid "New student"
-msgstr "Жаңы окуучу"
+msgid "The group has attendance records, so it was moved to the archive instead."
+msgstr "Топто катышуу белгилери бар, ошондуктан ал архивге жылдырылды."
 
 #: cabinet/views/manager.py
-msgid "News deleted."
-msgstr "Жаңылык өчүрүлдү."
+msgid "Group deleted."
+msgstr "Топ өчүрүлдү."
 
 #: cabinet/views/manager.py
 msgid "News saved."
 msgstr "Жаңылык сакталды."
 
 #: cabinet/views/manager.py
-msgid "Request deleted."
-msgstr "Өтүнмө өчүрүлдү."
+msgid "Edit news"
+msgstr "Жаңылыкты түзөтүү"
+
+#: cabinet/views/manager.py
+msgid "New news item"
+msgstr "Жаңы жаңылык"
+
+#: cabinet/views/manager.py
+msgid "News deleted."
+msgstr "Жаңылык өчүрүлдү."
 
 #: cabinet/views/manager.py
 msgid "Request updated."
 msgstr "Өтүнмө жаңыртылды."
-
-#: cabinet/views/manager.py
-#, python-format
-msgid "Status changed: %(status)s."
-msgstr "Статус өзгөртүлдү: %(status)s."
-
-#: cabinet/views/manager.py
-msgid "Student created."
-msgstr "Окуучу түзүлдү."
-
-#: cabinet/views/manager.py
-msgid "Student from request"
-msgstr "Өтүнмөдөн окуучу"
-
-#: cabinet/views/manager.py
-msgid "Student saved."
-msgstr "Окуучу сакталды."
-
-#: cabinet/views/manager.py
-msgid "The group has attendance records, so it was moved to the archive instead."
-msgstr "Топто катышуу белгилери бар, ошондуктан ал архивге жылдырылды."
 
 #: cabinet/views/teacher.py
 msgid "Edit lesson"
 msgstr "Сабакты түзөтүү"
 
 #: cabinet/views/teacher.py
-#, python-format
-msgid "Journal saved: %(n)s students."
-msgstr "Журнал сакталды: белгиленген окуучулар — %(n)s."
-
-#: cabinet/views/teacher.py
-msgid "Lesson deleted."
-msgstr "Сабак өчүрүлдү."
+msgid "New video lesson"
+msgstr "Жаңы видеосабак"
 
 #: cabinet/views/teacher.py
 msgid "Lesson saved."
@@ -450,192 +445,129 @@ msgid "Lesson uploaded."
 msgstr "Сабак жүктөлдү."
 
 #: cabinet/views/teacher.py
-msgid "New video lesson"
-msgstr "Жаңы видеосабак"
+msgid "Lesson deleted."
+msgstr "Сабак өчүрүлдү."
 
 #: cabinet/views/teacher.py templates/cabinet/teacher/mark.html
 msgid "You cannot mark a lesson in the future."
 msgstr "Келечектеги сабакты белгилөөгө болбойт."
 
+#: cabinet/views/teacher.py
+#, python-format
+msgid "Journal saved: %(n)s students."
+msgstr "Журнал сакталды: белгиленген окуучулар — %(n)s."
+
 #: core/context_processors.py
-msgid "Bishkek, Chui Avenue 155, 3rd floor"
-msgstr "Бишкек, Чүй проспекти 155, 3-кабат"
+msgid "Osh, Lenin street 205, 2nd floor"
+msgstr "Ош ш., Ленин көчөсү 205, 2-кабат"
 
 #: core/context_processors.py
 msgid "Mon–Sat, 9:00–20:00"
 msgstr "Дш–Иш, 9:00–20:00"
 
 #: core/forms.py
-msgid "Aibek Asanov"
-msgstr "Айбек Асанов"
+msgid "Your name"
+msgstr "Атыңыз"
 
-#: core/forms.py templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
-msgid "Comment"
-msgstr "Комментарий"
+#: core/forms.py
+msgid "Student's age"
+msgstr "Окуучунун жашы"
 
 #: core/forms.py templates/cabinet/admin/course_list.html templates/cabinet/manager/request_detail.html templates/cabinet/manager/request_list.html
 msgid "Course"
 msgstr "Курс"
 
-#: core/forms.py
-msgid "Enter a valid phone number, for example +996 555 123 456."
-msgstr "Туура телефон номерин жазыңыз, мисалы +996 555 123 456."
+#: core/forms.py templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
+msgid "Comment"
+msgstr "Комментарий"
 
 #: core/forms.py
-msgid "Not decided yet — help me choose"
-msgstr "Азырынча чечкен жокмун — тандаганга жардам бериңиз"
+msgid "Aibek Asanov"
+msgstr "Айбек Асанов"
 
 #: core/forms.py
 msgid "Questions, convenient time to call…"
 msgstr "Суроолор, чалууга ыңгайлуу убакыт…"
 
 #: core/forms.py
-msgid "Student's age"
-msgstr "Окуучунун жашы"
+msgid "Not decided yet — help me choose"
+msgstr "Азырынча чечкен жокмун — тандаганга жардам бериңиз"
 
 #: core/forms.py
-msgid "Your name"
-msgstr "Атыңыз"
+msgid "Enter a valid phone number, for example +996 555 123 456."
+msgstr "Туура телефон номерин жазыңыз, мисалы +996 555 123 456."
 
 #: core/models.py
-msgid "3D modeling: Blender"
-msgstr "3D-моделдөө: Blender"
+msgid "full description (EN)"
+msgstr "толук сүрөттөмө (EN)"
 
 #: core/models.py
-msgid "3D modeling: Fusion 360"
-msgstr "3D-моделдөө: Fusion 360"
+msgid "level"
+msgstr "деңгээли"
 
 #: core/models.py
-msgctxt "attendance"
-msgid "A"
-msgstr "Ж"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Absent"
-msgstr "Келген жок"
+msgid "age from"
+msgstr "жашы, баштап"
 
 #: core/models.py
-msgid "Advanced"
-msgstr "Жогорку"
+msgid "age to"
+msgstr "жашы, чейин"
 
 #: core/models.py
-msgid "Arduino, sensors, motors and real robots you build with your own hands."
-msgstr "Arduino, датчиктер, моторлор жана өз колуң менен чогулткан чыныгы роботтор."
+msgid "duration, months"
+msgstr "узактыгы, ай"
 
 #: core/models.py
-msgid "Backend"
-msgstr "Backend"
+msgid "lessons per week"
+msgstr "жумасына сабак"
 
 #: core/models.py
-msgid "Beginner"
-msgstr "Баштапкы"
+msgid "price, KGS per month"
+msgstr "баасы, айына сом"
 
 #: core/models.py
-msgid "Blender"
-msgstr "Blender"
+msgid "cover"
+msgstr "мукаба"
 
 #: core/models.py
-msgid "Comma-separated numbers: 0 = Monday … 6 = Sunday."
-msgstr "Үтүр менен сандар: 0 = дүйшөмбү … 6 = жекшемби."
+msgid "teachers"
+msgstr "мугалимдер"
+
+#: core/models.py templates/cabinet/admin/dashboard.html templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+msgid "active"
+msgstr "активдүү"
 
 #: core/models.py
-msgid "Contacted"
-msgstr "Байланыштык"
+msgid "order"
+msgstr "тартиби"
 
 #: core/models.py
-msgctxt "attendance"
-msgid "E"
-msgstr "С"
+msgid "course"
+msgstr "курс"
 
 #: core/models.py
-msgid "Engineering 3D design, drawings and models ready for 3D printing."
-msgstr "Инженердик 3D-долбоорлоо, чиймелер жана 3D-басууга даяр моделдер."
-
-#: core/models.py
-msgid "Enrolled"
-msgstr "Жазылды"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Excused"
-msgstr "Себептүү"
-
-#: core/models.py
-msgid "File"
-msgstr "Файл"
-
-#: core/models.py
-msgid "Fri"
-msgstr "Жм"
-
-#: core/models.py
-msgid "Frontend"
-msgstr "Frontend"
-
-#: core/models.py
-msgid "Fusion 360"
-msgstr "Fusion 360"
-
-#: core/models.py
-msgid "HTML, CSS and JavaScript: interfaces that people love to use."
-msgstr "HTML, CSS жана JavaScript: колдонууга жагымдуу интерфейстер."
-
-#: core/models.py
-msgid "Intermediate"
-msgstr "Орто"
-
-#: core/models.py
-msgctxt "attendance"
-msgid "L"
-msgstr "Кч"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Late"
-msgstr "Кечикти"
-
-#: core/models.py
-msgid "Leave empty to show the lesson to all groups of the course."
-msgstr "Сабакты курстун бардык топтору көрүшү үчүн бош калтырыңыз."
-
-#: core/models.py
-msgid "Modeling, materials, light and animation for games and film."
-msgstr "Оюндар жана кино үчүн моделдөө, материалдар, жарык жана анимация."
+msgid "courses"
+msgstr "курстар"
 
 #: core/models.py
 msgid "Mon"
 msgstr "Дш"
 
 #: core/models.py
-msgid "New"
-msgstr "Жаңы"
+msgid "Tue"
+msgstr "Шш"
 
 #: core/models.py
-msgctxt "attendance"
-msgid "P"
-msgstr "К"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Present"
-msgstr "Келди"
+msgid "Wed"
+msgstr "Шр"
 
 #: core/models.py
-msgid "Programming: Backend"
-msgstr "Программалоо: Backend"
+msgid "Thu"
+msgstr "Бш"
 
 #: core/models.py
-msgid "Programming: Frontend"
-msgstr "Программалоо: Frontend"
-
-#: core/models.py
-msgid "Python, Django, databases and APIs — the engine of every service."
-msgstr "Python, Django, маалымат базалары жана API — ар бир кызматтын кыймылдаткычы."
-
-#: core/models.py
-msgid "Rejected"
-msgstr "Баш тартты"
-
-#: core/models.py templates/base.html
-msgid "Robotics"
-msgstr "Робототехника"
+msgid "Fri"
+msgstr "Жм"
 
 #: core/models.py
 msgid "Sat"
@@ -644,6 +576,55 @@ msgstr "Иш"
 #: core/models.py
 msgid "Sun"
 msgstr "Жк"
+
+#: core/models.py
+msgid "name"
+msgstr "аталышы"
+
+#: core/models.py
+msgid "teacher"
+msgstr "мугалим"
+
+#: core/models.py
+msgid "students"
+msgstr "окуучулар"
+
+#: core/models.py
+msgid "Comma-separated numbers: 0 = Monday … 6 = Sunday."
+msgstr "Үтүр менен сандар: 0 = дүйшөмбү … 6 = жекшемби."
+
+#: core/models.py
+msgid "days of week"
+msgstr "жума күндөрү"
+
+#: core/models.py
+msgid "start time"
+msgstr "башталыш убактысы"
+
+#: core/models.py
+msgid "end time"
+msgstr "бүтүү убактысы"
+
+#: core/models.py templates/core/course_detail.html
+msgid "room"
+msgstr "бөлмө"
+
+#: core/models.py
+msgid "start date"
+msgstr "башталыш күнү"
+
+#: core/models.py
+msgid "group"
+msgstr "топ"
+
+#: core/models.py templates/cabinet/admin/dashboard.html
+msgid "groups"
+msgstr "топтор"
+
+#: core/models.py
+#, python-format
+msgid "Unsupported video format. Allowed: %(formats)s."
+msgstr "Видеонун форматы колдоого алынбайт. Уруксат берилгендер: %(formats)s."
 
 #: core/models.py templates/cabinet/teacher/lesson_form.html
 #, python-format
@@ -655,103 +636,222 @@ msgid "This does not look like a YouTube video link."
 msgstr "Бул YouTube видеосунун шилтемесине окшобойт."
 
 #: core/models.py
-msgid "Thu"
-msgstr "Бш"
+msgid "Leave empty to show the lesson to all groups of the course."
+msgstr "Сабакты курстун бардык топтору көрүшү үчүн бош калтырыңыз."
 
 #: core/models.py
-msgid "Tue"
-msgstr "Шш"
+msgid "lesson number"
+msgstr "сабактын номери"
 
 #: core/models.py
-#, python-format
-msgid "Unsupported video format. Allowed: %(formats)s."
-msgstr "Видеонун форматы колдоого алынбайт. Уруксат берилгендер: %(formats)s."
+msgid "title"
+msgstr "аталышы"
 
 #: core/models.py
-msgid "Wed"
-msgstr "Шр"
+msgid "description"
+msgstr "сүрөттөмө"
+
+#: core/models.py
+msgid "video file"
+msgstr "видеофайл"
 
 #: core/models.py
 msgid "YouTube link"
 msgstr "YouTube шилтемеси"
 
-#: core/models.py templates/cabinet/admin/dashboard.html templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
-msgid "active"
-msgstr "активдүү"
-
 #: core/models.py
-msgid "age"
-msgstr "жашы"
+msgid "materials"
+msgstr "материалдар"
 
-#: core/models.py
-msgid "age from"
-msgstr "жашы, баштап"
-
-#: core/models.py
-msgid "age to"
-msgstr "жашы, чейин"
-
-#: core/models.py
-msgid "attendance"
-msgstr "катышуу"
-
-#: core/models.py
-msgid "attendance record"
-msgstr "катышуу белгиси"
-
-#: core/models.py
-msgid "author"
-msgstr "автор"
-
-#: core/models.py
-msgid "comment"
-msgstr "комментарий"
-
-#: core/models.py
-msgid "course"
-msgstr "курс"
-
-#: core/models.py
-msgid "courses"
-msgstr "курстар"
-
-#: core/models.py
-msgid "cover"
-msgstr "мукаба"
+#: core/models.py templates/cabinet/admin/dashboard.html
+msgid "published"
+msgstr "жарыяланган"
 
 #: core/models.py
 msgid "created"
 msgstr "түзүлгөн"
 
 #: core/models.py
+msgid "video lesson"
+msgstr "видеосабак"
+
+#: core/models.py
+msgid "video lessons"
+msgstr "видеосабактар"
+
+#: core/models.py
+msgid "File"
+msgstr "Файл"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Present"
+msgstr "Келди"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Late"
+msgstr "Кечикти"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Absent"
+msgstr "Келген жок"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Excused"
+msgstr "Себептүү"
+
+#: core/models.py templates/core/home.html
+msgid "student"
+msgid_plural "students"
+msgstr[0] "окуучу"
+msgstr[1] "окуучу"
+
+#: core/models.py
 msgid "date"
 msgstr "күнү"
 
 #: core/models.py
-msgid "days of week"
-msgstr "жума күндөрү"
+msgid "status"
+msgstr "статус"
+
+#: core/models.py templates/cabinet/shared/journal_month.html
+msgid "grade"
+msgstr "баа"
 
 #: core/models.py
-msgid "description"
-msgstr "сүрөттөмө"
-
-#: core/models.py templates/core/home.html
-msgid "direction"
-msgid_plural "directions"
-msgstr[0] "багыт"
-msgstr[1] "багыт"
+msgid "comment"
+msgstr "комментарий"
 
 #: core/models.py
-msgid "duration, months"
-msgstr "узактыгы, ай"
+msgid "marked by"
+msgstr "ким белгиледи"
+
+#: core/models.py
+msgid "attendance record"
+msgstr "катышуу белгиси"
+
+#: core/models.py
+msgid "attendance"
+msgstr "катышуу"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "P"
+msgstr "К"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "L"
+msgstr "Кч"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "A"
+msgstr "Ж"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "E"
+msgstr "С"
+
+#: core/models.py templates/base.html
+msgid "Robotics"
+msgstr "Робототехника"
+
+#: core/models.py
+msgid "text (RU)"
+msgstr "текст (RU)"
+
+#: core/models.py
+msgid "text (KY)"
+msgstr "текст (KY)"
+
+#: core/models.py
+msgid "text (EN)"
+msgstr "текст (EN)"
+
+#: core/models.py
+msgid "image"
+msgstr "сүрөт"
+
+#: core/models.py
+msgid "pinned"
+msgstr "бекитилген"
+
+#: core/models.py
+msgid "publication date"
+msgstr "жарыяланган күнү"
+
+#: core/models.py
+msgid "author"
+msgstr "автор"
+
+#: core/models.py
+msgid "Programming: Frontend"
+msgstr "Программалоо: Frontend"
+
+#: core/models.py
+msgid "news item"
+msgstr "жаңылык"
+
+#: core/models.py
+msgid "news"
+msgstr "жаңылыктар"
+
+#: core/models.py
+msgid "Programming: Backend"
+msgstr "Программалоо: Backend"
+
+#: core/models.py
+msgid "3D modeling: Fusion 360"
+msgstr "3D-моделдөө: Fusion 360"
+
+#: core/models.py
+msgid "New"
+msgstr "Жаңы"
+
+#: core/models.py
+msgid "Contacted"
+msgstr "Байланыштык"
+
+#: core/models.py
+msgid "Enrolled"
+msgstr "Жазылды"
+
+#: core/models.py
+msgid "3D modeling: Blender"
+msgstr "3D-моделдөө: Blender"
+
+#: core/models.py
+msgid "Rejected"
+msgstr "Баш тартты"
 
 #: core/models.py
 msgid "email"
 msgstr "email"
 
 #: core/models.py
-msgid "end time"
-msgstr "бүтүү убактысы"
+msgid "age"
+msgstr "жашы"
+
+#: core/models.py
+msgid "message"
+msgstr "билдирүү"
+
+#: core/models.py
+msgid "manager note"
+msgstr "менеджердин эскертмеси"
+
+#: core/models.py
+msgid "handled by"
+msgstr "ким иштетти"
+
+#: core/models.py
+msgid "student account"
+msgstr "окуучунун аккаунту"
+
+#: core/models.py
+msgid "received"
+msgstr "келген"
 
 #: core/models.py
 msgid "enrollment request"
@@ -762,194 +862,94 @@ msgid "enrollment requests"
 msgstr "окууга өтүнмөлөр"
 
 #: core/models.py
-msgid "full description (EN)"
-msgstr "толук сүрөттөмө (EN)"
+msgid "Arduino, sensors, motors and real robots you build with your own hands."
+msgstr "Arduino, датчиктер, моторлор жана өз колуң менен чогулткан чыныгы роботтор."
 
 #: core/models.py
-msgid "full description (KY)"
-msgstr "толук сүрөттөмө (KY)"
+msgid "Frontend"
+msgstr "Frontend"
 
 #: core/models.py
-msgid "full description (RU)"
-msgstr "толук сүрөттөмө (RU)"
-
-#: core/models.py templates/cabinet/shared/journal_month.html
-msgid "grade"
-msgstr "баа"
+msgid "HTML, CSS and JavaScript: interfaces that people love to use."
+msgstr "HTML, CSS жана JavaScript: колдонууга жагымдуу интерфейстер."
 
 #: core/models.py
-msgid "group"
-msgstr "топ"
-
-#: core/models.py templates/cabinet/admin/dashboard.html
-msgid "groups"
-msgstr "топтор"
+msgid "Backend"
+msgstr "Backend"
 
 #: core/models.py
-msgid "handled by"
-msgstr "ким иштетти"
+msgid "Python, Django, databases and APIs — the engine of every service."
+msgstr "Python, Django, маалымат базалары жана API — ар бир кызматтын кыймылдаткычы."
 
 #: core/models.py
-msgid "image"
-msgstr "сүрөт"
+msgid "Fusion 360"
+msgstr "Fusion 360"
 
 #: core/models.py
-msgid "lesson number"
-msgstr "сабактын номери"
+msgid "Engineering 3D design, drawings and models ready for 3D printing."
+msgstr "Инженердик 3D-долбоорлоо, чиймелер жана 3D-басууга даяр моделдер."
 
 #: core/models.py
-msgid "lessons per week"
-msgstr "жумасына сабак"
+msgid "Blender"
+msgstr "Blender"
 
 #: core/models.py
-msgid "level"
-msgstr "деңгээли"
+msgid "Modeling, materials, light and animation for games and film."
+msgstr "Оюндар жана кино үчүн моделдөө, материалдар, жарык жана анимация."
 
 #: core/models.py
-msgid "manager note"
-msgstr "менеджердин эскертмеси"
+msgid "Beginner"
+msgstr "Баштапкы"
 
 #: core/models.py
-msgid "marked by"
-msgstr "ким белгиледи"
+msgid "Intermediate"
+msgstr "Орто"
 
 #: core/models.py
-msgid "materials"
-msgstr "материалдар"
+msgid "Advanced"
+msgstr "Жогорку"
 
-#: core/models.py
-msgid "message"
-msgstr "билдирүү"
-
-#: core/models.py
-msgid "name"
-msgstr "аталышы"
-
-#: core/models.py
-msgid "news"
-msgstr "жаңылыктар"
-
-#: core/models.py
-msgid "news item"
-msgstr "жаңылык"
-
-#: core/models.py
-msgid "order"
-msgstr "тартиби"
-
-#: core/models.py
-msgid "pinned"
-msgstr "бекитилген"
-
-#: core/models.py
-msgid "price, KGS per month"
-msgstr "баасы, айына сом"
-
-#: core/models.py
-msgid "publication date"
-msgstr "жарыяланган күнү"
-
-#: core/models.py templates/cabinet/admin/dashboard.html
-msgid "published"
-msgstr "жарыяланган"
-
-#: core/models.py
-msgid "received"
-msgstr "келген"
-
-#: core/models.py templates/core/course_detail.html
-msgid "room"
-msgstr "бөлмө"
-
-#: core/models.py
-msgid "short description (EN)"
-msgstr "кыскача сүрөттөмө (EN)"
-
-#: core/models.py
-msgid "short description (KY)"
-msgstr "кыскача сүрөттөмө (KY)"
-
-#: core/models.py
-msgid "short description (RU)"
-msgstr "кыскача сүрөттөмө (RU)"
+#: core/models.py templates/core/home.html
+msgid "direction"
+msgid_plural "directions"
+msgstr[0] "багыт"
+msgstr[1] "багыт"
 
 #: core/models.py
 msgid "slug"
 msgstr "дарек (slug)"
 
 #: core/models.py
-msgid "start date"
-msgstr "башталыш күнү"
-
-#: core/models.py
-msgid "start time"
-msgstr "башталыш убактысы"
-
-#: core/models.py
-msgid "status"
-msgstr "статус"
-
-#: core/models.py templates/core/home.html
-msgid "student"
-msgid_plural "students"
-msgstr[0] "окуучу"
-msgstr[1] "окуучу"
-
-#: core/models.py
-msgid "student account"
-msgstr "окуучунун аккаунту"
-
-#: core/models.py
-msgid "students"
-msgstr "окуучулар"
-
-#: core/models.py
-msgid "teacher"
-msgstr "мугалим"
-
-#: core/models.py
-msgid "teachers"
-msgstr "мугалимдер"
-
-#: core/models.py
-msgid "text (EN)"
-msgstr "текст (EN)"
-
-#: core/models.py
-msgid "text (KY)"
-msgstr "текст (KY)"
-
-#: core/models.py
-msgid "text (RU)"
-msgstr "текст (RU)"
-
-#: core/models.py
-msgid "title"
-msgstr "аталышы"
-
-#: core/models.py
-msgid "title (EN)"
-msgstr "аталышы (EN)"
+msgid "title (RU)"
+msgstr "аталышы (RU)"
 
 #: core/models.py
 msgid "title (KY)"
 msgstr "аталышы (KY)"
 
 #: core/models.py
-msgid "title (RU)"
-msgstr "аталышы (RU)"
+msgid "title (EN)"
+msgstr "аталышы (EN)"
 
 #: core/models.py
-msgid "video file"
-msgstr "видеофайл"
+msgid "short description (RU)"
+msgstr "кыскача сүрөттөмө (RU)"
 
 #: core/models.py
-msgid "video lesson"
-msgstr "видеосабак"
+msgid "short description (KY)"
+msgstr "кыскача сүрөттөмө (KY)"
 
 #: core/models.py
-msgid "video lessons"
-msgstr "видеосабактар"
+msgid "short description (EN)"
+msgstr "кыскача сүрөттөмө (EN)"
+
+#: core/models.py
+msgid "full description (RU)"
+msgstr "толук сүрөттөмө (RU)"
+
+#: core/models.py
+msgid "full description (KY)"
+msgstr "толук сүрөттөмө (KY)"
 
 #: templates/403.html
 msgid "Access denied"
@@ -1068,12 +1068,8 @@ msgid "Home"
 msgstr "Башкы бет"
 
 #: templates/base.html
-msgid "Learning center in Bishkek: robotics, Frontend and Backend programming, 3D modeling in Fusion 360 and Blender for kids and teens."
-msgstr "Бишкектеги окуу борбору: балдар жана өспүрүмдөр үчүн робототехника, Frontend жана Backend программалоо, Fusion 360 жана Blender'де 3D-моделдөө."
-
-#: templates/base.html
-msgid "Made in Bishkek with love for technology"
-msgstr "Бишкекте технологияга болгон сүйүү менен жасалды"
+msgid "Learning center in Osh: robotics, programming and 3D modeling for kids and teens."
+msgstr "Оштогу окуу борбору: балдар жана өспүрүмдөр үчүн робототехника, программалоо жана 3D-моделдөө."
 
 #: templates/base.html
 msgid "Main menu"
@@ -1096,8 +1092,8 @@ msgid "Skip to content"
 msgstr "Мазмунга өтүү"
 
 #: templates/base.html
-msgid "We teach children and teenagers to create technology: robots, websites, services and 3D worlds."
-msgstr "Балдарды жана өспүрүмдөрдү технология жаратууга үйрөтөбүз: роботтор, сайттар, кызматтар жана 3D-дүйнөлөр."
+msgid "We teach kids to create technology."
+msgstr "Балдарды технология жаратууга үйрөтөбүз."
 
 #: templates/cabinet/admin/course_form.html templates/cabinet/admin/course_list.html templates/cabinet/manager/news_form.html templates/cabinet/manager/news_list.html
 msgid "Open on the website"
@@ -1115,7 +1111,7 @@ msgstr "Орусча текст милдеттүү. Котормосу жок б
 msgid "Save course"
 msgstr "Курсту сактоо"
 
-#: templates/cabinet/admin/course_form.html templates/cabinet/admin/dashboard.html templates/core/course_detail.html
+#: templates/cabinet/admin/course_form.html templates/cabinet/admin/dashboard.html templates/core/about.html templates/core/course_detail.html
 msgid "Teachers"
 msgstr "Мугалимдер"
 
@@ -2081,48 +2077,24 @@ msgid "You have no active groups"
 msgstr "Сизде активдүү топтор жок"
 
 #: templates/core/about.html
-msgid "A place where children create technology"
-msgstr "Балдар технология жараткан жер"
+msgid "A learning center in Osh for kids and teens aged 8–17."
+msgstr "Оштогу 8–17 жаштагы балдар жана өспүрүмдөр үчүн окуу борбору."
 
 #: templates/core/about.html templates/core/contacts.html templates/core/course_detail.html templates/core/course_list.html
 msgid "Breadcrumbs"
 msgstr "Навигация чынжыры"
 
-#: templates/core/about.html
-msgid "Come to a trial lesson"
-msgstr "Сыноо сабагына келиңиз"
+#: templates/core/about.html templates/core/home.html
+msgid "Free trial lesson"
+msgstr "Акысыз сыноо сабагы"
 
 #: templates/core/about.html templates/core/home.html
-msgid "Enrollment is open"
-msgstr "Кабыл алуу жүрүп жатат"
+msgid "Meet the teacher and try the equipment — free and without obligations."
+msgstr "Мугалим менен таанышып, жабдууларды сынап көрүңүз — акысыз жана милдеттенмесиз."
 
 #: templates/core/about.html
-msgid "Meet the teacher, see the laboratory and choose a direction together with your child."
-msgstr "Мугалим менен таанышып, лабораторияны көрүп, балаңыз менен бирге багыт тандаңыз."
-
-#: templates/core/about.html
-msgid "Next-Generation-Hub is a learning center in Bishkek where kids and teens learn engineering and digital professions through practice."
-msgstr "Next-Generation-Hub — балдар жана өспүрүмдөр инженердик жана санариптик кесиптерди практика аркылуу өздөштүргөн Бишкектеги окуу борбору."
-
-#: templates/core/about.html
-msgid "Our teachers"
-msgstr "Биздин мугалимдер"
-
-#: templates/core/about.html templates/core/home.html
-msgid "Team"
-msgstr "Команда"
-
-#: templates/core/about.html
-msgid "We believe that every child can not only consume technology, but also create it. Our task is to give tools, a mentor and an environment where it is interesting to try."
-msgstr "Ар бир бала технологияны колдонуп гана тим болбостон, аны жарата да алат деп ишенебиз. Биздин милдет — куралдарды, насаатчыны жана сынап көрүүгө кызыктуу чөйрөнү берүү."
-
-#: templates/core/about.html
-msgid "We started in 2021 with a small robotics club. Today there are five directions, our own laboratory with 3D printers and electronics kits, and graduates who win olympiads and enter technical universities."
-msgstr "Биз 2021-жылы робототехника боюнча чакан ийримден баштаганбыз. Бүгүн бизде беш багыт, 3D-принтерлер жана электроника топтомдору бар өз лабораториябыз бар, ал эми бүтүрүүчүлөрүбүз олимпиадаларда жеңишке жетип, техникалык жогорку окуу жайларына тапшырышат."
-
-#: templates/core/about.html
-msgid "What we teach"
-msgstr "Эмнени үйрөтөбүз"
+msgid "We started in 2021 with a small robotics club. Today we have five directions and our own laboratory with 3D printers and electronics kits."
+msgstr "Биз 2021-жылы робототехника боюнча чакан ийримден баштаганбыз. Бүгүн бизде беш багыт жана 3D-принтерлери, электроника топтомдору бар өз лабораториябыз бар."
 
 #: templates/core/about.html
 msgid "directions of study"
@@ -2145,16 +2117,12 @@ msgid "Address"
 msgstr "Дареги"
 
 #: templates/core/contacts.html
-msgid "Call, write or come to the center — we will be happy to show the laboratory and answer questions."
-msgstr "Чалыңыз, жазыңыз же борборго келиңиз — лабораторияны кубануу менен көрсөтүп, суроолоруңузга жооп беребиз."
+msgid "Call, write or come to the center."
+msgstr "Чалыңыз, жазыңыз же борборго келиңиз."
 
-#: templates/core/contacts.html
-msgid "Feedback"
-msgstr "Кайтарым байланыш"
-
-#: templates/core/contacts.html
-msgid "Have questions? Leave a request"
-msgstr "Суроолоруңуз барбы? Өтүнмө калтырыңыз"
+#: templates/core/contacts.html templates/core/course_list.html
+msgid "Leave a request"
+msgstr "Өтүнмө калтыруу"
 
 #: templates/core/contacts.html
 msgid "We will call you back, tell you about the courses and pick a convenient group."
@@ -2211,10 +2179,6 @@ msgstr "сом / ай"
 msgid "Level"
 msgstr "Деңгээли"
 
-#: templates/core/course_detail.html templates/partials/course_card.html
-msgid "More"
-msgstr "Кененирээк"
-
 #: templates/core/course_detail.html
 msgid "Other courses"
 msgstr "Башка курстар"
@@ -2224,20 +2188,12 @@ msgid "The first trial lesson is free"
 msgstr "Биринчи сыноо сабагы акысыз"
 
 #: templates/core/course_list.html
-msgid "Courses for kids and teens"
-msgstr "Балдар жана өспүрүмдөр үчүн курстар"
+msgid "Every course ends with a final project."
+msgstr "Ар бир курс жыйынтыктоочу долбоор менен аяктайт."
 
 #: templates/core/course_list.html
 msgid "Filter by direction"
 msgstr "Багыт боюнча чыпка"
-
-#: templates/core/course_list.html
-msgid "Five directions, clear programs and a final project in every course. Filter by direction to find your own."
-msgstr "Беш багыт, түшүнүктүү программалар жана ар бир курста жыйынтыктоочу долбоор. Өзүңүздүкүн табуу үчүн багыт боюнча чыпкалаңыз."
-
-#: templates/core/course_list.html
-msgid "Leave a request"
-msgstr "Өтүнмө калтыруу"
 
 #: templates/core/course_list.html
 msgid "Leave a request — we will let you know when a group starts."
@@ -2301,72 +2257,24 @@ msgid "Attendance and grades in the online journal — parents always know how t
 msgstr "Катышуу жана баалар онлайн-журналда — ата-энелер ар дайым кабардар."
 
 #: templates/core/home.html
-msgid "Choose what inspires you: from the first LED on an Arduino to your own web service or animated 3D scene."
-msgstr "Өзүңүздү шыктандырганды тандаңыз: Arduino'догу биринчи светодиоддон тартып өз веб-кызматыңызга же анимацияланган 3D-сахнага чейин."
-
-#: templates/core/home.html
-msgid "Come visit us"
-msgstr "Бизге келиңиз"
-
-#: templates/core/home.html
-msgid "Come with your child, meet the teacher, try the equipment and choose a direction without obligations."
-msgstr "Балаңыз менен келип, мугалим менен таанышып, жабдууларды сынап көрүп, эч кандай милдеттенмесиз багыт тандаңыз."
-
-#: templates/core/home.html
-msgid "Engineers, developers and 3D artists who work on real projects and love to share their experience."
-msgstr "Чыныгы долбоорлордо иштеген жана тажрыйбасы менен бөлүшкөндү жакшы көргөн инженерлер, иштеп чыгуучулар жана 3D-сүрөтчүлөр."
-
-#: templates/core/home.html
-msgid "Every module ends with a project that goes into the student's portfolio."
-msgstr "Ар бир модуль окуучунун портфолиосуна кошулуучу долбоор менен аяктайт."
-
-#: templates/core/home.html
-msgid "Five paths into technology"
-msgstr "Технологияга беш жол"
-
-#: templates/core/home.html
-msgid "Free trial lesson"
-msgstr "Акысыз сыноо сабагы"
-
-#: templates/core/home.html
 msgid "Groups up to 10"
 msgstr "10 кишиге чейинки топтор"
 
-#: templates/core/home.html
-msgid "Learning by making"
-msgstr "Жаратып үйрөнөбүз"
-
 #: templates/core/home.html templates/partials/logo.html
-msgid "Learning center · Bishkek"
-msgstr "Окуу борбору · Бишкек"
-
-#: templates/core/home.html
-msgid "Life of the center"
-msgstr "Борбордун турмушу"
-
-#: templates/core/home.html
-msgid "Popular programs"
-msgstr "Популярдуу программалар"
+msgid "Learning center · Osh"
+msgstr "Окуу борбору · Ош"
 
 #: templates/core/home.html
 msgid "Real equipment"
 msgstr "Чыныгы жабдуулар"
 
 #: templates/core/home.html
-msgid "Robotics, programming and 3D modeling for kids and teens aged 8–17. Small groups, real projects and teachers from the industry."
-msgstr "8–17 жаштагы балдар жана өспүрүмдөр үчүн робототехника, программалоо жана 3D-моделдөө. Чакан топтор, чыныгы долбоорлор жана практик-мугалимдер."
+msgid "Robotics, programming and 3D modeling for kids aged 8–17."
+msgstr "8–17 жаштагы балдар үчүн робототехника, программалоо жана 3D-моделдөө."
 
 #: templates/core/home.html
 msgid "Selection of a course by age and interests"
 msgstr "Жашына жана кызыгуусуна жараша курс тандоо"
-
-#: templates/core/home.html
-msgid "Start with a free trial lesson"
-msgstr "Акысыз сыноо сабагынан баштаңыз"
-
-#: templates/core/home.html
-msgid "Teachers who practice"
-msgstr "Практик-мугалимдер"
 
 #: templates/core/home.html
 msgid "The child leaves with a small finished project"
@@ -2414,9 +2322,9 @@ msgstr "Ошондой эле окуңуз"
 msgid "Come back later — something interesting is coming soon."
 msgstr "Кийинчерээк кайрылыңыз — жакында бул жерде кызыктуу нерсе пайда болот."
 
-#: templates/core/news_list.html
-msgid "Competitions, student projects, new groups and events of the center."
-msgstr "Мелдештер, окуучулардын долбоорлору, жаңы топтор жана борбордун окуялары."
+#: templates/partials/course_card.html
+msgid "More"
+msgstr "Кененирээк"
 
 #: templates/partials/enroll_form.html
 msgid "By clicking the button you agree to the processing of personal data."

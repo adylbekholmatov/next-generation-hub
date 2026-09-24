@@ -3,7 +3,7 @@
 <head>
   {% include "partials/head.html" %}
   <title>{% block title %}{% trans "Next-Generation-Hub — robotics, programming and 3D modeling courses" %}{% endblock %}</title>
-  <meta name="description" content="{% block description %}{% trans 'Learning center in Bishkek: robotics, Frontend and Backend programming, 3D modeling in Fusion 360 and Blender for kids and teens.' %}{% endblock %}">
+  <meta name="description" content="{% block description %}{% trans 'Learning center in Osh: robotics, programming and 3D modeling for kids and teens.' %}{% endblock %}">
   {% block head %}{% endblock %}
 </head>
 <body>
@@ -62,7 +62,7 @@
       <div class="footer-grid">
         <div>
           {% include "partials/logo.html" %}
-          <p class="muted" style="margin-top:16px;max-width:36ch">{% trans "We teach children and teenagers to create technology: robots, websites, services and 3D worlds." %}</p>
+          <p class="muted" style="margin:14px 0 16px;max-width:32ch">{% trans "We teach kids to create technology." %}</p>
           <div class="socials">
             <a href="{{ SITE.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% icon "instagram" 18 %}</a>
             <a href="{{ SITE.telegram }}" target="_blank" rel="noopener" aria-label="Telegram">{% icon "telegram" 18 %}</a>
@@ -98,10 +98,8 @@
           </ul>
         </div>
       </div>
-      <div class="footer-word" aria-hidden="true">Next<span>—</span>Gen<span>—</span>Hub</div>
       <div class="footer-bottom">
         <span>© {% now "Y" %} Next-Generation-Hub. {% trans "All rights reserved." %}</span>
-        <span>{% trans "Made in Bishkek with love for technology" %}</span>
       </div>
     </div>
   </footer>

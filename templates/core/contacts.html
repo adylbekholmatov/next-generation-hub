@@ -6,7 +6,7 @@
   <div class="container">
     <nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}"><a href="{% url 'core:home' %}">{% trans "Home" %}</a> {% icon "chevron-right" 14 %} <span>{% trans "Contacts" %}</span></nav>
     <h1>{% trans "Contacts" %}</h1>
-    <p>{% trans "Call, write or come to the center — we will be happy to show the laboratory and answer questions." %}</p>
+    <p>{% trans "Call, write or come to the center." %}</p>
   </div>
 </section>
 <section class="section-sm">
@@ -28,8 +28,7 @@
   <div class="container">
     <div class="cta">
       <div>
-        <span class="eyebrow">{% trans "Feedback" %}</span>
-        <h2 style="margin-top:14px">{% trans "Have questions? Leave a request" %}</h2>
+        <h2>{% trans "Leave a request" %}</h2>
         <p>{% trans "We will call you back, tell you about the courses and pick a convenient group." %}</p>
       </div>
       {% include "partials/enroll_form.html" %}

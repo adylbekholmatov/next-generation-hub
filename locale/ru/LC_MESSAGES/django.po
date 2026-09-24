@@ -1,5 +1,5 @@
-# Next-Generation-Hub translations.
-# После правок выполните: python manage.py compilemo
+# Next-Generation-Hub — Russian translation.
+# Этот файл можно редактировать; после правок выполните: python manage.py compilemo
 msgid ""
 msgstr ""
 "Project-Id-Version: Next-Generation-Hub 1.0\n"
@@ -17,21 +17,29 @@ msgstr "Профиль в учебном центре"
 msgid "Accounts"
 msgstr "Аккаунты"
 
-#: accounts/forms.py
-msgid "About me"
-msgstr "О себе"
+#: accounts/forms.py templates/accounts/profile.html
+msgid "Login"
+msgstr "Логин"
 
-#: accounts/forms.py
-msgid "At least 6 characters, not too simple."
-msgstr "Не меньше 6 символов, не слишком простой."
+#: accounts/forms.py cabinet/forms.py cabinet/navigation.py
+msgid "Password"
+msgstr "Пароль"
 
 #: accounts/forms.py
 msgid "Current password"
 msgstr "Текущий пароль"
 
-#: accounts/forms.py core/forms.py
-msgid "Email"
-msgstr "Email"
+#: accounts/forms.py cabinet/forms.py
+msgid "New password"
+msgstr "Новый пароль"
+
+#: accounts/forms.py
+msgid "Repeat new password"
+msgstr "Повторите новый пароль"
+
+#: accounts/forms.py
+msgid "At least 6 characters, not too simple."
+msgstr "Не меньше 6 символов, не слишком простой."
 
 #: accounts/forms.py
 msgid "First name"
@@ -41,17 +49,9 @@ msgstr "Имя"
 msgid "Last name"
 msgstr "Фамилия"
 
-#: accounts/forms.py templates/accounts/profile.html
-msgid "Login"
-msgstr "Логин"
-
-#: accounts/forms.py cabinet/forms.py
-msgid "New password"
-msgstr "Новый пароль"
-
-#: accounts/forms.py cabinet/forms.py cabinet/navigation.py
-msgid "Password"
-msgstr "Пароль"
+#: accounts/forms.py core/forms.py
+msgid "Email"
+msgstr "Email"
 
 #: accounts/forms.py core/forms.py templates/accounts/profile.html templates/cabinet/manager/group_detail.html
 msgid "Phone"
@@ -62,32 +62,24 @@ msgid "Photo"
 msgstr "Фото"
 
 #: accounts/forms.py
-msgid "Repeat new password"
-msgstr "Повторите новый пароль"
-
-#: accounts/forms.py
 msgid "Specialization"
 msgstr "Специализация"
 
-#: accounts/models.py
-msgid "Administrator"
-msgstr "Администратор"
-
-#: accounts/models.py
-msgid "Manager"
-msgstr "Менеджер"
-
-#: accounts/models.py cabinet/journal.py templates/cabinet/manager/group_detail.html templates/cabinet/manager/request_list.html
-msgid "Student"
-msgstr "Студент"
+#: accounts/forms.py
+msgid "About me"
+msgstr "О себе"
 
 #: accounts/models.py templates/cabinet/manager/group_detail.html
 msgid "Teacher"
 msgstr "Учитель"
 
+#: accounts/models.py cabinet/journal.py templates/cabinet/manager/group_detail.html templates/cabinet/manager/request_list.html
+msgid "Student"
+msgstr "Студент"
+
 #: accounts/models.py
-msgid "about"
-msgstr "о себе"
+msgid "role"
+msgstr "роль"
 
 #: accounts/models.py core/models.py
 msgid "phone"
@@ -98,12 +90,12 @@ msgid "photo"
 msgstr "фото"
 
 #: accounts/models.py
-msgid "role"
-msgstr "роль"
-
-#: accounts/models.py
 msgid "specialization"
 msgstr "специализация"
+
+#: accounts/models.py
+msgid "about"
+msgstr "о себе"
 
 #: accounts/models.py
 msgid "user"
@@ -113,6 +105,14 @@ msgstr "пользователь"
 msgid "users"
 msgstr "пользователи"
 
+#: accounts/models.py
+msgid "Administrator"
+msgstr "Администратор"
+
+#: accounts/models.py
+msgid "Manager"
+msgstr "Менеджер"
+
 #: accounts/views.py templates/accounts/password_change.html templates/accounts/profile.html
 msgid "Change password"
 msgstr "Сменить пароль"
@@ -121,102 +121,106 @@ msgstr "Сменить пароль"
 msgid "Password changed."
 msgstr "Пароль изменён."
 
-#: accounts/views.py cabinet/navigation.py templates/accounts/password_change.html templates/accounts/profile.html
-msgid "Profile"
-msgstr "Профиль"
-
 #: accounts/views.py
 msgid "Profile saved."
 msgstr "Профиль сохранён."
+
+#: accounts/views.py cabinet/navigation.py templates/accounts/password_change.html templates/accounts/profile.html
+msgid "Profile"
+msgstr "Профиль"
 
 #: cabinet/apps.py
 msgid "Cabinets"
 msgstr "Кабинеты"
 
 #: cabinet/forms.py
-msgid "About"
-msgstr "О себе"
-
-#: cabinet/forms.py
-msgid "Account is active"
-msgstr "Аккаунт активен"
-
-#: cabinet/forms.py
-msgid "All groups of the course"
-msgstr "Все группы курса"
-
-#: cabinet/forms.py
-msgid "Call results, agreements…"
-msgstr "Итоги звонка, договорённости…"
+msgid "Text"
+msgstr "Текст"
 
 #: cabinet/forms.py
 msgid "Days of week"
 msgstr "Дни недели"
 
 #: cabinet/forms.py
-msgid "Full description"
-msgstr "Полное описание"
-
-#: cabinet/forms.py cabinet/navigation.py cabinet/views/manager.py templates/cabinet/admin/course_list.html
-msgid "Groups"
-msgstr "Группы"
+msgid "The lesson must end after it starts."
+msgstr "Занятие должно заканчиваться позже, чем начинается."
 
 #: cabinet/forms.py
-msgid "Latin letters, digits and . _ - only."
-msgstr "Только латинские буквы, цифры и . _ -"
-
-#: cabinet/forms.py
-msgid "Leave empty to generate"
-msgstr "Оставьте пустым для генерации"
-
-#: cabinet/forms.py
-msgid "Leave empty to generate a password automatically."
-msgstr "Оставьте пустым — пароль сгенерируется автоматически."
-
-#: cabinet/forms.py
-msgid "Leave empty to keep the current password."
-msgstr "Оставьте пустым, чтобы не менять пароль."
+msgid "All groups of the course"
+msgstr "Все группы курса"
 
 #: cabinet/forms.py
 #, python-format
 msgid "MP4, WebM or MOV, up to %(size)s MB."
 msgstr "MP4, WebM или MOV, до %(size)s МБ."
 
-#: cabinet/forms.py
-msgid "Note"
-msgstr "Заметка"
-
-#: cabinet/forms.py
-msgid "Part of the page address. Leave empty to generate from the title."
-msgstr "Часть адреса страницы. Оставьте пустым — сформируется из названия."
-
-#: cabinet/forms.py
-msgid "Short description"
-msgstr "Краткое описание"
-
-#: cabinet/forms.py
-msgid "Text"
-msgstr "Текст"
+#: cabinet/forms.py core/models.py
+msgid "Upload a video file or paste a YouTube link."
+msgstr "Загрузите видеофайл или вставьте ссылку на YouTube."
 
 #: cabinet/forms.py core/models.py
 msgid "The group belongs to a different course."
 msgstr "Эта группа относится к другому курсу."
 
 #: cabinet/forms.py
-msgid "The lesson must end after it starts."
-msgstr "Занятие должно заканчиваться позже, чем начинается."
+msgid "Call results, agreements…"
+msgstr "Итоги звонка, договорённости…"
 
 #: cabinet/forms.py
-msgid "The maximum age must not be less than the minimum."
-msgstr "Максимальный возраст не может быть меньше минимального."
+msgid "Latin letters, digits and . _ - only."
+msgstr "Только латинские буквы, цифры и . _ -"
+
+#: cabinet/forms.py
+msgid "Leave empty to keep the current password."
+msgstr "Оставьте пустым, чтобы не менять пароль."
+
+#: cabinet/forms.py
+msgid "Leave empty to generate a password automatically."
+msgstr "Оставьте пустым — пароль сгенерируется автоматически."
+
+#: cabinet/forms.py cabinet/navigation.py cabinet/views/manager.py templates/cabinet/admin/course_list.html
+msgid "Groups"
+msgstr "Группы"
+
+#: cabinet/forms.py
+msgid "Account is active"
+msgstr "Аккаунт активен"
+
+#: cabinet/forms.py
+msgid "Note"
+msgstr "Заметка"
+
+#: cabinet/forms.py
+msgid "About"
+msgstr "О себе"
+
+#: cabinet/forms.py
+msgid "Leave empty to generate"
+msgstr "Оставьте пустым для генерации"
 
 #: cabinet/forms.py templates/cabinet/manager/news_list.html
 msgid "Title"
 msgstr "Название"
 
-#: cabinet/forms.py core/models.py
-msgid "Upload a video file or paste a YouTube link."
-msgstr "Загрузите видеофайл или вставьте ссылку на YouTube."
+#: cabinet/forms.py
+msgid "Short description"
+msgstr "Краткое описание"
+
+#: cabinet/forms.py
+msgid "Full description"
+msgstr "Полное описание"
+
+#: cabinet/forms.py
+msgid "Part of the page address. Leave empty to generate from the title."
+msgstr "Часть адреса страницы. Оставьте пустым — сформируется из названия."
+
+#: cabinet/forms.py
+msgid "The maximum age must not be less than the minimum."
+msgstr "Максимальный возраст не может быть меньше минимального."
+
+#: cabinet/journal.py templates/cabinet/manager/group_form.html templates/cabinet/manager/student_list.html templates/cabinet/shared/journal_month.html
+msgid "Group"
+msgstr "Группа"
 
 #: cabinet/journal.py
 msgid "Attendance, %"
@@ -226,57 +230,21 @@ msgstr "Посещаемость, %"
 msgid "Average grade"
 msgstr "Средняя оценка"
 
-#: cabinet/journal.py templates/cabinet/manager/group_form.html templates/cabinet/manager/student_list.html templates/cabinet/shared/journal_month.html
-msgid "Group"
-msgstr "Группа"
-
-#: cabinet/navigation.py templates/cabinet/manager/student_form.html
-msgid "Account"
-msgstr "Аккаунт"
-
 #: cabinet/navigation.py
 msgid "Administration"
 msgstr "Администрирование"
-
-#: cabinet/navigation.py cabinet/views/manager.py
-msgid "Attendance journals"
-msgstr "Журналы посещаемости"
-
-#: cabinet/navigation.py cabinet/views/admin.py templates/404.html templates/base.html
-msgid "Courses"
-msgstr "Курсы"
 
 #: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/dashboard.html
 msgid "Dashboard"
 msgstr "Дашборд"
 
-#: cabinet/navigation.py
-msgid "Django admin"
-msgstr "Django-админка"
+#: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
+msgid "Users"
+msgstr "Пользователи"
 
-#: cabinet/navigation.py core/apps.py
-msgid "Learning center"
-msgstr "Учебный центр"
-
-#: cabinet/navigation.py
-msgid "Management"
-msgstr "Управление"
-
-#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/dashboard.html templates/cabinet/teacher/mark.html
-msgid "Mark attendance"
-msgstr "Отметить занятие"
-
-#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/mark.html
-msgid "Monthly journal"
-msgstr "Журнал за месяц"
-
-#: cabinet/navigation.py cabinet/views/student.py templates/cabinet/student/attendance.html templates/cabinet/student/dashboard.html
-msgid "My attendance"
-msgstr "Моя посещаемость"
-
-#: cabinet/navigation.py cabinet/views/manager.py templates/base.html templates/cabinet/admin/dashboard.html
-msgid "News"
-msgstr "Новости"
+#: cabinet/navigation.py cabinet/views/admin.py templates/404.html templates/base.html
+msgid "Courses"
+msgstr "Курсы"
 
 #: cabinet/navigation.py cabinet/views/manager.py cabinet/views/student.py cabinet/views/teacher.py
 msgid "Overview"
@@ -290,25 +258,89 @@ msgstr "Заявки"
 msgid "Students"
 msgstr "Студенты"
 
-#: cabinet/navigation.py
-msgid "Studying"
-msgstr "Учёба"
+#: cabinet/navigation.py cabinet/views/manager.py templates/base.html templates/cabinet/admin/dashboard.html
+msgid "News"
+msgstr "Новости"
+
+#: cabinet/navigation.py cabinet/views/manager.py
+msgid "Attendance journals"
+msgstr "Журналы посещаемости"
+
+#: cabinet/navigation.py core/apps.py
+msgid "Learning center"
+msgstr "Учебный центр"
 
 #: cabinet/navigation.py
-msgid "Teaching"
-msgstr "Преподавание"
-
-#: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
-msgid "Users"
-msgstr "Пользователи"
+msgid "Management"
+msgstr "Управление"
 
 #: cabinet/navigation.py cabinet/views/student.py cabinet/views/teacher.py templates/cabinet/admin/dashboard.html
 msgid "Video lessons"
 msgstr "Видеоуроки"
 
+#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/dashboard.html templates/cabinet/teacher/mark.html
+msgid "Mark attendance"
+msgstr "Отметить занятие"
+
+#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/mark.html
+msgid "Monthly journal"
+msgstr "Журнал за месяц"
+
+#: cabinet/navigation.py
+msgid "Teaching"
+msgstr "Преподавание"
+
+#: cabinet/navigation.py
+msgid "Studying"
+msgstr "Учёба"
+
+#: cabinet/navigation.py cabinet/views/student.py templates/cabinet/student/attendance.html templates/cabinet/student/dashboard.html
+msgid "My attendance"
+msgstr "Моя посещаемость"
+
+#: cabinet/navigation.py
+msgid "Django admin"
+msgstr "Django-админка"
+
+#: cabinet/navigation.py templates/cabinet/manager/student_form.html
+msgid "Account"
+msgstr "Аккаунт"
+
 #: cabinet/views/admin.py
-msgid "Course deleted."
-msgstr "Курс удалён."
+#, python-format
+msgid "User created. Login: %(login)s, password: %(password)s"
+msgstr "Пользователь создан. Логин: %(login)s, пароль: %(password)s"
+
+#: cabinet/views/admin.py
+msgid "User created."
+msgstr "Пользователь создан."
+
+#: cabinet/views/admin.py templates/cabinet/admin/dashboard.html templates/cabinet/admin/user_list.html
+msgid "New user"
+msgstr "Новый пользователь"
+
+#: cabinet/views/admin.py
+msgid "User saved."
+msgstr "Пользователь сохранён."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "New password for %(login)s: %(password)s"
+msgstr "Новый пароль для %(login)s: %(password)s"
+
+#: cabinet/views/admin.py
+msgid "You cannot block yourself."
+msgstr "Нельзя заблокировать самого себя."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User %(name)s unblocked."
+msgstr "Пользователь %(name)s разблокирован."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User %(name)s blocked."
+msgstr "Пользователь %(name)s заблокирован."
 
 #: cabinet/views/admin.py
 msgid "Course saved."
@@ -319,61 +351,46 @@ msgid "New course"
 msgstr "Новый курс"
 
 #: cabinet/views/admin.py
-#, python-format
-msgid "New password for %(login)s: %(password)s"
-msgstr "Новый пароль для %(login)s: %(password)s"
-
-#: cabinet/views/admin.py templates/cabinet/admin/dashboard.html templates/cabinet/admin/user_list.html
-msgid "New user"
-msgstr "Новый пользователь"
-
-#: cabinet/views/admin.py
 msgid "The course has groups, so it was hidden from the site instead of being deleted."
 msgstr "У курса есть группы, поэтому он скрыт с сайта, а не удалён."
 
 #: cabinet/views/admin.py
+msgid "Course deleted."
+msgstr "Курс удалён."
+
+#: cabinet/views/manager.py
 #, python-format
-msgid "User %(name)s blocked."
-msgstr "Пользователь %(name)s заблокирован."
+msgid "Status changed: %(status)s."
+msgstr "Статус изменён: %(status)s."
 
-#: cabinet/views/admin.py
-#, python-format
-msgid "User %(name)s unblocked."
-msgstr "Пользователь %(name)s разблокирован."
-
-#: cabinet/views/admin.py
-msgid "User created."
-msgstr "Пользователь создан."
-
-#: cabinet/views/admin.py
-#, python-format
-msgid "User created. Login: %(login)s, password: %(password)s"
-msgstr "Пользователь создан. Логин: %(login)s, пароль: %(password)s"
-
-#: cabinet/views/admin.py
-msgid "User saved."
-msgstr "Пользователь сохранён."
-
-#: cabinet/views/admin.py
-msgid "You cannot block yourself."
-msgstr "Нельзя заблокировать самого себя."
+#: cabinet/views/manager.py
+msgid "Request deleted."
+msgstr "Заявка удалена."
 
 #: cabinet/views/manager.py
 msgid "A student account has already been created for this request."
 msgstr "По этой заявке аккаунт студента уже создан."
 
 #: cabinet/views/manager.py
+msgid "Student created."
+msgstr "Студент создан."
+
+#: cabinet/views/manager.py
+msgid "Student from request"
+msgstr "Студент из заявки"
+
+#: cabinet/views/manager.py templates/cabinet/manager/dashboard.html templates/cabinet/manager/student_list.html
+msgid "New student"
+msgstr "Новый студент"
+
+#: cabinet/views/manager.py
+msgid "Student saved."
+msgstr "Студент сохранён."
+
+#: cabinet/views/manager.py
 #, python-format
 msgid "Account created. Login: %(login)s, password: %(password)s — pass them to the student."
 msgstr "Аккаунт создан. Логин: %(login)s, пароль: %(password)s — передайте их студенту."
-
-#: cabinet/views/manager.py
-msgid "Edit news"
-msgstr "Редактирование новости"
-
-#: cabinet/views/manager.py
-msgid "Group deleted."
-msgstr "Группа удалена."
 
 #: cabinet/views/manager.py
 msgid "Group saved."
@@ -384,62 +401,40 @@ msgid "New group"
 msgstr "Новая группа"
 
 #: cabinet/views/manager.py
-msgid "New news item"
-msgstr "Новая новость"
-
-#: cabinet/views/manager.py templates/cabinet/manager/dashboard.html templates/cabinet/manager/student_list.html
-msgid "New student"
-msgstr "Новый студент"
+msgid "The group has attendance records, so it was moved to the archive instead."
+msgstr "В группе есть отметки посещаемости, поэтому она перенесена в архив."
 
 #: cabinet/views/manager.py
-msgid "News deleted."
-msgstr "Новость удалена."
+msgid "Group deleted."
+msgstr "Группа удалена."
 
 #: cabinet/views/manager.py
 msgid "News saved."
 msgstr "Новость сохранена."
 
 #: cabinet/views/manager.py
-msgid "Request deleted."
-msgstr "Заявка удалена."
+msgid "Edit news"
+msgstr "Редактирование новости"
+
+#: cabinet/views/manager.py
+msgid "New news item"
+msgstr "Новая новость"
+
+#: cabinet/views/manager.py
+msgid "News deleted."
+msgstr "Новость удалена."
 
 #: cabinet/views/manager.py
 msgid "Request updated."
 msgstr "Заявка обновлена."
-
-#: cabinet/views/manager.py
-#, python-format
-msgid "Status changed: %(status)s."
-msgstr "Статус изменён: %(status)s."
-
-#: cabinet/views/manager.py
-msgid "Student created."
-msgstr "Студент создан."
-
-#: cabinet/views/manager.py
-msgid "Student from request"
-msgstr "Студент из заявки"
-
-#: cabinet/views/manager.py
-msgid "Student saved."
-msgstr "Студент сохранён."
-
-#: cabinet/views/manager.py
-msgid "The group has attendance records, so it was moved to the archive instead."
-msgstr "В группе есть отметки посещаемости, поэтому она перенесена в архив."
 
 #: cabinet/views/teacher.py
 msgid "Edit lesson"
 msgstr "Редактирование урока"
 
 #: cabinet/views/teacher.py
-#, python-format
-msgid "Journal saved: %(n)s students."
-msgstr "Журнал сохранён: отмечено студентов — %(n)s."
-
-#: cabinet/views/teacher.py
-msgid "Lesson deleted."
-msgstr "Урок удалён."
+msgid "New video lesson"
+msgstr "Новый видеоурок"
 
 #: cabinet/views/teacher.py
 msgid "Lesson saved."
@@ -450,192 +445,129 @@ msgid "Lesson uploaded."
 msgstr "Урок загружен."
 
 #: cabinet/views/teacher.py
-msgid "New video lesson"
-msgstr "Новый видеоурок"
+msgid "Lesson deleted."
+msgstr "Урок удалён."
 
 #: cabinet/views/teacher.py templates/cabinet/teacher/mark.html
 msgid "You cannot mark a lesson in the future."
 msgstr "Нельзя отмечать занятие в будущем."
 
+#: cabinet/views/teacher.py
+#, python-format
+msgid "Journal saved: %(n)s students."
+msgstr "Журнал сохранён: отмечено студентов — %(n)s."
+
 #: core/context_processors.py
-msgid "Bishkek, Chui Avenue 155, 3rd floor"
-msgstr "Бишкек, проспект Чуй 155, 3 этаж"
+msgid "Osh, Lenin street 205, 2nd floor"
+msgstr "Ош, ул. Ленина 205, 2 этаж"
 
 #: core/context_processors.py
 msgid "Mon–Sat, 9:00–20:00"
 msgstr "Пн–Сб, 9:00–20:00"
 
 #: core/forms.py
-msgid "Aibek Asanov"
-msgstr "Айбек Асанов"
+msgid "Your name"
+msgstr "Ваше имя"
 
-#: core/forms.py templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
-msgid "Comment"
-msgstr "Комментарий"
+#: core/forms.py
+msgid "Student's age"
+msgstr "Возраст ученика"
 
 #: core/forms.py templates/cabinet/admin/course_list.html templates/cabinet/manager/request_detail.html templates/cabinet/manager/request_list.html
 msgid "Course"
 msgstr "Курс"
 
-#: core/forms.py
-msgid "Enter a valid phone number, for example +996 555 123 456."
-msgstr "Введите корректный номер телефона, например +996 555 123 456."
+#: core/forms.py templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
+msgid "Comment"
+msgstr "Комментарий"
 
 #: core/forms.py
-msgid "Not decided yet — help me choose"
-msgstr "Ещё не решили — помогите выбрать"
+msgid "Aibek Asanov"
+msgstr "Айбек Асанов"
 
 #: core/forms.py
 msgid "Questions, convenient time to call…"
 msgstr "Вопросы, удобное время для звонка…"
 
 #: core/forms.py
-msgid "Student's age"
-msgstr "Возраст ученика"
+msgid "Not decided yet — help me choose"
+msgstr "Ещё не решили — помогите выбрать"
 
 #: core/forms.py
-msgid "Your name"
-msgstr "Ваше имя"
+msgid "Enter a valid phone number, for example +996 555 123 456."
+msgstr "Введите корректный номер телефона, например +996 555 123 456."
 
 #: core/models.py
-msgid "3D modeling: Blender"
-msgstr "3D-моделирование: Blender"
+msgid "full description (EN)"
+msgstr "полное описание (EN)"
 
 #: core/models.py
-msgid "3D modeling: Fusion 360"
-msgstr "3D-моделирование: Fusion 360"
+msgid "level"
+msgstr "уровень"
 
 #: core/models.py
-msgctxt "attendance"
-msgid "A"
-msgstr "Н"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Absent"
-msgstr "Отсутствовал"
+msgid "age from"
+msgstr "возраст от"
 
 #: core/models.py
-msgid "Advanced"
-msgstr "Продвинутый"
+msgid "age to"
+msgstr "возраст до"
 
 #: core/models.py
-msgid "Arduino, sensors, motors and real robots you build with your own hands."
-msgstr "Arduino, датчики, моторы и настоящие роботы, собранные своими руками."
+msgid "duration, months"
+msgstr "длительность, месяцев"
 
 #: core/models.py
-msgid "Backend"
-msgstr "Backend"
+msgid "lessons per week"
+msgstr "занятий в неделю"
 
 #: core/models.py
-msgid "Beginner"
-msgstr "Начальный"
+msgid "price, KGS per month"
+msgstr "цена, сом в месяц"
 
 #: core/models.py
-msgid "Blender"
-msgstr "Blender"
+msgid "cover"
+msgstr "обложка"
 
 #: core/models.py
-msgid "Comma-separated numbers: 0 = Monday … 6 = Sunday."
-msgstr "Номера через запятую: 0 = понедельник … 6 = воскресенье."
+msgid "teachers"
+msgstr "преподаватели"
+
+#: core/models.py templates/cabinet/admin/dashboard.html templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+msgid "active"
+msgstr "активен"
 
 #: core/models.py
-msgid "Contacted"
-msgstr "Связались"
+msgid "order"
+msgstr "порядок"
 
 #: core/models.py
-msgctxt "attendance"
-msgid "E"
-msgstr "У"
+msgid "course"
+msgstr "курс"
 
 #: core/models.py
-msgid "Engineering 3D design, drawings and models ready for 3D printing."
-msgstr "Инженерное 3D-проектирование, чертежи и модели для 3D-печати."
-
-#: core/models.py
-msgid "Enrolled"
-msgstr "Записан"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Excused"
-msgstr "Уважительная причина"
-
-#: core/models.py
-msgid "File"
-msgstr "Файл"
-
-#: core/models.py
-msgid "Fri"
-msgstr "Пт"
-
-#: core/models.py
-msgid "Frontend"
-msgstr "Frontend"
-
-#: core/models.py
-msgid "Fusion 360"
-msgstr "Fusion 360"
-
-#: core/models.py
-msgid "HTML, CSS and JavaScript: interfaces that people love to use."
-msgstr "HTML, CSS и JavaScript: интерфейсы, которыми приятно пользоваться."
-
-#: core/models.py
-msgid "Intermediate"
-msgstr "Средний"
-
-#: core/models.py
-msgctxt "attendance"
-msgid "L"
-msgstr "О"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Late"
-msgstr "Опоздал"
-
-#: core/models.py
-msgid "Leave empty to show the lesson to all groups of the course."
-msgstr "Оставьте пустым, чтобы урок видели все группы курса."
-
-#: core/models.py
-msgid "Modeling, materials, light and animation for games and film."
-msgstr "Моделирование, материалы, свет и анимация для игр и кино."
+msgid "courses"
+msgstr "курсы"
 
 #: core/models.py
 msgid "Mon"
 msgstr "Пн"
 
 #: core/models.py
-msgid "New"
-msgstr "Новая"
+msgid "Tue"
+msgstr "Вт"
 
 #: core/models.py
-msgctxt "attendance"
-msgid "P"
-msgstr "П"
-
-#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
-msgid "Present"
-msgstr "Присутствовал"
+msgid "Wed"
+msgstr "Ср"
 
 #: core/models.py
-msgid "Programming: Backend"
-msgstr "Программирование: Backend"
+msgid "Thu"
+msgstr "Чт"
 
 #: core/models.py
-msgid "Programming: Frontend"
-msgstr "Программирование: Frontend"
-
-#: core/models.py
-msgid "Python, Django, databases and APIs — the engine of every service."
-msgstr "Python, Django, базы данных и API — двигатель любого сервиса."
-
-#: core/models.py
-msgid "Rejected"
-msgstr "Отказ"
-
-#: core/models.py templates/base.html
-msgid "Robotics"
-msgstr "Робототехника"
+msgid "Fri"
+msgstr "Пт"
 
 #: core/models.py
 msgid "Sat"
@@ -644,6 +576,55 @@ msgstr "Сб"
 #: core/models.py
 msgid "Sun"
 msgstr "Вс"
+
+#: core/models.py
+msgid "name"
+msgstr "название"
+
+#: core/models.py
+msgid "teacher"
+msgstr "учитель"
+
+#: core/models.py
+msgid "students"
+msgstr "студенты"
+
+#: core/models.py
+msgid "Comma-separated numbers: 0 = Monday … 6 = Sunday."
+msgstr "Номера через запятую: 0 = понедельник … 6 = воскресенье."
+
+#: core/models.py
+msgid "days of week"
+msgstr "дни недели"
+
+#: core/models.py
+msgid "start time"
+msgstr "время начала"
+
+#: core/models.py
+msgid "end time"
+msgstr "время окончания"
+
+#: core/models.py templates/core/course_detail.html
+msgid "room"
+msgstr "кабинет"
+
+#: core/models.py
+msgid "start date"
+msgstr "дата старта"
+
+#: core/models.py
+msgid "group"
+msgstr "группа"
+
+#: core/models.py templates/cabinet/admin/dashboard.html
+msgid "groups"
+msgstr "группы"
+
+#: core/models.py
+#, python-format
+msgid "Unsupported video format. Allowed: %(formats)s."
+msgstr "Неподдерживаемый формат видео. Разрешены: %(formats)s."
 
 #: core/models.py templates/cabinet/teacher/lesson_form.html
 #, python-format
@@ -655,104 +636,223 @@ msgid "This does not look like a YouTube video link."
 msgstr "Это не похоже на ссылку на видео YouTube."
 
 #: core/models.py
-msgid "Thu"
-msgstr "Чт"
+msgid "Leave empty to show the lesson to all groups of the course."
+msgstr "Оставьте пустым, чтобы урок видели все группы курса."
 
 #: core/models.py
-msgid "Tue"
-msgstr "Вт"
+msgid "lesson number"
+msgstr "номер урока"
 
 #: core/models.py
-#, python-format
-msgid "Unsupported video format. Allowed: %(formats)s."
-msgstr "Неподдерживаемый формат видео. Разрешены: %(formats)s."
+msgid "title"
+msgstr "название"
 
 #: core/models.py
-msgid "Wed"
-msgstr "Ср"
+msgid "description"
+msgstr "описание"
+
+#: core/models.py
+msgid "video file"
+msgstr "видеофайл"
 
 #: core/models.py
 msgid "YouTube link"
 msgstr "Ссылка на YouTube"
 
-#: core/models.py templates/cabinet/admin/dashboard.html templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
-msgid "active"
-msgstr "активен"
-
 #: core/models.py
-msgid "age"
-msgstr "возраст"
+msgid "materials"
+msgstr "материалы"
 
-#: core/models.py
-msgid "age from"
-msgstr "возраст от"
-
-#: core/models.py
-msgid "age to"
-msgstr "возраст до"
-
-#: core/models.py
-msgid "attendance"
-msgstr "посещаемость"
-
-#: core/models.py
-msgid "attendance record"
-msgstr "отметка посещаемости"
-
-#: core/models.py
-msgid "author"
-msgstr "автор"
-
-#: core/models.py
-msgid "comment"
-msgstr "комментарий"
-
-#: core/models.py
-msgid "course"
-msgstr "курс"
-
-#: core/models.py
-msgid "courses"
-msgstr "курсы"
-
-#: core/models.py
-msgid "cover"
-msgstr "обложка"
+#: core/models.py templates/cabinet/admin/dashboard.html
+msgid "published"
+msgstr "опубликован"
 
 #: core/models.py
 msgid "created"
 msgstr "создан"
 
 #: core/models.py
+msgid "video lesson"
+msgstr "видеоурок"
+
+#: core/models.py
+msgid "video lessons"
+msgstr "видеоуроки"
+
+#: core/models.py
+msgid "File"
+msgstr "Файл"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Present"
+msgstr "Присутствовал"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Late"
+msgstr "Опоздал"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Absent"
+msgstr "Отсутствовал"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Excused"
+msgstr "Уважительная причина"
+
+#: core/models.py templates/core/home.html
+msgid "student"
+msgid_plural "students"
+msgstr[0] "студент"
+msgstr[1] "студента"
+msgstr[2] "студентов"
+
+#: core/models.py
 msgid "date"
 msgstr "дата"
 
 #: core/models.py
-msgid "days of week"
-msgstr "дни недели"
+msgid "status"
+msgstr "статус"
+
+#: core/models.py templates/cabinet/shared/journal_month.html
+msgid "grade"
+msgstr "оценка"
 
 #: core/models.py
-msgid "description"
-msgstr "описание"
-
-#: core/models.py templates/core/home.html
-msgid "direction"
-msgid_plural "directions"
-msgstr[0] "направление"
-msgstr[1] "направления"
-msgstr[2] "направлений"
+msgid "comment"
+msgstr "комментарий"
 
 #: core/models.py
-msgid "duration, months"
-msgstr "длительность, месяцев"
+msgid "marked by"
+msgstr "кто отметил"
+
+#: core/models.py
+msgid "attendance record"
+msgstr "отметка посещаемости"
+
+#: core/models.py
+msgid "attendance"
+msgstr "посещаемость"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "P"
+msgstr "П"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "L"
+msgstr "О"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "A"
+msgstr "Н"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "E"
+msgstr "У"
+
+#: core/models.py templates/base.html
+msgid "Robotics"
+msgstr "Робототехника"
+
+#: core/models.py
+msgid "text (RU)"
+msgstr "текст (RU)"
+
+#: core/models.py
+msgid "text (KY)"
+msgstr "текст (KY)"
+
+#: core/models.py
+msgid "text (EN)"
+msgstr "текст (EN)"
+
+#: core/models.py
+msgid "image"
+msgstr "изображение"
+
+#: core/models.py
+msgid "pinned"
+msgstr "закреплена"
+
+#: core/models.py
+msgid "publication date"
+msgstr "дата публикации"
+
+#: core/models.py
+msgid "author"
+msgstr "автор"
+
+#: core/models.py
+msgid "Programming: Frontend"
+msgstr "Программирование: Frontend"
+
+#: core/models.py
+msgid "news item"
+msgstr "новость"
+
+#: core/models.py
+msgid "news"
+msgstr "новости"
+
+#: core/models.py
+msgid "Programming: Backend"
+msgstr "Программирование: Backend"
+
+#: core/models.py
+msgid "3D modeling: Fusion 360"
+msgstr "3D-моделирование: Fusion 360"
+
+#: core/models.py
+msgid "New"
+msgstr "Новая"
+
+#: core/models.py
+msgid "Contacted"
+msgstr "Связались"
+
+#: core/models.py
+msgid "Enrolled"
+msgstr "Записан"
+
+#: core/models.py
+msgid "3D modeling: Blender"
+msgstr "3D-моделирование: Blender"
+
+#: core/models.py
+msgid "Rejected"
+msgstr "Отказ"
 
 #: core/models.py
 msgid "email"
 msgstr "email"
 
 #: core/models.py
-msgid "end time"
-msgstr "время окончания"
+msgid "age"
+msgstr "возраст"
+
+#: core/models.py
+msgid "message"
+msgstr "сообщение"
+
+#: core/models.py
+msgid "manager note"
+msgstr "заметка менеджера"
+
+#: core/models.py
+msgid "handled by"
+msgstr "кто обработал"
+
+#: core/models.py
+msgid "student account"
+msgstr "аккаунт студента"
+
+#: core/models.py
+msgid "received"
+msgstr "получена"
 
 #: core/models.py
 msgid "enrollment request"
@@ -763,195 +863,95 @@ msgid "enrollment requests"
 msgstr "заявки на обучение"
 
 #: core/models.py
-msgid "full description (EN)"
-msgstr "полное описание (EN)"
+msgid "Arduino, sensors, motors and real robots you build with your own hands."
+msgstr "Arduino, датчики, моторы и настоящие роботы, собранные своими руками."
 
 #: core/models.py
-msgid "full description (KY)"
-msgstr "полное описание (KY)"
+msgid "Frontend"
+msgstr "Frontend"
 
 #: core/models.py
-msgid "full description (RU)"
-msgstr "полное описание (RU)"
-
-#: core/models.py templates/cabinet/shared/journal_month.html
-msgid "grade"
-msgstr "оценка"
+msgid "HTML, CSS and JavaScript: interfaces that people love to use."
+msgstr "HTML, CSS и JavaScript: интерфейсы, которыми приятно пользоваться."
 
 #: core/models.py
-msgid "group"
-msgstr "группа"
-
-#: core/models.py templates/cabinet/admin/dashboard.html
-msgid "groups"
-msgstr "группы"
+msgid "Backend"
+msgstr "Backend"
 
 #: core/models.py
-msgid "handled by"
-msgstr "кто обработал"
+msgid "Python, Django, databases and APIs — the engine of every service."
+msgstr "Python, Django, базы данных и API — двигатель любого сервиса."
 
 #: core/models.py
-msgid "image"
-msgstr "изображение"
+msgid "Fusion 360"
+msgstr "Fusion 360"
 
 #: core/models.py
-msgid "lesson number"
-msgstr "номер урока"
+msgid "Engineering 3D design, drawings and models ready for 3D printing."
+msgstr "Инженерное 3D-проектирование, чертежи и модели для 3D-печати."
 
 #: core/models.py
-msgid "lessons per week"
-msgstr "занятий в неделю"
+msgid "Blender"
+msgstr "Blender"
 
 #: core/models.py
-msgid "level"
-msgstr "уровень"
+msgid "Modeling, materials, light and animation for games and film."
+msgstr "Моделирование, материалы, свет и анимация для игр и кино."
 
 #: core/models.py
-msgid "manager note"
-msgstr "заметка менеджера"
+msgid "Beginner"
+msgstr "Начальный"
 
 #: core/models.py
-msgid "marked by"
-msgstr "кто отметил"
+msgid "Intermediate"
+msgstr "Средний"
 
 #: core/models.py
-msgid "materials"
-msgstr "материалы"
+msgid "Advanced"
+msgstr "Продвинутый"
 
-#: core/models.py
-msgid "message"
-msgstr "сообщение"
-
-#: core/models.py
-msgid "name"
-msgstr "название"
-
-#: core/models.py
-msgid "news"
-msgstr "новости"
-
-#: core/models.py
-msgid "news item"
-msgstr "новость"
-
-#: core/models.py
-msgid "order"
-msgstr "порядок"
-
-#: core/models.py
-msgid "pinned"
-msgstr "закреплена"
-
-#: core/models.py
-msgid "price, KGS per month"
-msgstr "цена, сом в месяц"
-
-#: core/models.py
-msgid "publication date"
-msgstr "дата публикации"
-
-#: core/models.py templates/cabinet/admin/dashboard.html
-msgid "published"
-msgstr "опубликован"
-
-#: core/models.py
-msgid "received"
-msgstr "получена"
-
-#: core/models.py templates/core/course_detail.html
-msgid "room"
-msgstr "кабинет"
-
-#: core/models.py
-msgid "short description (EN)"
-msgstr "краткое описание (EN)"
-
-#: core/models.py
-msgid "short description (KY)"
-msgstr "краткое описание (KY)"
-
-#: core/models.py
-msgid "short description (RU)"
-msgstr "краткое описание (RU)"
+#: core/models.py templates/core/home.html
+msgid "direction"
+msgid_plural "directions"
+msgstr[0] "направление"
+msgstr[1] "направления"
+msgstr[2] "направлений"
 
 #: core/models.py
 msgid "slug"
 msgstr "адрес (slug)"
 
 #: core/models.py
-msgid "start date"
-msgstr "дата старта"
-
-#: core/models.py
-msgid "start time"
-msgstr "время начала"
-
-#: core/models.py
-msgid "status"
-msgstr "статус"
-
-#: core/models.py templates/core/home.html
-msgid "student"
-msgid_plural "students"
-msgstr[0] "студент"
-msgstr[1] "студента"
-msgstr[2] "студентов"
-
-#: core/models.py
-msgid "student account"
-msgstr "аккаунт студента"
-
-#: core/models.py
-msgid "students"
-msgstr "студенты"
-
-#: core/models.py
-msgid "teacher"
-msgstr "учитель"
-
-#: core/models.py
-msgid "teachers"
-msgstr "преподаватели"
-
-#: core/models.py
-msgid "text (EN)"
-msgstr "текст (EN)"
-
-#: core/models.py
-msgid "text (KY)"
-msgstr "текст (KY)"
-
-#: core/models.py
-msgid "text (RU)"
-msgstr "текст (RU)"
-
-#: core/models.py
-msgid "title"
-msgstr "название"
-
-#: core/models.py
-msgid "title (EN)"
-msgstr "название (EN)"
+msgid "title (RU)"
+msgstr "название (RU)"
 
 #: core/models.py
 msgid "title (KY)"
 msgstr "название (KY)"
 
 #: core/models.py
-msgid "title (RU)"
-msgstr "название (RU)"
+msgid "title (EN)"
+msgstr "название (EN)"
 
 #: core/models.py
-msgid "video file"
-msgstr "видеофайл"
+msgid "short description (RU)"
+msgstr "краткое описание (RU)"
 
 #: core/models.py
-msgid "video lesson"
-msgstr "видеоурок"
+msgid "short description (KY)"
+msgstr "краткое описание (KY)"
 
 #: core/models.py
-msgid "video lessons"
-msgstr "видеоуроки"
+msgid "short description (EN)"
+msgstr "краткое описание (EN)"
+
+#: core/models.py
+msgid "full description (RU)"
+msgstr "полное описание (RU)"
+
+#: core/models.py
+msgid "full description (KY)"
+msgstr "полное описание (KY)"
 
 #: templates/403.html
 msgid "Access denied"
@@ -1070,12 +1070,8 @@ msgid "Home"
 msgstr "Главная"
 
 #: templates/base.html
-msgid "Learning center in Bishkek: robotics, Frontend and Backend programming, 3D modeling in Fusion 360 and Blender for kids and teens."
-msgstr "Учебный центр в Бишкеке: робототехника, программирование Frontend и Backend, 3D-моделирование в Fusion 360 и Blender для детей и подростков."
-
-#: templates/base.html
-msgid "Made in Bishkek with love for technology"
-msgstr "Сделано в Бишкеке с любовью к технологиям"
+msgid "Learning center in Osh: robotics, programming and 3D modeling for kids and teens."
+msgstr "Учебный центр в Оше: робототехника, программирование и 3D-моделирование для детей и подростков."
 
 #: templates/base.html
 msgid "Main menu"
@@ -1098,8 +1094,8 @@ msgid "Skip to content"
 msgstr "Перейти к содержимому"
 
 #: templates/base.html
-msgid "We teach children and teenagers to create technology: robots, websites, services and 3D worlds."
-msgstr "Учим детей и подростков создавать технологии: роботов, сайты, сервисы и 3D-миры."
+msgid "We teach kids to create technology."
+msgstr "Учим детей создавать технологии."
 
 #: templates/cabinet/admin/course_form.html templates/cabinet/admin/course_list.html templates/cabinet/manager/news_form.html templates/cabinet/manager/news_list.html
 msgid "Open on the website"
@@ -1117,7 +1113,7 @@ msgstr "Русский текст обязателен. Если перевод�
 msgid "Save course"
 msgstr "Сохранить курс"
 
-#: templates/cabinet/admin/course_form.html templates/cabinet/admin/dashboard.html templates/core/course_detail.html
+#: templates/cabinet/admin/course_form.html templates/cabinet/admin/dashboard.html templates/core/about.html templates/core/course_detail.html
 msgid "Teachers"
 msgstr "Преподаватели"
 
@@ -2087,48 +2083,24 @@ msgid "You have no active groups"
 msgstr "У вас нет активных групп"
 
 #: templates/core/about.html
-msgid "A place where children create technology"
-msgstr "Место, где дети создают технологии"
+msgid "A learning center in Osh for kids and teens aged 8–17."
+msgstr "Учебный центр в Оше для детей и подростков 8–17 лет."
 
 #: templates/core/about.html templates/core/contacts.html templates/core/course_detail.html templates/core/course_list.html
 msgid "Breadcrumbs"
 msgstr "Навигационная цепочка"
 
-#: templates/core/about.html
-msgid "Come to a trial lesson"
-msgstr "Приходите на пробный урок"
+#: templates/core/about.html templates/core/home.html
+msgid "Free trial lesson"
+msgstr "Бесплатный пробный урок"
 
 #: templates/core/about.html templates/core/home.html
-msgid "Enrollment is open"
-msgstr "Идёт набор"
+msgid "Meet the teacher and try the equipment — free and without obligations."
+msgstr "Познакомьтесь с учителем и попробуйте оборудование — бесплатно и без обязательств."
 
 #: templates/core/about.html
-msgid "Meet the teacher, see the laboratory and choose a direction together with your child."
-msgstr "Познакомьтесь с учителем, посмотрите лабораторию и выберите направление вместе с ребёнком."
-
-#: templates/core/about.html
-msgid "Next-Generation-Hub is a learning center in Bishkek where kids and teens learn engineering and digital professions through practice."
-msgstr "Next-Generation-Hub — учебный центр в Бишкеке, где дети и подростки осваивают инженерные и цифровые профессии через практику."
-
-#: templates/core/about.html
-msgid "Our teachers"
-msgstr "Наши преподаватели"
-
-#: templates/core/about.html templates/core/home.html
-msgid "Team"
-msgstr "Команда"
-
-#: templates/core/about.html
-msgid "We believe that every child can not only consume technology, but also create it. Our task is to give tools, a mentor and an environment where it is interesting to try."
-msgstr "Мы верим, что каждый ребёнок может не только пользоваться технологиями, но и создавать их. Наша задача — дать инструменты, наставника и среду, в которой интересно пробовать."
-
-#: templates/core/about.html
-msgid "We started in 2021 with a small robotics club. Today there are five directions, our own laboratory with 3D printers and electronics kits, and graduates who win olympiads and enter technical universities."
-msgstr "Мы начинали в 2021 году с небольшого кружка робототехники. Сегодня у нас пять направлений, собственная лаборатория с 3D-принтерами и наборами электроники, а выпускники побеждают на олимпиадах и поступают в технические вузы."
-
-#: templates/core/about.html
-msgid "What we teach"
-msgstr "Чему мы учим"
+msgid "We started in 2021 with a small robotics club. Today we have five directions and our own laboratory with 3D printers and electronics kits."
+msgstr "Мы начали в 2021 году с небольшого кружка робототехники. Сегодня у нас пять направлений и своя лаборатория с 3D-принтерами и наборами электроники."
 
 #: templates/core/about.html
 msgid "directions of study"
@@ -2151,16 +2123,12 @@ msgid "Address"
 msgstr "Адрес"
 
 #: templates/core/contacts.html
-msgid "Call, write or come to the center — we will be happy to show the laboratory and answer questions."
-msgstr "Звоните, пишите или приходите в центр — с радостью покажем лабораторию и ответим на вопросы."
+msgid "Call, write or come to the center."
+msgstr "Звоните, пишите или приходите в центр."
 
-#: templates/core/contacts.html
-msgid "Feedback"
-msgstr "Обратная связь"
-
-#: templates/core/contacts.html
-msgid "Have questions? Leave a request"
-msgstr "Остались вопросы? Оставьте заявку"
+#: templates/core/contacts.html templates/core/course_list.html
+msgid "Leave a request"
+msgstr "Оставить заявку"
 
 #: templates/core/contacts.html
 msgid "We will call you back, tell you about the courses and pick a convenient group."
@@ -2219,10 +2187,6 @@ msgstr "сом / мес."
 msgid "Level"
 msgstr "Уровень"
 
-#: templates/core/course_detail.html templates/partials/course_card.html
-msgid "More"
-msgstr "Подробнее"
-
 #: templates/core/course_detail.html
 msgid "Other courses"
 msgstr "Другие курсы"
@@ -2232,20 +2196,12 @@ msgid "The first trial lesson is free"
 msgstr "Первый пробный урок бесплатно"
 
 #: templates/core/course_list.html
-msgid "Courses for kids and teens"
-msgstr "Курсы для детей и подростков"
+msgid "Every course ends with a final project."
+msgstr "Каждый курс заканчивается итоговым проектом."
 
 #: templates/core/course_list.html
 msgid "Filter by direction"
 msgstr "Фильтр по направлению"
-
-#: templates/core/course_list.html
-msgid "Five directions, clear programs and a final project in every course. Filter by direction to find your own."
-msgstr "Пять направлений, понятные программы и итоговый проект в каждом курсе. Отфильтруйте по направлению, чтобы найти своё."
-
-#: templates/core/course_list.html
-msgid "Leave a request"
-msgstr "Оставить заявку"
 
 #: templates/core/course_list.html
 msgid "Leave a request — we will let you know when a group starts."
@@ -2309,72 +2265,24 @@ msgid "Attendance and grades in the online journal — parents always know how t
 msgstr "Посещаемость и оценки в онлайн-журнале — родители всегда в курсе успехов."
 
 #: templates/core/home.html
-msgid "Choose what inspires you: from the first LED on an Arduino to your own web service or animated 3D scene."
-msgstr "Выберите то, что вдохновляет: от первого светодиода на Arduino до собственного веб-сервиса или анимированной 3D-сцены."
-
-#: templates/core/home.html
-msgid "Come visit us"
-msgstr "Приходите в гости"
-
-#: templates/core/home.html
-msgid "Come with your child, meet the teacher, try the equipment and choose a direction without obligations."
-msgstr "Приходите вместе с ребёнком, познакомьтесь с учителем, попробуйте оборудование и выберите направление без обязательств."
-
-#: templates/core/home.html
-msgid "Engineers, developers and 3D artists who work on real projects and love to share their experience."
-msgstr "Инженеры, разработчики и 3D-художники, которые работают над реальными проектами и любят делиться опытом."
-
-#: templates/core/home.html
-msgid "Every module ends with a project that goes into the student's portfolio."
-msgstr "Каждый модуль заканчивается проектом, который попадает в портфолио ученика."
-
-#: templates/core/home.html
-msgid "Five paths into technology"
-msgstr "Пять путей в технологии"
-
-#: templates/core/home.html
-msgid "Free trial lesson"
-msgstr "Бесплатный пробный урок"
-
-#: templates/core/home.html
 msgid "Groups up to 10"
 msgstr "Группы до 10 человек"
 
-#: templates/core/home.html
-msgid "Learning by making"
-msgstr "Учимся, создавая"
-
 #: templates/core/home.html templates/partials/logo.html
-msgid "Learning center · Bishkek"
-msgstr "Учебный центр · Бишкек"
-
-#: templates/core/home.html
-msgid "Life of the center"
-msgstr "Жизнь центра"
-
-#: templates/core/home.html
-msgid "Popular programs"
-msgstr "Популярные программы"
+msgid "Learning center · Osh"
+msgstr "Учебный центр · Ош"
 
 #: templates/core/home.html
 msgid "Real equipment"
 msgstr "Настоящее оборудование"
 
 #: templates/core/home.html
-msgid "Robotics, programming and 3D modeling for kids and teens aged 8–17. Small groups, real projects and teachers from the industry."
-msgstr "Робототехника, программирование и 3D-моделирование для детей и подростков 8–17 лет. Небольшие группы, реальные проекты и преподаватели-практики."
+msgid "Robotics, programming and 3D modeling for kids aged 8–17."
+msgstr "Робототехника, программирование и 3D-моделирование для детей 8–17 лет."
 
 #: templates/core/home.html
 msgid "Selection of a course by age and interests"
 msgstr "Подбор курса по возрасту и интересам"
-
-#: templates/core/home.html
-msgid "Start with a free trial lesson"
-msgstr "Начните с бесплатного пробного урока"
-
-#: templates/core/home.html
-msgid "Teachers who practice"
-msgstr "Преподаватели-практики"
 
 #: templates/core/home.html
 msgid "The child leaves with a small finished project"
@@ -2423,9 +2331,9 @@ msgstr "Читайте также"
 msgid "Come back later — something interesting is coming soon."
 msgstr "Загляните позже — скоро здесь появится что-то интересное."
 
-#: templates/core/news_list.html
-msgid "Competitions, student projects, new groups and events of the center."
-msgstr "Соревнования, проекты учеников, новые группы и события центра."
+#: templates/partials/course_card.html
+msgid "More"
+msgstr "Подробнее"
 
 #: templates/partials/enroll_form.html
 msgid "By clicking the button you agree to the processing of personal data."

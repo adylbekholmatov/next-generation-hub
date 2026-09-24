@@ -5,7 +5,7 @@
 <section class="result-page">
   <div class="container" style="max-width:640px">
     <div class="result-icon">{% icon "check" 44 %}</div>
-    <h1 style="font-size:clamp(2rem,5vw,3.2rem)">{% if name %}{% blocktrans %}Thank you, {{ name }}!{% endblocktrans %}{% else %}{% trans "Thank you!" %}{% endif %}</h1>
+    <h1 style="font-size:clamp(1.6rem,3.6vw,2.4rem)">{% if name %}{% blocktrans %}Thank you, {{ name }}!{% endblocktrans %}{% else %}{% trans "Thank you!" %}{% endif %}</h1>
     <p class="muted" style="font-size:18px">{% trans "Your request has been received. A manager will call you back within a working day to choose a convenient time for the trial lesson." %}</p>
     <div class="row" style="justify-content:center;margin-top:28px">
       <a class="btn btn-primary" href="{% url 'core:course_list' %}">{% trans "Look at the courses" %}</a>

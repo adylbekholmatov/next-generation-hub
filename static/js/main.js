@@ -16,7 +16,7 @@
       btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     });
     var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#0a0a0a" : "#ffffff");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#0b1426" : "#f4f8ff");
   }
   applyTheme(doc.getAttribute("data-theme") || "light");
   $$("[data-theme-toggle]").forEach(function (btn) {
@@ -26,16 +26,6 @@
       storeTheme(next);
     });
   });
-  // Если пользователь не выбирал тему явно — следуем системе.
-  if (window.matchMedia) {
-    var mq = window.matchMedia("(prefers-color-scheme: dark)");
-    var onChange = function (e) {
-      var saved = null;
-      try { saved = localStorage.getItem(THEME_KEY); } catch (err) { saved = null; }
-      if (!saved) applyTheme(e.matches ? "dark" : "light");
-    };
-    if (mq.addEventListener) mq.addEventListener("change", onChange);
-  }
 
   /* --- Шапка и мобильное меню ------------------------------------------ */
   var header = $(".site-header");

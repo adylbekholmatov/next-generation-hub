@@ -60,7 +60,7 @@
 {% if related %}
 <section class="section section-soft">
   <div class="container">
-    <div class="section-head"><div><span class="eyebrow">{% trans "More" %}</span><h2>{% trans "Other courses" %}</h2></div></div>
+    <div class="section-head"><h2>{% trans "Other courses" %}</h2></div>
     <div class="course-grid">{% for course in related %}{% include "partials/course_card.html" with uid="rel" %}{% endfor %}</div>
   </div>
 </section>

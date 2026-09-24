@@ -5,9 +5,9 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="eyebrow">{% trans "Learning center · Bishkek" %}</span>
+      <span class="eyebrow">{% trans "Learning center · Osh" %}</span>
       <h1>{% blocktrans trimmed %}We raise <em>engineers</em> of the next generation{% endblocktrans %}</h1>
-      <p class="hero-lead">{% trans "Robotics, programming and 3D modeling for kids and teens aged 8–17. Small groups, real projects and teachers from the industry." %}</p>
+      <p class="hero-lead">{% trans "Robotics, programming and 3D modeling for kids aged 8–17." %}</p>
       <div class="hero-actions">
         <a class="btn btn-primary btn-lg" href="#enroll">{% trans "Free trial lesson" %} {% icon "arrow-right" 18 "icon-shift" %}</a>
         <a class="btn btn-lg" href="{% url 'core:course_list' %}">{% trans "All courses" %}</a>
@@ -33,21 +33,9 @@
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    {% for i in "12" %}{% for d in directions %}<span>{{ d.label }}</span>{% endfor %}{% endfor %}
-  </div>
-</div>
-
 <section class="section" id="directions">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">{% trans "Directions" %}</span>
-        <h2>{% trans "Five paths into technology" %}</h2>
-      </div>
-      <p>{% trans "Choose what inspires you: from the first LED on an Arduino to your own web service or animated 3D scene." %}</p>
-    </div>
+    <div class="section-head"><h2>{% trans "Directions" %}</h2></div>
     <div class="directions">
       {% for d in directions %}
       <a class="direction-card reveal" href="{% url 'core:course_list' %}?direction={{ d.code }}">
@@ -64,13 +52,7 @@
 
 <section class="section section-soft">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">{% trans "Why us" %}</span>
-        <h2>{% trans "Learning by making" %}</h2>
-      </div>
-      <p>{% trans "Every module ends with a project that goes into the student's portfolio." %}</p>
-    </div>
+    <div class="section-head"><h2>{% trans "Why us" %}</h2></div>
     <div class="features">
       <div class="feature reveal"><span class="n">01</span>{% icon "users" 28 %}<h3 style="margin-top:20px">{% trans "Groups up to 10" %}</h3><p>{% trans "The teacher has time for everyone, and nobody gets lost." %}</p></div>
       <div class="feature reveal"><span class="n">02</span>{% icon "cpu" 28 %}<h3 style="margin-top:20px">{% trans "Real equipment" %}</h3><p>{% trans "Arduino and ESP kits, 3D printers and powerful computers for every student." %}</p></div>
@@ -84,10 +66,7 @@
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <div>
-        <span class="eyebrow">{% trans "Courses" %}</span>
-        <h2>{% trans "Popular programs" %}</h2>
-      </div>
+      <h2>{% trans "Courses" %}</h2>
       <a class="btn" href="{% url 'core:course_list' %}">{% trans "All courses" %} {% icon "arrow-right" 16 "icon-shift" %}</a>
     </div>
     <div class="course-grid">
@@ -100,13 +79,7 @@
 {% if teachers %}
 <section class="section section-soft">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">{% trans "Team" %}</span>
-        <h2>{% trans "Teachers who practice" %}</h2>
-      </div>
-      <p>{% trans "Engineers, developers and 3D artists who work on real projects and love to share their experience." %}</p>
-    </div>
+    <div class="section-head"><h2>{% trans "Teachers" %}</h2></div>
     <div class="teacher-grid">
       {% for t in teachers %}
       <article class="teacher-card reveal">
@@ -129,10 +102,7 @@
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <div>
-        <span class="eyebrow">{% trans "News" %}</span>
-        <h2>{% trans "Life of the center" %}</h2>
-      </div>
+      <h2>{% trans "News" %}</h2>
       <a class="btn" href="{% url 'core:news_list' %}">{% trans "All news" %} {% icon "arrow-right" 16 "icon-shift" %}</a>
     </div>
     <div class="news-grid">
@@ -146,9 +116,8 @@
   <div class="container">
     <div class="cta">
       <div>
-        <span class="eyebrow">{% trans "Enrollment is open" %}</span>
-        <h2 style="margin-top:14px">{% trans "Start with a free trial lesson" %}</h2>
-        <p>{% trans "Come with your child, meet the teacher, try the equipment and choose a direction without obligations." %}</p>
+        <h2>{% trans "Free trial lesson" %}</h2>
+        <p>{% trans "Meet the teacher and try the equipment — free and without obligations." %}</p>
         <ul class="cta-points">
           <li>{% icon "check" 20 %} {% trans "60 minutes of practice, not a lecture" %}</li>
           <li>{% icon "check" 20 %} {% trans "Selection of a course by age and interests" %}</li>
@@ -162,12 +131,7 @@
 
 <section class="section-sm" id="contacts">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">{% trans "Contacts" %}</span>
-        <h2>{% trans "Come visit us" %}</h2>
-      </div>
-    </div>
+    <div class="section-head"><h2>{% trans "Contacts" %}</h2></div>
     <div class="contact-grid">
       <a class="contact-item" href="{{ SITE.phone_href }}"><span class="ic">{% icon "phone" 20 %}</span><span>{% trans "Phone" %}</span><b>{{ SITE.phone }}</b></a>
       <a class="contact-item" href="mailto:{{ SITE.email }}"><span class="ic">{% icon "mail" 20 %}</span><span>Email</span><b>{{ SITE.email }}</b></a>
