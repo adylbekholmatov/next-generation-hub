@@ -31,14 +31,16 @@ _load_dotenv(BASE_DIR / ".env")
 
 
 def env(name, default=None):
-    return os.environ.get(name, default)
+    # Пустая переменная (например, созданная хостингом без значения) считается незаданной.
+    value = os.environ.get(name, "").strip()
+    return value if value else default
 
 
 def env_bool(name, default=False):
-    value = os.environ.get(name)
+    value = env(name)
     if value is None:
         return default
-    return value.strip().lower() in {"1", "true", "yes", "on"}
+    return value.lower() in {"1", "true", "yes", "on"}
 
 
 def env_list(name, default=""):
@@ -51,13 +53,14 @@ ON_VERCEL = bool(os.environ.get("VERCEL"))
 
 # --- Безопасность -----------------------------------------------------------
 SECRET_KEY = env("DJANGO_SECRET_KEY", "dev-insecure-key-change-me-in-production-0123456789")
-if ON_VERCEL and not os.environ.get("DJANGO_SECRET_KEY"):
+if ON_VERCEL and not env("DJANGO_SECRET_KEY"):
     # Репозиторий публичный: с известным ключом можно подделать cookie-сессию администратора.
     raise ImproperlyConfigured("Set DJANGO_SECRET_KEY in the Vercel project environment variables.")
-DEBUG = env_bool("DJANGO_DEBUG", not ON_VERCEL)
-ALLOWED_HOSTS = env_list(
-    "DJANGO_ALLOWED_HOSTS", ".vercel.app" if ON_VERCEL else "localhost,127.0.0.1,[::1],testserver"
-)
+# На Vercel сайт публичный: режим отладки там не включается никогда.
+DEBUG = False if ON_VERCEL else env_bool("DJANGO_DEBUG", True)
+ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1],testserver")
+if ON_VERCEL:
+    ALLOWED_HOSTS.append(".vercel.app")
 CSRF_TRUSTED_ORIGINS = env_list("DJANGO_CSRF_TRUSTED_ORIGINS", "")
 INTERNAL_IPS = ["127.0.0.1"]
 
@@ -134,7 +137,7 @@ if env("DB_ENGINE", "sqlite").lower() in {"postgres", "postgresql"}:
     }
 else:
     SQLITE_PATH = Path(env("SQLITE_PATH", BASE_DIR / "db.sqlite3"))
-    if ON_VERCEL and "SQLITE_PATH" not in os.environ:
+    if ON_VERCEL and not env("SQLITE_PATH"):
         # На Vercel писать можно только в /tmp: копируем туда готовую демо-базу.
         SQLITE_PATH = Path("/tmp/ngh-demo.sqlite3")
         if not SQLITE_PATH.exists():
