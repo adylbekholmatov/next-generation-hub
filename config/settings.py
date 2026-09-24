@@ -6,7 +6,10 @@ Next-Generation-Hub — настройки проекта.
 в корне проекта (простой формат KEY=VALUE, без сторонних библиотек).
 """
 import os
+import shutil
 from pathlib import Path
+
+from django.core.exceptions import ImproperlyConfigured
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,10 +45,19 @@ def env_list(name, default=""):
     return [item.strip() for item in env(name, default).split(",") if item.strip()]
 
 
+# Vercel выставляет VERCEL=1. Там сайт работает как serverless-функция в демо-режиме:
+# база копируется в /tmp, сессии хранятся в подписанных cookie (см. README → Vercel).
+ON_VERCEL = bool(os.environ.get("VERCEL"))
+
 # --- Безопасность -----------------------------------------------------------
 SECRET_KEY = env("DJANGO_SECRET_KEY", "dev-insecure-key-change-me-in-production-0123456789")
-DEBUG = env_bool("DJANGO_DEBUG", True)
-ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1],testserver")
+if ON_VERCEL and not os.environ.get("DJANGO_SECRET_KEY"):
+    # Репозиторий публичный: с известным ключом можно подделать cookie-сессию администратора.
+    raise ImproperlyConfigured("Set DJANGO_SECRET_KEY in the Vercel project environment variables.")
+DEBUG = env_bool("DJANGO_DEBUG", not ON_VERCEL)
+ALLOWED_HOSTS = env_list(
+    "DJANGO_ALLOWED_HOSTS", ".vercel.app" if ON_VERCEL else "localhost,127.0.0.1,[::1],testserver"
+)
 CSRF_TRUSTED_ORIGINS = env_list("DJANGO_CSRF_TRUSTED_ORIGINS", "")
 INTERNAL_IPS = ["127.0.0.1"]
 
@@ -72,6 +84,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -120,12 +133,22 @@ if env("DB_ENGINE", "sqlite").lower() in {"postgres", "postgresql"}:
         }
     }
 else:
+    SQLITE_PATH = Path(env("SQLITE_PATH", BASE_DIR / "db.sqlite3"))
+    if ON_VERCEL and "SQLITE_PATH" not in os.environ:
+        # На Vercel писать можно только в /tmp: копируем туда готовую демо-базу.
+        SQLITE_PATH = Path("/tmp/ngh-demo.sqlite3")
+        if not SQLITE_PATH.exists():
+            shutil.copyfile(BASE_DIR / "deploy" / "demo.sqlite3", SQLITE_PATH)
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+            "NAME": SQLITE_PATH,
         }
     }
+
+if ON_VERCEL:
+    # У каждого экземпляра функции своя копия базы, поэтому сессии — в подписанных cookie.
+    SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -157,15 +180,23 @@ USE_TZ = True
 # --- Статика и медиа --------------------------------------------------------
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# На Vercel collectstatic не запускается — статику WhiteNoise берёт из исходных папок.
+STATIC_ROOT = None if ON_VERCEL else BASE_DIR / "staticfiles"
+# WhiteNoise отдаёт статику прямо из STATICFILES_DIRS и приложений, collectstatic не обязателен.
+WHITENOISE_USE_FINDERS = True
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = Path("/tmp/media") if ON_VERCEL else BASE_DIR / "media"
+# На Vercel медиа временные и отдаются самим Django (для продакшена — nginx, см. README).
+SERVE_MEDIA = DEBUG or ON_VERCEL
+# Показывать демо-логины на странице входа.
+SHOW_DEMO_ACCOUNTS = env_bool("SHOW_DEMO_ACCOUNTS", DEBUG or ON_VERCEL)
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # --- Загрузка видео ---------------------------------------------------------
-MAX_VIDEO_UPLOAD_MB = int(env("MAX_VIDEO_UPLOAD_MB", "500"))
+# Vercel ограничивает тело запроса 4,5 МБ.
+MAX_VIDEO_UPLOAD_MB = int(env("MAX_VIDEO_UPLOAD_MB", "4" if ON_VERCEL else "500"))
 VIDEO_EXTENSIONS = ["mp4", "webm", "mov"]
 # Файлы крупнее 5 МБ Django пишет во временный файл, а не держит в памяти.
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024

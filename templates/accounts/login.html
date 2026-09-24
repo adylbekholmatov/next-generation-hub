@@ -33,9 +33,9 @@
           {% include "partials/field.html" with field=form.password %}
           <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Log in" %} {% icon "arrow-right" 18 "icon-shift" %}</button>
         </form>
-        {% if debug %}
+        {% if SHOW_DEMO_ACCOUNTS %}
         <div class="demo-hint">
-          <b style="color:var(--text)">{% trans "Demo accounts" %}</b> ({% trans "after" %} <code>python manage.py seed</code>):<br>
+          <b style="color:var(--text)">{% trans "Demo accounts" %}</b>{% if debug %} ({% trans "after" %} <code>python manage.py seed</code>){% endif %}:<br>
           <code>admin</code> / <code>admin12345</code> · <code>manager</code> / <code>manager12345</code><br>
           <code>teacher1</code> / <code>teacher12345</code> · <code>student1</code> / <code>student12345</code>
         </div>

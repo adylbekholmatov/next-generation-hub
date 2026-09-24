@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /cabinet/
+Disallow: /django-admin/

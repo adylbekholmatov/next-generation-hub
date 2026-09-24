@@ -17,4 +17,5 @@ def site(request):
             "map_url": settings.SITE_MAP_URL,
         },
         "MAX_VIDEO_UPLOAD_MB": settings.MAX_VIDEO_UPLOAD_MB,
+        "SHOW_DEMO_ACCOUNTS": settings.SHOW_DEMO_ACCOUNTS,
     }
