@@ -1,0 +1,27 @@
+{% load i18n core_tags %}<article class="card lesson-card">
+  <a class="lesson-thumb" href="{% url 'cabinet:lesson_detail' lesson.pk %}" aria-label="{% trans 'Watch' %}: {{ lesson.title }}">
+    {% if lesson.youtube_thumbnail %}<img src="{{ lesson.youtube_thumbnail }}" alt="" loading="lazy">{% endif %}
+    <span class="num">#{{ lesson.number }}</span>
+    <span class="src"><span class="badge no-dot">{{ lesson.source_label }}</span></span>
+    <span class="play">{% icon "play" 22 %}</span>
+  </a>
+  <div class="lesson-body">
+    <h3><a href="{% url 'cabinet:lesson_detail' lesson.pk %}">{{ lesson.title }}</a></h3>
+    <div class="meta">
+      <span>{{ lesson.course|tr:"title" }}</span>
+      <span>·</span>
+      <span>{% if lesson.group %}{{ lesson.group.name }}{% else %}{% trans "All groups" %}{% endif %}</span>
+    </div>
+    {% if manage %}
+    <div class="foot">
+      {% if lesson.is_published %}<span class="badge badge-ok">{% trans "Published" %}</span>{% else %}<span class="badge">{% trans "Draft" %}</span>{% endif %}
+      <span class="row" style="gap:4px">
+        <a class="btn btn-ghost btn-icon btn-sm" href="{% url 'cabinet:teacher_lesson_edit' lesson.pk %}" aria-label="{% trans 'Edit' %}" title="{% trans 'Edit' %}">{% icon "edit" 16 %}</a>
+        <form method="post" action="{% url 'cabinet:teacher_lesson_delete' lesson.pk %}" data-confirm="{% trans 'Delete this lesson? The video file will be deleted too.' %}">{% csrf_token %}<button class="btn btn-ghost btn-icon btn-sm btn-danger" aria-label="{% trans 'Delete' %}" title="{% trans 'Delete' %}">{% icon "trash" 16 %}</button></form>
+      </span>
+    </div>
+    {% else %}
+    <div class="foot"><span class="faint" style="font-size:13px">{{ lesson.created_at|date:"j E" }}</span><a class="link" href="{% url 'cabinet:lesson_detail' lesson.pk %}">{% trans "Watch" %} {% icon "arrow-right" 15 %}</a></div>
+    {% endif %}
+  </div>
+</article>

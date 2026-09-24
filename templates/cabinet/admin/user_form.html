@@ -1,0 +1,59 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% url 'cabinet:admin_users' %}">{% icon "arrow-left" 16 %} {% trans "Users" %}</a>
+<div class="page-head">
+  <div>
+    <h1>{{ page_title }}</h1>
+    {% if target %}<p><span class="badge badge-role-{{ target.role }} no-dot">{{ target.get_role_display }}</span> <span class="faint" style="margin-left:8px">{% trans "Registered" %} {{ target.date_joined|date:"j E Y" }}</span></p>{% endif %}
+  </div>
+</div>
+<div class="grid grid-main">
+  <form class="card" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">
+        {% include "partials/field.html" with field=form.first_name %}
+        {% include "partials/field.html" with field=form.last_name %}
+        {% include "partials/field.html" with field=form.username %}
+        {% include "partials/field.html" with field=form.role %}
+        {% include "partials/field.html" with field=form.email %}
+        {% include "partials/field.html" with field=form.phone %}
+        {% if not target %}{% include "partials/field.html" with field=form.password wide=1 %}{% endif %}
+        {% include "partials/field.html" with field=form.specialization wide=1 %}
+        {% include "partials/field.html" with field=form.about %}
+        {% include "partials/field.html" with field=form.photo %}
+        {% include "partials/field.html" with field=form.is_active wide=1 %}
+      </div>
+    </div>
+    <div class="card-foot"><button type="submit" class="btn btn-primary">{% icon "check" 16 %} {% if target %}{% trans "Save" %}{% else %}{% trans "Create user" %}{% endif %}</button></div>
+  </form>
+  {% if target %}
+  <div class="grid">
+    <form class="card" method="post" action="{% url 'cabinet:admin_user_password' target.pk %}" novalidate>
+      {% csrf_token %}
+      <div class="card-head"><h2>{% icon "key" 16 %} {% trans "Reset password" %}</h2></div>
+      <div class="card-body stack">
+        <p class="muted" style="margin:0;font-size:14px">{% trans "Enter a new password or leave the field empty — a random one will be generated and shown once." %}</p>
+        {% include "partials/field.html" with field=reset_form.new_password wide=1 %}
+      </div>
+      <div class="card-foot"><button type="submit" class="btn">{% icon "refresh" 16 %} {% trans "Set password" %}</button></div>
+    </form>
+    {% if target.pk != user.pk %}
+    <form class="card card-pad" method="post" action="{% url 'cabinet:admin_user_toggle' target.pk %}"{% if target.is_active %} data-confirm="{% trans 'Block this user? They will not be able to log in.' %}"{% endif %}>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.get_full_path }}">
+      {% if target.is_active %}
+        <p class="muted" style="font-size:14px;margin-top:0">{% trans "A blocked user cannot log in, but all their data is kept." %}</p>
+        <button type="submit" class="btn btn-danger btn-block">{% icon "ban" 16 %} {% trans "Block" %}</button>
+      {% else %}
+        <div class="alert alert-bad" style="margin-bottom:12px">{% icon "lock" 18 %} {% trans "The user is blocked." %}</div>
+        <button type="submit" class="btn btn-block">{% icon "unlock" 16 %} {% trans "Unblock" %}</button>
+      {% endif %}
+    </form>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% load core_tags %}{# Обложка курса: картинка или монохромная графика направления #}
+<div class="cover">
+  {% if course.cover %}<img src="{{ course.cover.url }}" alt="" loading="lazy">
+  {% else %}
+  <svg class="cover-art" viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><pattern id="g-{{ course.pk }}-{{ uid|default:'a' }}" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0v25" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs>
+    <rect width="400" height="225" fill="url(#g-{{ course.pk }}-{{ uid|default:'a' }})"/>
+    {% if course.direction == "robotics" %}<path d="M0 170h90l30-30h80l20 20h180M60 40h70l20 20v60M300 20v60l-30 30h-40" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="150" cy="120" r="5" fill="currentColor"/><circle cx="230" cy="110" r="5" fill="currentColor"/>
+    {% elif course.direction == "frontend" %}<text x="30" y="70" font-family="monospace" font-size="44" fill="currentColor">&lt;/&gt;</text><text x="290" y="200" font-family="monospace" font-size="44" fill="currentColor">{ }</text>
+    {% elif course.direction == "backend" %}<g fill="none" stroke="currentColor" stroke-width="2"><rect x="290" y="30" width="90" height="26" rx="6"/><rect x="290" y="64" width="90" height="26" rx="6"/><rect x="20" y="160" width="90" height="26" rx="6"/></g>
+    {% elif course.direction == "fusion360" %}<g fill="none" stroke="currentColor" stroke-width="2"><path d="M320 40l50 25v55l-50 25-50-25V65z M270 65l50 25 50-25 M320 90v55"/><path d="M60 150l30 15v33l-30 15-30-15v-33z"/></g>
+    {% else %}<g fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="200" cy="112" rx="190" ry="60" transform="rotate(-18 200 112)"/><ellipse cx="200" cy="112" rx="150" ry="40" transform="rotate(14 200 112)"/></g>
+    {% endif %}
+  </svg>
+  <span class="cover-icon">{% icon course.direction 36 %}</span>
+  {% endif %}
+  <span class="cover-tag"><span class="badge no-dot">{{ course.get_direction_display }}</span></span>
+</div>

@@ -1,0 +1,86 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% trans "Mark attendance" %}</h1>
+    <p>{% trans "Choose a group and date, mark each student and save." %}</p>
+  </div>
+  {% if group %}<div class="actions"><a class="btn" href="{% url 'cabinet:journal_month' group.pk %}?month={{ day|date:'Y-m' }}">{% icon "table" 16 %} {% trans "Monthly journal" %}</a></div>{% endif %}
+</div>
+
+<form class="card card-pad toolbar" method="get" style="margin-bottom:20px;align-items:flex-end">
+  <div class="field grow" style="min-width:220px">
+    <label for="m-group">{% trans "Group" %}</label>
+    <select id="m-group" name="group" data-autosubmit required>
+      <option value="">{% trans "Choose a group" %}</option>
+      {% for g in groups %}<option value="{{ g.pk }}"{% if group and g.pk == group.pk %} selected{% endif %}>{{ g.name }} · {{ g.course|tr:"title" }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="field" style="min-width:180px">
+    <label for="m-date">{% trans "Date" %}</label>
+    <input type="date" id="m-date" name="date" value="{{ day|date:'Y-m-d' }}" max="{{ today|date:'Y-m-d' }}" data-autosubmit>
+  </div>
+  <button class="btn" type="submit">{% icon "refresh" 16 %} {% trans "Show" %}</button>
+</form>
+
+{% if not groups %}
+  <div class="card">{% trans "You have no active groups" as t1 %}{% trans "When the manager assigns you a group, you can mark attendance here." as t2 %}{% include "cabinet/shared/_empty.html" with icon="layers" title=t1 text=t2 %}</div>
+{% elif not group %}
+  <div class="card">{% trans "Choose a group" as t1 %}{% trans "Select a group and a date above to open the list of students." as t2 %}{% include "cabinet/shared/_empty.html" with icon="clipboard" title=t1 text=t2 %}</div>
+{% else %}
+  {% if date_error %}<div class="alert alert-bad" role="alert" style="margin-bottom:16px">{% icon "alert" 18 %} {% trans "You cannot mark a lesson in the future." %}</div>{% endif %}
+  {% if not is_lesson_day and not date_error %}<div class="alert alert-warn" style="margin-bottom:16px">{% icon "info" 18 %} {% blocktrans with schedule=group.schedule_display|default:"—" %}This day is not in the group schedule ({{ schedule }}). You can still mark an extra lesson.{% endblocktrans %}</div>{% endif %}
+  {% if already_marked %}<div class="alert alert-info" style="margin-bottom:16px">{% icon "info" 18 %} {% trans "The lesson is already marked. You can change the marks and save again." %}</div>{% endif %}
+
+  <form class="card" method="post" data-mark-form>
+    {% csrf_token %}
+    <input type="hidden" name="group" value="{{ group.pk }}">
+    <input type="hidden" name="date" value="{{ day|date:'Y-m-d' }}">
+    <div class="card-head">
+      <div>
+        <h2>{{ group.name }}</h2>
+        <span class="faint" style="font-size:13px">{{ day|date:"l, j E Y"|capfirst }} · {% blocktrans count n=rows|length %}{{ n }} student{% plural %}{{ n }} students{% endblocktrans %}</span>
+      </div>
+      <button type="button" class="btn btn-sm" data-all-present>{% icon "check-all" 16 %} {% trans "Everyone is present" %}</button>
+    </div>
+    {% if rows %}
+    <div class="table-wrap">
+      <table class="table mark-table">
+        <thead><tr><th>{% trans "Student" %}</th><th>{% trans "Status" %}</th><th>{% trans "Grade" %}</th><th>{% trans "Comment" %}</th></tr></thead>
+        <tbody>
+          {% for r in rows %}
+          <tr data-student="{{ r.student.pk }}">
+            <td><div class="user-cell">{% include "partials/avatar.html" with u=r.student size="avatar-sm" %}<div style="min-width:0"><b>{{ r.student.display_name }}</b></div></div></td>
+            <td>
+              <div class="seg" role="radiogroup" aria-label="{% trans 'Status' %}: {{ r.student.display_name }}">
+                {% for st in statuses %}
+                <input type="radio" id="s{{ r.student.pk }}-{{ st.value }}" name="status_{{ r.student.pk }}" value="{{ st.value }}"{% if r.status == st.value %} checked{% endif %}>
+                <label for="s{{ r.student.pk }}-{{ st.value }}" class="s-{{ st.value }}" title="{{ st.label }}"><span class="dot" aria-hidden="true"></span><span class="txt">{{ st.label }}</span><span class="short" aria-hidden="true">{{ st.short }}</span></label>
+                {% endfor %}
+              </div>
+            </td>
+            <td><label class="sr-only" for="g{{ r.student.pk }}">{% trans "Grade" %}</label><input class="grade" type="number" min="1" max="5" id="g{{ r.student.pk }}" name="grade_{{ r.student.pk }}" value="{{ r.grade }}" placeholder="—" inputmode="numeric"></td>
+            <td><label class="sr-only" for="c{{ r.student.pk }}">{% trans "Comment" %}</label><input class="comment" type="text" id="c{{ r.student.pk }}" name="comment_{{ r.student.pk }}" value="{{ r.comment }}" maxlength="255" placeholder="{% trans 'Optional' %}"></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="mark-bar">
+      <div class="mark-summary">
+        <span><i class="c-present"></i>{% trans "Present" %}: <b data-count="present">0</b></span>
+        <span><i class="c-late"></i>{% trans "Late" %}: <b data-count="late">0</b></span>
+        <span><i class="c-absent"></i>{% trans "Absent" %}: <b data-count="absent">0</b></span>
+        <span><i class="c-excused"></i>{% trans "Excused" %}: <b data-count="excused">0</b></span>
+        <span class="faint">{% trans "Not marked" %}: <b data-count="none">{{ rows|length }}</b></span>
+      </div>
+      <button type="submit" class="btn btn-primary"{% if date_error %} disabled{% endif %}>{% icon "check" 16 %} {% trans "Save" %}</button>
+    </div>
+    {% else %}
+      {% trans "There are no students in the group" as t1 %}{% trans "Ask the manager to add students to the group." as t2 %}
+      {% include "cabinet/shared/_empty.html" with icon="users" title=t1 text=t2 %}
+    {% endif %}
+  </form>
+{% endif %}
+{% endblock %}

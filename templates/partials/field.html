@@ -1,0 +1,31 @@
+{% load core_tags %}{% with wt=field|field_type %}
+<div class="field{% if field.errors %} has-error{% endif %}{% if wide or wt == 'textarea' or wt == 'checkboxselectmultiple' or wt == 'clearablefileinput' %} span-2{% endif %}" data-field="{{ field.name }}">
+  {% if wt == "checkboxinput" %}
+    <label class="check" for="{{ field.id_for_label }}">{{ field }} {{ field.label }}</label>
+  {% elif wt == "checkboxselectmultiple" %}
+    <span class="field-label" id="{{ field.auto_id }}_label">{{ field.label }}{% if field.field.required %}<span class="req" aria-hidden="true">*</span>{% endif %}</span>
+    <div class="check-list" role="group" aria-labelledby="{{ field.auto_id }}_label">
+      {% for opt in field %}<label for="{{ opt.id_for_label }}">{{ opt.tag }} {{ opt.choice_label }}</label>{% endfor %}
+    </div>
+  {% elif wt == "clearablefileinput" %}
+    <span class="field-label">{{ field.label }}</span>
+    <label class="dropzone">
+      <span class="ic">{% icon "upload" 22 %}</span>
+      <b>{{ drop_text|default:field.label }}</b>
+      <small>{{ field.help_text|default:"" }}</small>
+      <span class="file-name" aria-live="polite"></span>
+      <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}"{% if field.field.widget.attrs.accept %} accept="{{ field.field.widget.attrs.accept }}"{% endif %}>
+    </label>
+    {% if field.value and field.value.url %}
+      <div class="current-file">{% icon "file" 14 %} <a href="{{ field.value.url }}" target="_blank" rel="noopener">{{ field.value.name|cut:"lessons/"|truncatechars:60 }}</a>
+        {% if not field.field.required %}<label class="check"><input type="checkbox" name="{{ field.html_name }}-clear" id="{{ field.html_name }}-clear_id"> {{ clear_text|default:"×" }}</label>{% endif %}
+      </div>
+    {% endif %}
+  {% else %}
+    <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="req" aria-hidden="true">*</span>{% endif %}</label>
+    {{ field }}
+  {% endif %}
+  {% if field.help_text and wt != "clearablefileinput" %}<span class="help">{{ field.help_text }}</span>{% endif %}
+  {% if field.errors %}<ul class="errors">{% for e in field.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+</div>
+{% endwith %}

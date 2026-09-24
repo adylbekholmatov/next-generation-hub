@@ -1,0 +1,53 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% blocktrans with name=user.first_name|default:user.username %}Hello, {{ name }}!{% endblocktrans %}</h1>
+    <p>{% blocktrans count n=week_requests %}{{ n }} request in the last 7 days.{% plural %}{{ n }} requests in the last 7 days.{% endblocktrans %}</p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="{% url 'cabinet:manager_student_create' %}">{% icon "user-plus" 16 %} {% trans "New student" %}</a>
+    <a class="btn btn-primary" href="{% url 'cabinet:manager_requests' %}?status=new">{% icon "inbox" 16 %} {% trans "New requests" %}</a>
+  </div>
+</div>
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  {% for c in status_cards %}
+  <a class="card stat{% if c.key == 'new' %} is-accent{% endif %}" href="{% url 'cabinet:manager_requests' %}?status={{ c.key }}">
+    <div class="stat-top">{{ c.label }}<span class="stat-ic">{% icon "inbox" 18 %}</span></div>
+    <b>{{ c.count }}</b><small>{% trans "requests" %}</small>
+  </a>
+  {% endfor %}
+</div>
+<div class="grid grid-main">
+  <section class="card">
+    <div class="card-head"><h2>{% trans "New requests" %}</h2><a class="link" href="{% url 'cabinet:manager_requests' %}">{% trans "All requests" %} {% icon "arrow-right" 15 %}</a></div>
+    {% if new_requests %}
+    <ul class="list">
+      {% for r in new_requests %}
+      <li>
+        <span class="stat-ic">{% icon "user" 18 %}</span>
+        <div class="grow" style="min-width:0"><a class="row-link" href="{% url 'cabinet:manager_request_detail' r.pk %}"><b>{{ r.name }}</b></a><div class="faint" style="font-size:13px">{{ r.phone }} · {{ r.course|tr:"title"|default:_("Course not chosen") }}</div></div>
+        <span class="faint nowrap" style="font-size:13px">{{ r.created_at|timesince }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      {% trans "No new requests" as t1 %}{% trans "All requests are processed. Great job!" as t2 %}
+      {% include "cabinet/shared/_empty.html" with icon="check" title=t1 text=t2 %}
+    {% endif %}
+  </section>
+  <div class="grid">
+    <div class="card stat is-ink"><div class="stat-top">{% trans "Active students" %}<span class="stat-ic">{% icon "graduation" 18 %}</span></div><b>{{ students_count }}</b><small><a href="{% url 'cabinet:manager_students' %}" style="text-decoration:underline">{% trans "Student list" %}</a></small></div>
+    <section class="card">
+      <div class="card-head"><h2>{% trans "Groups" %}</h2><a class="link" href="{% url 'cabinet:manager_groups' %}">{% trans "All" %} {% icon "arrow-right" 15 %}</a></div>
+      <ul class="list">
+        {% for g in groups %}
+        <li><span class="stat-ic">{% icon g.course.direction 18 %}</span><div class="grow" style="min-width:0"><a class="row-link" href="{% url 'cabinet:manager_group_detail' g.pk %}"><b>{{ g.name }}</b></a><div class="faint" style="font-size:13px">{% blocktrans count n=g.n_students %}{{ n }} student{% plural %}{{ n }} students{% endblocktrans %}</div></div><span class="pct {{ g.month_percent|percent_level }}">{% if g.month_percent is not None %}{{ g.month_percent }}%{% else %}—{% endif %}</span></li>
+        {% empty %}<li class="faint">{% trans "No groups yet" %}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% load i18n core_tags %}<a class="news-card reveal" href="{{ item.get_absolute_url }}">
+  <div class="news-thumb">
+    {% if item.image %}<img src="{{ item.image.url }}" alt="" loading="lazy">{% else %}<div class="news-thumb-text">{{ item|tr:"title"|truncatechars:70 }}</div>{% endif %}
+  </div>
+  <div class="news-body">
+    <span class="news-date">{% if item.is_pinned %}<span class="badge badge-accent no-dot">{% icon "pin" 12 %}{% trans "Pinned" %}</span>{% endif %}<time datetime="{{ item.published_at|date:'c' }}">{{ item.published_at|date:"j E Y" }}</time></span>
+    <h3>{{ item|tr:"title" }}</h3>
+    <p>{{ item|tr:"body"|striptags|truncatewords:22 }}</p>
+  </div>
+</a>

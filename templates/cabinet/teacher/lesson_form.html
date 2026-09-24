@@ -1,0 +1,54 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% url 'cabinet:teacher_lessons' %}">{% icon "arrow-left" 16 %} {% trans "Video lessons" %}</a>
+<div class="page-head">
+  <div><h1>{{ page_title }}</h1><p>{% trans "Upload a video file or paste a YouTube link — one of the two is enough." %}</p></div>
+  {% if lesson %}<div class="actions"><a class="btn" href="{% url 'cabinet:lesson_detail' lesson.pk %}">{% icon "eye" 16 %} {% trans "Preview" %}</a></div>{% endif %}
+</div>
+<form class="grid grid-main" method="post" enctype="multipart/form-data" novalidate data-upload
+      data-max-mb="{{ MAX_VIDEO_UPLOAD_MB }}"
+      data-size-error="{% blocktrans with size=MAX_VIDEO_UPLOAD_MB %}The video is too large. Maximum size is {{ size }} MB.{% endblocktrans %}"
+      data-generic-error="{% trans 'Could not save the lesson. Check the form and try again.' %}"
+      data-network-error="{% trans 'Network error. Check your connection and try again.' %}">
+  {% csrf_token %}
+  <div class="card">
+    <div class="card-head"><h2>{% trans "Lesson" %}</h2></div>
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">
+        {% include "partials/field.html" with field=form.course %}
+        {% include "partials/field.html" with field=form.group %}
+        {% if form.teacher %}{% include "partials/field.html" with field=form.teacher %}{% endif %}
+        {% include "partials/field.html" with field=form.number %}
+        {% include "partials/field.html" with field=form.title wide=1 %}
+        {% include "partials/field.html" with field=form.description %}
+        {% include "partials/field.html" with field=form.is_published wide=1 %}
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Video" %}</h2></div>
+      <div class="card-body stack">
+        {% include "partials/field.html" with field=form.youtube_url wide=1 %}
+        <div class="row faint" style="font-size:13px;gap:10px"><hr style="flex:1;margin:0">{% trans "or" %}<hr style="flex:1;margin:0"></div>
+        {% trans "Drag a video here or click to choose" as dz %}{% trans "remove" as clr %}
+        {% include "partials/field.html" with field=form.video_file drop_text=dz clear_text=clr %}
+        <div class="progress" aria-live="polite">
+          <div class="progress-bar" role="progressbar" aria-label="{% trans 'Upload progress' %}"><span></span></div>
+          <div class="progress-meta"><span data-progress-info>{% trans "Uploading…" %}</span><b data-progress-pct>0%</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Materials" %}</h2></div>
+      <div class="card-body">
+        {% trans "Presentation, code, 3D model — any file" as dz2 %}{% trans "remove" as clr %}
+        {% include "partials/field.html" with field=form.materials drop_text=dz2 clear_text=clr %}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">{% icon "check" 18 %} {% if lesson %}{% trans "Save changes" %}{% else %}{% trans "Publish lesson" %}{% endif %}</button>
+  </div>
+</form>
+{% endblock %}

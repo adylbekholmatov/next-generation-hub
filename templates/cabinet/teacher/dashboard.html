@@ -1,0 +1,81 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% blocktrans with name=user.first_name|default:user.username %}Hello, {{ name }}!{% endblocktrans %}</h1>
+    <p>{% now "l, j E" as today_label %}{{ today_label|capfirst }}</p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="{% url 'cabinet:teacher_lesson_create' %}">{% icon "upload" 16 %} {% trans "Upload lesson" %}</a>
+    <a class="btn btn-primary" href="{% url 'cabinet:teacher_mark' %}">{% icon "clipboard" 16 %} {% trans "Mark attendance" %}</a>
+  </div>
+</div>
+
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  <div class="card stat is-ink"><div class="stat-top">{% trans "Attendance, 30 days" %}<span class="stat-ic">{% icon "chart" 18 %}</span></div><b>{% if overall is not None %}{{ overall }}%{% else %}—{% endif %}</b><small>{% trans "present and late" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "My groups" %}<span class="stat-ic">{% icon "layers" 18 %}</span></div><b>{{ groups|length }}</b><small>{% trans "active" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Students" %}<span class="stat-ic">{% icon "users" 18 %}</span></div><b>{{ students_total }}</b><small>{% trans "in my groups" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Video lessons" %}<span class="stat-ic">{% icon "video" 18 %}</span></div><b>{{ lessons_total }}</b><small>{% trans "uploaded" %}</small></div>
+</div>
+
+<div class="grid grid-main">
+  <div class="grid">
+    <section class="card">
+      <div class="card-head"><h2>{% trans "My groups" %}</h2><a class="link" href="{% url 'cabinet:teacher_journal' %}">{% trans "Journal" %} {% icon "arrow-right" 15 %}</a></div>
+      {% if groups %}
+      <div class="card-body grid grid-cards">
+        {% for g in groups %}{% url 'cabinet:journal_month' g.pk as href %}{% include "cabinet/shared/_group_card.html" with pct=g.percent link_label=_("Journal") %}{% endfor %}
+      </div>
+      {% else %}
+        {% trans "You have no groups yet" as t1 %}{% trans "The manager will assign you to a group — it will appear here." as t2 %}
+        {% include "cabinet/shared/_empty.html" with icon="layers" title=t1 text=t2 %}
+      {% endif %}
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>{% trans "Recent video lessons" %}</h2><a class="link" href="{% url 'cabinet:teacher_lessons' %}">{% trans "All lessons" %} {% icon "arrow-right" 15 %}</a></div>
+      {% if recent_lessons %}
+      <ul class="list">
+        {% for l in recent_lessons %}
+        <li><span class="stat-ic">{% icon "play" 16 %}</span><div class="grow"><a class="row-link" href="{% url 'cabinet:lesson_detail' l.pk %}"><b>{{ l.number }}. {{ l.title }}</b></a><div class="faint" style="font-size:13px">{{ l.course|tr:"title" }} · {% if l.group %}{{ l.group.name }}{% else %}{% trans "All groups" %}{% endif %}</div></div>{% if not l.is_published %}<span class="badge">{% trans "Draft" %}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        {% trans "No lessons yet" as t1 %}{% trans "Upload a video file or add a YouTube link." as t2 %}{% url 'cabinet:teacher_lesson_create' as u %}{% trans "Upload lesson" as t3 %}
+        {% include "cabinet/shared/_empty.html" with icon="video" title=t1 text=t2 action_url=u action_label=t3 %}
+      {% endif %}
+    </section>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <div class="card-head"><h2>{% trans "Upcoming lessons" %}</h2><span class="faint" style="font-size:13px">{% trans "7 days" %}</span></div>
+      {% if upcoming %}
+      <ul class="list">
+        {% for s in upcoming %}
+        <li>
+          <span class="date-tile{% if s.is_today %} is-today{% endif %}"><b>{{ s.date|date:"j" }}</b><small>{{ s.date|date:"D" }}</small></span>
+          <div class="grow" style="min-width:0"><b style="display:block">{{ s.group.name }}</b><span class="faint" style="font-size:13px">{% if s.group.start_time %}{{ s.group.start_time|time:"H:i" }}–{{ s.group.end_time|time:"H:i" }}{% endif %}{% if s.group.room %} · {{ s.group.room }}{% endif %}</span></div>
+          {% if s.is_today %}{% if s.marked %}<span class="badge badge-ok">{% trans "Marked" %}</span>{% else %}<a class="btn btn-primary btn-xs" href="{% url 'cabinet:teacher_mark' %}?group={{ s.group.pk }}&date={{ s.date|date:'Y-m-d' }}">{% trans "Mark" %}</a>{% endif %}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        {% trans "No lessons in the next 7 days" as t1 %}
+        {% include "cabinet/shared/_empty.html" with icon="calendar" title=t1 %}
+      {% endif %}
+    </section>
+
+    <section class="card card-pad">
+      <h2 style="font-size:1.05rem;margin-bottom:18px">{% trans "Attendance structure" %}</h2>
+      <div class="stack-bar" role="img" aria-label="{% trans 'Attendance structure' %}">
+        {% for s in stats %}{% if s.share %}<span class="c-{{ s.key }}" style="width:{{ s.share }}%"></span>{% endif %}{% endfor %}
+      </div>
+      <div class="legend" style="margin-top:16px">
+        {% for s in stats %}<span><i class="c-{{ s.key }}"></i>{{ s.label }} <b>{{ s.count }}</b></span>{% endfor %}
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{{ page_title }}</h1>
+    <p>{% if read_only %}{% trans "Viewing mode: journals are filled in by teachers." %}{% else %}{% trans "Choose a group to open its monthly journal." %}{% endif %}</p>
+  </div>
+</div>
+{% if groups %}
+<div class="grid grid-cards">
+  {% for g in groups %}{% url 'cabinet:journal_month' g.pk as href %}{% include "cabinet/shared/_group_card.html" with show_teacher=1 link_label=_("Journal") %}{% endfor %}
+</div>
+{% else %}
+<div class="card">{% trans "No active groups" as t1 %}{% include "cabinet/shared/_empty.html" with icon="layers" title=t1 %}</div>
+{% endif %}
+{% endblock %}

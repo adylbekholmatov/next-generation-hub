@@ -1,0 +1,9 @@
+{% load i18n core_tags %}{% if messages %}<div class="messages" role="status" aria-live="polite">
+  {% for message in messages %}
+  <div class="message message-{{ message.level_tag }}"{% if "sticky" in message.extra_tags %} data-sticky{% endif %}>
+    {% if message.level_tag == "error" %}{% icon "alert" 18 "icon-status" %}{% elif message.level_tag == "success" %}{% icon "check" 18 "icon-status" %}{% else %}{% icon "info" 18 "icon-status" %}{% endif %}
+    <div class="message-body">{{ message }}</div>
+    <button type="button" aria-label="{% trans 'Close' %}">{% icon "x" 16 %}</button>
+  </div>
+  {% endfor %}
+</div>{% endif %}

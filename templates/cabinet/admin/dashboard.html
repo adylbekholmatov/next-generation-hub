@@ -1,0 +1,97 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% trans "Dashboard" %}</h1>
+    <p>{% trans "Key indicators of the learning center." %}</p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="/django-admin/" target="_blank" rel="noopener">{% icon "database" 16 %} Django admin</a>
+    <a class="btn btn-primary" href="{% url 'cabinet:admin_user_create' %}">{% icon "user-plus" 16 %} {% trans "New user" %}</a>
+  </div>
+</div>
+
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  <a class="card stat is-ink" href="{% url 'cabinet:admin_users' %}?role=student"><div class="stat-top">{% trans "Students" %}<span class="stat-ic">{% icon "graduation" 18 %}</span></div><b>{{ kpi.students }}</b><small>{% trans "active accounts" %}</small></a>
+  <a class="card stat" href="{% url 'cabinet:admin_users' %}?role=teacher"><div class="stat-top">{% trans "Teachers" %}<span class="stat-ic">{% icon "users" 18 %}</span></div><b>{{ kpi.teachers }}</b><small>{% trans "in the team" %}</small></a>
+  <a class="card stat" href="{% url 'cabinet:manager_groups' %}"><div class="stat-top">{% trans "Groups" %}<span class="stat-ic">{% icon "layers" 18 %}</span></div><b>{{ kpi.groups }}</b><small>{% trans "active" %}</small></a>
+  <a class="card stat is-accent" href="{% url 'cabinet:manager_requests' %}?status=new"><div class="stat-top">{% trans "New requests" %}<span class="stat-ic">{% icon "inbox" 18 %}</span></div><b>{{ kpi.new_requests }}</b><small>{% trans "waiting for a call" %}</small></a>
+</div>
+
+<div class="grid grid-main" style="margin-bottom:20px">
+  <section class="card">
+    <div class="card-head"><h2>{% trans "Attendance by group" %}</h2><span class="faint" style="font-size:13px">{% trans "last 30 days" %}</span></div>
+    <div class="card-body">
+      {% if group_bars %}
+      <div class="bars">
+        {% for b in group_bars %}
+        <a class="bar-row" href="{% url 'cabinet:journal_month' b.url_pk %}">
+          <span class="label" title="{{ b.label }}">{{ b.label }}</span>
+          <span class="bar-track"><span class="bar-fill {{ b.value|percent_level }}" style="width:{{ b.value }}%;animation-delay:{{ forloop.counter0 }}00ms"></span></span>
+          <span class="val">{% if b.empty %}—{% else %}{{ b.value }}%{% endif %}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}<p class="faint">{% trans "No data yet" %}</p>{% endif %}
+    </div>
+  </section>
+  <section class="card card-pad" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center">
+    <h2 style="font-size:1.05rem;margin:0">{% trans "Average attendance" %}</h2>
+    <div class="ring {{ kpi.attendance|percent_level }}" style="--p: {{ kpi.attendance|default:0 }}; --size: 168px"><b>{% if kpi.attendance is not None %}{{ kpi.attendance }}%{% else %}—{% endif %}</b></div>
+    <p class="faint" style="font-size:13px;margin:0;max-width:30ch">{% trans "Share of attended lessons over the last 30 days across all groups." %}</p>
+    <div class="legend" style="justify-content:center">
+      <span><i class="c-present"></i>85%+</span><span><i class="c-late"></i>65–84%</span><span><i class="c-absent"></i>&lt;65%</span>
+    </div>
+  </section>
+</div>
+
+<div class="grid grid-2" style="margin-bottom:20px">
+  <section class="card">
+    <div class="card-head"><h2>{% trans "Requests by week" %}</h2><span class="faint" style="font-size:13px">{% trans "8 weeks" %}</span></div>
+    <div class="card-body">
+      <div class="columns-chart" role="img" aria-label="{% trans 'Requests by week' %}">
+        {% for w in weeks %}
+        <div class="col"><div class="col-bar" style="height:{{ w.height }}%;animation-delay:{{ forloop.counter0 }}0ms"><span>{{ w.count }}</span></div><small>{{ w.date|date:"d.m" }}</small></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-head"><h2>{% trans "Students by direction" %}</h2></div>
+    <div class="card-body">
+      <div class="bars">
+        {% for d in directions %}
+        <div class="bar-row"><span class="label row" style="gap:8px;flex-wrap:nowrap">{% icon d.code 16 %}<span style="overflow:hidden;text-overflow:ellipsis" title="{{ d.label }}">{{ d.short }}</span></span><span class="bar-track"><span class="bar-fill" style="width:{{ d.width }}%"></span></span><span class="val">{{ d.count }}</span></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  <a class="card stat" href="{% url 'cabinet:admin_courses' %}"><div class="stat-top">{% trans "Courses" %}<span class="stat-ic">{% icon "book" 18 %}</span></div><b>{{ kpi.courses }}</b><small>{% trans "on the website" %}</small></a>
+  <a class="card stat" href="{% url 'cabinet:teacher_lessons' %}"><div class="stat-top">{% trans "Video lessons" %}<span class="stat-ic">{% icon "video" 18 %}</span></div><b>{{ kpi.lessons }}</b><small>{% trans "total" %}</small></a>
+  <a class="card stat" href="{% url 'cabinet:manager_news' %}"><div class="stat-top">{% trans "News" %}<span class="stat-ic">{% icon "news" 18 %}</span></div><b>{{ kpi.news }}</b><small>{% trans "published" %}</small></a>
+  <a class="card stat" href="{% url 'cabinet:manager_journals' %}"><div class="stat-top">{% trans "Journals" %}<span class="stat-ic">{% icon "table" 18 %}</span></div><b>{{ kpi.groups }}</b><small>{% trans "groups" %}</small></a>
+</div>
+
+<div class="grid grid-2">
+  <section class="card">
+    <div class="card-head"><h2>{% trans "Latest requests" %}</h2><a class="link" href="{% url 'cabinet:manager_requests' %}">{% trans "All" %} {% icon "arrow-right" 15 %}</a></div>
+    <ul class="list">
+      {% for r in latest_requests %}
+      <li><div class="grow" style="min-width:0"><a class="row-link" href="{% url 'cabinet:manager_request_detail' r.pk %}"><b>{{ r.name }}</b></a><div class="faint" style="font-size:13px">{{ r.course|tr:"title"|default:"—" }} · {{ r.created_at|date:"d.m H:i" }}</div></div><span class="badge badge-{{ r.status }}">{{ r.get_status_display }}</span></li>
+      {% empty %}<li class="faint">{% trans "No requests yet" %}</li>{% endfor %}
+    </ul>
+  </section>
+  <section class="card">
+    <div class="card-head"><h2>{% trans "Latest video lessons" %}</h2><a class="link" href="{% url 'cabinet:teacher_lessons' %}">{% trans "All" %} {% icon "arrow-right" 15 %}</a></div>
+    <ul class="list">
+      {% for l in latest_lessons %}
+      <li><span class="stat-ic">{% icon "play" 16 %}</span><div class="grow" style="min-width:0"><a class="row-link" href="{% url 'cabinet:lesson_detail' l.pk %}"><b>{{ l.title }}</b></a><div class="faint" style="font-size:13px">{{ l.course|tr:"title" }} · {{ l.teacher.display_name|default:"—" }}</div></div></li>
+      {% empty %}<li class="faint">{% trans "No lessons yet" %}</li>{% endfor %}
+    </ul>
+  </section>
+</div>
+{% endblock %}

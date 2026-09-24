@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}403 — {% trans "Access denied" %}{% endblock %}
+{% block content %}
+<section class="result-page">
+  <div class="container" style="max-width:620px">
+    <p class="result-code">403</p>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem)">{% trans "Access denied" %}</h1>
+    <p class="muted" style="font-size:17px">{% trans "This section is not available for your role. If you think this is a mistake, contact the administrator." %}</p>
+    <div class="row" style="justify-content:center;margin-top:24px">
+      {% if user.is_authenticated %}<a class="btn btn-primary" href="{% url 'cabinet:home' %}">{% icon "grid" 16 %} {% trans "My cabinet" %}</a>{% else %}<a class="btn btn-primary" href="{% url 'accounts:login' %}">{% trans "Log in" %}</a>{% endif %}
+      <a class="btn" href="{% url 'core:home' %}">{% trans "To the home page" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

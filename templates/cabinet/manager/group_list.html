@@ -1,0 +1,20 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div><h1>{% trans "Groups" %}</h1><p>{% trans "Composition, teacher and schedule of each group." %}</p></div>
+  <div class="actions"><a class="btn btn-primary" href="{% url 'cabinet:manager_group_create' %}">{% icon "plus" 16 %} {% trans "New group" %}</a></div>
+</div>
+<nav class="tabs" aria-label="{% trans 'Filter' %}">
+  <a class="chip{% if show == 'active' %} is-active{% endif %}" href="?show=active">{% trans "Active" %}</a>
+  <a class="chip{% if show == 'archive' %} is-active{% endif %}" href="?show=archive">{% trans "Archive" %}</a>
+  <a class="chip{% if show == 'all' %} is-active{% endif %}" href="?show=all">{% trans "All" %}</a>
+</nav>
+{% if groups %}
+<div class="grid grid-cards">
+  {% for g in groups %}{% url 'cabinet:manager_group_detail' g.pk as href %}{% include "cabinet/shared/_group_card.html" with show_teacher=1 %}{% endfor %}
+</div>
+{% else %}
+<div class="card">{% trans "No groups" as t1 %}{% url 'cabinet:manager_group_create' as u %}{% trans "Create group" as t3 %}{% include "cabinet/shared/_empty.html" with icon="layers" title=t1 action_url=u action_label=t3 %}</div>
+{% endif %}
+{% endblock %}

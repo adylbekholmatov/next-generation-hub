@@ -1,0 +1,17 @@
+{% load i18n core_tags %}<form class="form-card" action="{% url 'core:enroll' %}" method="post" novalidate>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.get_full_path }}">
+  <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+  <h3 style="margin-bottom:6px">{% trans "Sign up for a free trial lesson" %}</h3>
+  <p class="muted" style="font-size:15px">{% trans "Leave your contacts — a manager will call you back within a working day." %}</p>
+  <div class="form-grid">
+    {% include "partials/field.html" with field=form.name wide=1 %}
+    {% include "partials/field.html" with field=form.phone %}
+    {% include "partials/field.html" with field=form.age %}
+    {% include "partials/field.html" with field=form.email wide=1 %}
+    {% include "partials/field.html" with field=form.course wide=1 %}
+    {% include "partials/field.html" with field=form.message %}
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:20px">{% trans "Send request" %} {% icon "arrow-right" 18 "icon-shift" %}</button>
+  <p class="faint" style="font-size:12.5px;margin:12px 0 0;text-align:center">{% trans "By clicking the button you agree to the processing of personal data." %}</p>
+</form>

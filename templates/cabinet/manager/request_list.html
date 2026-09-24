@@ -1,0 +1,58 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div><h1>{% trans "Requests" %}</h1><p>{% trans "Requests from the website. Change the status as you process them." %}</p></div>
+</div>
+<nav class="tabs" aria-label="{% trans 'Filter by status' %}">
+  <a class="chip{% if not status_filter %} is-active{% endif %}" href="{% query status='' page='' %}">{% trans "All" %} <span class="count">{{ total }}</span></a>
+  {% for s in statuses %}<a class="chip{% if status_filter == s.key %} is-active{% endif %}" href="{% query status=s.key page='' %}">{{ s.label }} <span class="count">{{ s.count }}</span></a>{% endfor %}
+</nav>
+<form class="toolbar" method="get" role="search">
+  {% if status_filter %}<input type="hidden" name="status" value="{{ status_filter }}">{% endif %}
+  <label class="search"><span class="sr-only">{% trans "Search" %}</span>{% icon "search" 18 %}<input type="search" name="q" value="{{ q }}" placeholder="{% trans 'Name, phone or email…' %}"></label>
+  <label class="sr-only" for="r-course">{% trans "Course" %}</label>
+  <select id="r-course" name="course" data-autosubmit>
+    <option value="">{% trans "All courses" %}</option>
+    {% for c in courses %}<option value="{{ c.pk }}"{% if course_filter == c.pk|stringformat:"s" %} selected{% endif %}>{{ c|tr:"title" }}</option>{% endfor %}
+  </select>
+  <button class="btn" type="submit">{% icon "filter" 16 %} {% trans "Apply" %}</button>
+</form>
+<div class="card">
+  {% if page_obj.object_list %}
+  <div class="table-wrap">
+    <table class="table table-stack">
+      <thead><tr><th>{% trans "Client" %}</th><th>{% trans "Course" %}</th><th>{% trans "Received" %}</th><th>{% trans "Status" %}</th><th class="text-right">{% trans "Actions" %}</th></tr></thead>
+      <tbody>
+        {% for r in page_obj %}
+        <tr>
+          <td data-label="{% trans 'Client' %}"><a class="row-link" href="{% url 'cabinet:manager_request_detail' r.pk %}">{{ r.name }}</a><div class="faint" style="font-size:13px"><a href="tel:{{ r.phone }}">{{ r.phone }}</a>{% if r.age %} · {{ r.age }} {% trans "y.o." %}{% endif %}</div></td>
+          <td data-label="{% trans 'Course' %}">{{ r.course|tr:"title"|default:"—" }}</td>
+          <td data-label="{% trans 'Received' %}" class="nowrap">{{ r.created_at|date:"d.m.Y H:i" }}</td>
+          <td data-label="{% trans 'Status' %}">
+            <form method="post" action="{% url 'cabinet:manager_request_status' r.pk %}">{% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <label class="sr-only" for="st-{{ r.pk }}">{% trans "Status" %}</label>
+              <select id="st-{{ r.pk }}" name="status" data-autosubmit style="min-height:36px;padding:6px 36px 6px 12px;border-radius:999px;width:auto;font-size:13.5px">
+                {% for s in statuses %}<option value="{{ s.key }}"{% if r.status == s.key %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+              </select>
+              <noscript><button class="btn btn-xs">OK</button></noscript>
+            </form>
+          </td>
+          <td class="text-right"><div class="actions">
+            {% if r.student %}<a class="btn btn-xs" href="{% url 'cabinet:manager_student_edit' r.student.pk %}">{% icon "user" 14 %} {% trans "Student" %}</a>
+            {% else %}<a class="btn btn-xs" href="{% url 'cabinet:manager_request_to_student' r.pk %}">{% icon "user-plus" 14 %} {% trans "Create student" %}</a>{% endif %}
+            <a class="btn btn-ghost btn-icon btn-sm" href="{% url 'cabinet:manager_request_detail' r.pk %}" aria-label="{% trans 'Open' %}">{% icon "arrow-right" 16 %}</a>
+          </div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    {% trans "No requests found" as t1 %}{% trans "Try changing the filters." as t2 %}
+    {% include "cabinet/shared/_empty.html" with icon="inbox" title=t1 text=t2 %}
+  {% endif %}
+</div>
+{% include "partials/pagination.html" %}
+{% endblock %}

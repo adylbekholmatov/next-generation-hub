@@ -1,0 +1,39 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% if group %}{% url 'cabinet:manager_group_detail' group.pk %}{% else %}{% url 'cabinet:manager_groups' %}{% endif %}">{% icon "arrow-left" 16 %} {% if group %}{{ group.name }}{% else %}{% trans "Groups" %}{% endif %}</a>
+<div class="page-head"><div><h1>{% if group %}{% trans "Edit group" %}{% else %}{% trans "New group" %}{% endif %}</h1></div></div>
+<form class="grid grid-main" method="post" novalidate>
+  {% csrf_token %}
+  <div class="card">
+    <div class="card-head"><h2>{% trans "Group" %}</h2></div>
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">
+        {% include "partials/field.html" with field=form.name wide=1 %}
+        {% include "partials/field.html" with field=form.course %}
+        {% include "partials/field.html" with field=form.teacher %}
+        {% include "partials/field.html" with field=form.weekdays %}
+        {% include "partials/field.html" with field=form.start_time %}
+        {% include "partials/field.html" with field=form.end_time %}
+        {% include "partials/field.html" with field=form.room %}
+        {% include "partials/field.html" with field=form.start_date %}
+        {% include "partials/field.html" with field=form.is_active wide=1 %}
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Students" %}</h2><span class="faint" style="font-size:13px">{% trans "selected" %}: <b id="students-count">0</b></span></div>
+      <div class="card-body">
+        <label class="search" style="max-width:none;margin-bottom:12px"><span class="sr-only">{% trans "Search" %}</span>{% icon "search" 18 %}<input type="search" data-filter-list="students-list" data-counter="students-count" placeholder="{% trans 'Find a student…' %}"></label>
+        <div class="check-list is-column" id="students-list" role="group" aria-label="{% trans 'Students' %}">
+          {% for opt in form.students %}<label for="{{ opt.id_for_label }}">{{ opt.tag }} {{ opt.choice_label }}</label>{% empty %}<span class="faint" style="padding:12px">{% trans "No students yet" %}</span>{% endfor %}
+        </div>
+        {% if form.students.errors %}<ul class="errors">{% for e in form.students.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">{% icon "check" 18 %} {% trans "Save group" %}</button>
+  </div>
+</form>
+{% endblock %}

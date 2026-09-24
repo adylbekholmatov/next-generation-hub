@@ -1,0 +1,70 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% blocktrans with name=user.first_name|default:user.username %}Hello, {{ name }}!{% endblocktrans %}</h1>
+    <p>{% trans "Your groups, lessons and progress." %}</p>
+  </div>
+  <div class="actions"><a class="btn btn-primary" href="{% url 'cabinet:student_lessons' %}">{% icon "play" 16 %} {% trans "Watch lessons" %}</a></div>
+</div>
+
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  <div class="card stat is-ink"><div class="stat-top">{% trans "My attendance" %}<span class="stat-ic">{% icon "chart" 18 %}</span></div><b>{% if percent is not None %}{{ percent }}%{% else %}—{% endif %}</b><small>{% trans "for all time" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Average grade" %}<span class="stat-ic">{% icon "award" 18 %}</span></div><b>{{ avg_grade|default:"—" }}</b><small>{% trans "out of 5" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Groups" %}<span class="stat-ic">{% icon "layers" 18 %}</span></div><b>{{ groups|length }}</b><small>{% trans "active" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Video lessons" %}<span class="stat-ic">{% icon "video" 18 %}</span></div><b>{{ lessons_count }}</b><small>{% trans "available" %}</small></div>
+</div>
+
+<div class="grid grid-main">
+  <div class="grid">
+    <section class="card">
+      <div class="card-head"><h2>{% trans "My groups and schedule" %}</h2></div>
+      {% if groups %}
+      <div class="card-body grid grid-cards">
+        {% for g in groups %}
+        <div class="card group-card">
+          <div class="top"><span class="ic">{% icon g.course.direction 22 %}</span><span class="badge no-dot">{{ g.course.get_level_display }}</span></div>
+          <div><h3>{{ g.name }}</h3><span class="muted" style="font-size:14px">{{ g.course|tr:"title" }}</span></div>
+          <div class="meta">
+            <span>{% icon "calendar" 15 %} {{ g.schedule_display|default:_("Schedule not set") }}</span>
+            {% if g.room %}<span>{% icon "map-pin" 15 %} {% trans "Room" %} {{ g.room }}</span>{% endif %}
+            {% if g.teacher %}<span>{% icon "user" 15 %} {{ g.teacher.display_name }}</span>{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+        {% trans "You are not in a group yet" as t1 %}{% trans "The manager will add you to a group — the schedule will appear here." as t2 %}
+        {% include "cabinet/shared/_empty.html" with icon="layers" title=t1 text=t2 %}
+      {% endif %}
+    </section>
+    {% if lessons %}
+    <section>
+      <div class="row-between" style="margin-bottom:14px"><h2 style="font-size:1.05rem;margin:0">{% trans "New lessons" %}</h2><a class="link" href="{% url 'cabinet:student_lessons' %}">{% trans "All lessons" %} {% icon "arrow-right" 15 %}</a></div>
+      <div class="grid grid-3">{% for lesson in lessons %}{% include "cabinet/shared/_lesson_card.html" %}{% endfor %}</div>
+    </section>
+    {% endif %}
+  </div>
+  <div class="grid">
+    <section class="card">
+      <div class="card-head"><h2>{% trans "Upcoming lessons" %}</h2></div>
+      {% if upcoming %}
+      <ul class="list">
+        {% for s in upcoming %}
+        <li><span class="date-tile{% if s.is_today %} is-today{% endif %}"><b>{{ s.date|date:"j" }}</b><small>{{ s.date|date:"D" }}</small></span><div class="grow" style="min-width:0"><b style="display:block">{{ s.group.course|tr:"title" }}</b><span class="faint" style="font-size:13px">{% if s.group.start_time %}{{ s.group.start_time|time:"H:i" }}–{{ s.group.end_time|time:"H:i" }}{% endif %}{% if s.group.room %} · {{ s.group.room }}{% endif %}</span></div>{% if s.is_today %}<span class="badge badge-accent no-dot">{% trans "Today" %}</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}{% trans "No lessons in the next 7 days" as t1 %}{% include "cabinet/shared/_empty.html" with icon="calendar" title=t1 %}{% endif %}
+    </section>
+    <section class="card">
+      <div class="card-head"><h2>{% trans "Recent marks" %}</h2><a class="link" href="{% url 'cabinet:student_attendance' %}">{% trans "All" %} {% icon "arrow-right" 15 %}</a></div>
+      <ul class="list">
+        {% for r in recent_marks %}
+        <li><span class="jmark {{ r.status }}" aria-hidden="true">{% if r.grade %}{{ r.grade }}{% else %}{{ r.short_label }}{% endif %}</span><div class="grow"><b style="display:block;font-size:14.5px">{{ r.date|date:"j E" }}</b><span class="faint" style="font-size:13px">{{ r.group.name }}</span></div><span class="badge badge-{{ r.status }}">{{ r.get_status_display }}</span></li>
+        {% empty %}<li class="faint">{% trans "No marks yet" %}</li>{% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>
+{% endblock %}

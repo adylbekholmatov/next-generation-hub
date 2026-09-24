@@ -1,0 +1,37 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div><h1>{% trans "Courses" %}</h1><p>{% trans "Courses shown on the website. The order sets the position in the list." %}</p></div>
+  <div class="actions"><a class="btn btn-primary" href="{% url 'cabinet:admin_course_create' %}">{% icon "plus" 16 %} {% trans "New course" %}</a></div>
+</div>
+<div class="card">
+  {% if courses %}
+  <div class="table-wrap">
+    <table class="table table-stack">
+      <thead><tr><th>{% trans "Course" %}</th><th>{% trans "Direction" %}</th><th>{% trans "Price" %}</th><th>{% trans "Groups" %}</th><th>{% trans "Lessons" %}</th><th>{% trans "Status" %}</th><th class="text-right">{% trans "Actions" %}</th></tr></thead>
+      <tbody>
+        {% for c in courses %}
+        <tr{% if not c.is_active %} class="is-muted-row"{% endif %}>
+          <td><div class="user-cell"><span class="stat-ic">{% icon c.direction 18 %}</span><div style="min-width:0"><a class="row-link" href="{% url 'cabinet:admin_course_edit' c.pk %}"><b>{{ c|tr:"title" }}</b></a><small>{{ c.get_level_display }} · {{ c.age_range }} · /{{ c.slug }}</small></div></div></td>
+          <td data-label="{% trans 'Direction' %}">{{ c.get_direction_display }}</td>
+          <td data-label="{% trans 'Price' %}" class="nowrap">{{ c.price|intcomma_space }} {% trans "KGS" %}</td>
+          <td data-label="{% trans 'Groups' %}">{{ c.n_groups }}</td>
+          <td data-label="{% trans 'Lessons' %}">{{ c.n_lessons }}</td>
+          <td data-label="{% trans 'Status' %}">{% if c.is_active %}<span class="badge badge-ok">{% trans "On the website" %}</span>{% else %}<span class="badge">{% trans "Hidden" %}</span>{% endif %}</td>
+          <td class="text-right"><div class="actions">
+            {% if c.is_active %}<a class="btn btn-ghost btn-icon btn-sm" href="{{ c.get_absolute_url }}" target="_blank" rel="noopener" aria-label="{% trans 'Open on the website' %}">{% icon "external" 15 %}</a>{% endif %}
+            <a class="btn btn-ghost btn-icon btn-sm" href="{% url 'cabinet:admin_course_edit' c.pk %}" aria-label="{% trans 'Edit' %}">{% icon "edit" 15 %}</a>
+            <form method="post" action="{% url 'cabinet:admin_course_delete' c.pk %}" data-confirm="{% trans 'Delete this course? If it has groups, it will be hidden instead.' %}">{% csrf_token %}<button class="btn btn-ghost btn-icon btn-sm btn-danger" aria-label="{% trans 'Delete' %}">{% icon "trash" 15 %}</button></form>
+          </div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    {% trans "No courses yet" as t1 %}{% url 'cabinet:admin_course_create' as u %}{% trans "New course" as t3 %}
+    {% include "cabinet/shared/_empty.html" with icon="book" title=t1 action_url=u action_label=t3 %}
+  {% endif %}
+</div>
+{% endblock %}

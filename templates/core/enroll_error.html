@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}{% trans "Check the form" %} — Next-Generation-Hub{% endblock %}
+{% block content %}
+<section class="section-sm">
+  <div class="container" style="max-width:640px">
+    <a class="back-link" href="{{ back }}">{% icon "arrow-left" 16 %} {% trans "Back" %}</a>
+    <div class="alert alert-warn" role="alert" style="margin:12px 0 20px">{% icon "alert" 18 %} {% trans "Please correct the errors in the form and send it again." %}</div>
+    {% include "partials/enroll_form.html" %}
+  </div>
+</section>
+{% endblock %}

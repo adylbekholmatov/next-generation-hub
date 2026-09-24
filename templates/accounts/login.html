@@ -1,0 +1,49 @@
+{% load static i18n core_tags %}{% get_current_language as LANGUAGE_CODE %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}" class="no-js">
+<head>
+  {% include "partials/head.html" %}
+  <title>{% trans "Log in" %} — Next-Generation-Hub</title>
+</head>
+<body>
+  <div class="auth">
+    <section class="auth-art" aria-hidden="true">
+      <a href="{% url 'core:home' %}" class="logo" tabindex="-1"><span class="logo-mark">NG</span><span class="logo-text">Next-Generation-Hub</span></a>
+      <div style="position:relative;z-index:1">
+        <h2>{% trans "One cabinet for the whole learning process" %}</h2>
+        <p>{% trans "Video lessons, attendance journal, groups and requests — everything in one place for students, teachers and managers." %}</p>
+      </div>
+      <div class="orbit">
+        <div class="orbit-ring"></div><div class="orbit-ring r2"></div><div class="orbit-ring r3"></div>
+        <div class="orbit-core"><div>NG</div></div>
+      </div>
+    </section>
+    <main class="auth-form">
+      <div class="inner">
+        <div class="auth-top">
+          <a class="back-link" href="{% url 'core:home' %}" style="margin:0">{% icon "arrow-left" 16 %} {% trans "To the website" %}</a>
+          <div class="row" style="gap:8px">{% include "partials/lang_switch.html" %}{% include "partials/theme_toggle.html" %}</div>
+        </div>
+        <h1>{% trans "Log in" %}</h1>
+        <p class="muted">{% trans "Use the login and password issued by the learning center." %}</p>
+        <form method="post" novalidate style="margin-top:28px" class="stack">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ next }}">
+          {% if form.non_field_errors %}<div class="alert alert-bad" role="alert">{% icon "alert" 18 %}<div>{% for e in form.non_field_errors %}{{ e }}{% endfor %}</div></div>{% endif %}
+          {% include "partials/field.html" with field=form.username %}
+          {% include "partials/field.html" with field=form.password %}
+          <button type="submit" class="btn btn-primary btn-lg btn-block">{% trans "Log in" %} {% icon "arrow-right" 18 "icon-shift" %}</button>
+        </form>
+        {% if debug %}
+        <div class="demo-hint">
+          <b style="color:var(--text)">{% trans "Demo accounts" %}</b> ({% trans "after" %} <code>python manage.py seed</code>):<br>
+          <code>admin</code> / <code>admin12345</code> · <code>manager</code> / <code>manager12345</code><br>
+          <code>teacher1</code> / <code>teacher12345</code> · <code>student1</code> / <code>student12345</code>
+        </div>
+        {% endif %}
+      </div>
+    </main>
+  </div>
+  {% include "partials/messages.html" %}
+  <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>

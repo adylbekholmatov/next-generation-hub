@@ -1,0 +1,96 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% if user.is_teacher %}{% url 'cabinet:teacher_journal' %}{% else %}{% url 'cabinet:manager_journals' %}{% endif %}">{% icon "arrow-left" 16 %} {% trans "Journals" %}</a>
+<div class="page-head">
+  <div>
+    <h1>{{ j.group.name }}</h1>
+    <p>{{ j.group.course|tr:"title" }}{% if j.group.teacher %} · {{ j.group.teacher.display_name }}{% endif %}{% if j.group.schedule_display %} · {{ j.group.schedule_display }}{% endif %}</p>
+  </div>
+  <div class="actions">
+    {% if can_mark %}<a class="btn btn-primary" href="{% url 'cabinet:teacher_mark' %}?group={{ j.group.pk }}">{% icon "clipboard" 16 %} {% trans "Mark a lesson" %}</a>{% endif %}
+    <a class="btn" href="{% url 'cabinet:journal_export' j.group.pk 'csv' %}?month={{ j.month|date:'Y-m' }}">{% icon "download" 16 %} CSV</a>
+    <a class="btn" href="{% url 'cabinet:journal_export' j.group.pk 'xlsx' %}?month={{ j.month|date:'Y-m' }}">{% icon "download" 16 %} Excel</a>
+  </div>
+</div>
+
+<div class="toolbar">
+  <nav class="month-nav" aria-label="{% trans 'Month' %}">
+    <a class="btn btn-ghost btn-icon btn-sm" href="?month={{ j.prev_month|date:'Y-m' }}" aria-label="{% trans 'Previous month' %}">{% icon "chevron-left" 18 %}</a>
+    <b>{{ j.month|date:"F Y" }}</b>
+    <a class="btn btn-ghost btn-icon btn-sm" href="?month={{ j.next_month|date:'Y-m' }}" aria-label="{% trans 'Next month' %}">{% icon "chevron-right" 18 %}</a>
+  </nav>
+  {% if not j.is_current_month %}<a class="chip" href="?">{% trans "Current month" %}</a>{% endif %}
+  {% if groups|length > 1 %}
+  <form method="get" class="row" style="margin-left:auto">
+    <label class="sr-only" for="j-group">{% trans "Group" %}</label>
+    <select id="j-group" onchange="if(this.value) location.href=this.value">
+      {% for g in groups %}<option value="{% url 'cabinet:journal_month' g.pk %}?month={{ j.month|date:'Y-m' }}"{% if g.pk == j.group.pk %} selected{% endif %}>{{ g.name }}</option>{% endfor %}
+    </select>
+  </form>
+  {% endif %}
+</div>
+
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  <div class="card stat is-ink"><div class="stat-top">{% trans "Group attendance" %}<span class="stat-ic">{% icon "chart" 18 %}</span></div><b>{% if j.percent is not None %}{{ j.percent }}%{% else %}—{% endif %}</b><small>{% trans "for the month" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Lessons" %}<span class="stat-ic">{% icon "calendar" 18 %}</span></div><b>{{ j.dates|length }}</b><small>{% trans "in the month" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Students" %}<span class="stat-ic">{% icon "users" 18 %}</span></div><b>{{ j.rows|length }}</b><small>{% trans "in the journal" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Marks" %}<span class="stat-ic">{% icon "check" 18 %}</span></div><b>{{ j.total_marks }}</b><small>{% trans "saved" %}</small></div>
+</div>
+
+<section class="card">
+  <div class="card-head">
+    <h2>{% trans "Journal" %}</h2>
+    <div class="legend">
+      <span><i class="c-present"></i>{% trans "Present" %}</span>
+      <span><i class="c-late"></i>{% trans "Late" %}</span>
+      <span><i class="c-absent"></i>{% trans "Absent" %}</span>
+      <span><i class="c-excused"></i>{% trans "Excused" %}</span>
+    </div>
+  </div>
+  {% if j.rows and j.dates %}
+  <div class="journal-wrap" tabindex="0" role="region" aria-label="{% trans 'Attendance journal' %}">
+    <table class="journal">
+      <thead>
+        <tr>
+          <th class="sticky-col" scope="col">{% trans "Student" %}</th>
+          {% now "Y-m-d" as today_str %}
+          {% for d in j.dates %}<th scope="col" class="{% if d|date:'Y-m-d' == today_str %}is-today{% endif %}"><span class="wd">{{ d|date:"D" }}</span>{{ d|date:"d.m" }}</th>{% endfor %}
+          <th class="sum-col" scope="col">%</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in j.rows %}
+        <tr>
+          <th class="sticky-col" scope="row"><div class="user-cell">{% include "partials/avatar.html" with u=row.student size="avatar-sm" %}<div style="min-width:0"><b>{{ row.student.display_name }}</b>{% if row.avg_grade %}<small>{% trans "avg. grade" %} {{ row.avg_grade }}</small>{% endif %}</div></div></th>
+          {% for d, cell in row.slots %}
+          <td><div class="jcell">
+            {% if cell %}
+              <span class="jmark {{ cell.status }}" title="{{ cell.get_status_display }}{% if cell.grade %} · {% trans 'grade' %} {{ cell.grade }}{% endif %}{% if cell.comment %} · {{ cell.comment }}{% endif %}">{% if cell.grade %}{{ cell.grade }}{% else %}{{ cell.short_label }}{% endif %}{% if cell.comment %}<span class="has-comment"></span>{% endif %}</span>
+            {% elif can_mark %}
+              <a class="jempty" href="{% url 'cabinet:teacher_mark' %}?group={{ j.group.pk }}&amp;date={{ d|date:'Y-m-d' }}" aria-label="{% trans 'Mark' %} {{ d|date:'d.m' }}">+</a>
+            {% else %}<span class="jempty" aria-label="{% trans 'Not marked' %}">·</span>{% endif %}
+          </div></td>
+          {% endfor %}
+          <td class="sum-col"><span class="pct {{ row.percent|percent_level }}">{% if row.percent is not None %}{{ row.percent }}%{% else %}—{% endif %}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="sticky-col">{% trans "Group, %" %}</td>
+          {% for p in j.per_date %}<td><span class="pct {{ p.percent|percent_level }}">{% if p.percent is not None %}{{ p.percent }}{% else %}—{% endif %}</span></td>{% endfor %}
+          <td class="sum-col"><span class="pct {{ j.percent|percent_level }}">{% if j.percent is not None %}{{ j.percent }}%{% else %}—{% endif %}</span></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  {% elif not j.rows %}
+    {% trans "No students in the group" as t1 %}{% include "cabinet/shared/_empty.html" with icon="users" title=t1 %}
+  {% else %}
+    {% trans "No lessons this month" as t1 %}{% trans "Set the group schedule or mark the first lesson — it will appear here." as t2 %}
+    {% include "cabinet/shared/_empty.html" with icon="calendar" title=t1 text=t2 %}
+  {% endif %}
+</section>
+<p class="faint" style="font-size:13px;margin-top:12px">{% trans "Attendance % = (present + late) / all marks excluding excused absences. A number in a cell is the grade." %}</p>
+{% endblock %}

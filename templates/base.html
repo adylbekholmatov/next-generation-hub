@@ -1,0 +1,113 @@
+{% load static i18n core_tags %}{% get_current_language as LANGUAGE_CODE %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}" class="no-js">
+<head>
+  {% include "partials/head.html" %}
+  <title>{% block title %}{% trans "Next-Generation-Hub — robotics, programming and 3D modeling courses" %}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{% trans 'Learning center in Bishkek: robotics, Frontend and Backend programming, 3D modeling in Fusion 360 and Blender for kids and teens.' %}{% endblock %}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#main">{% trans "Skip to content" %}</a>
+  {% url 'core:home' as home_url %}{% url 'core:course_list' as courses_url %}{% url 'core:news_list' as news_url %}{% url 'core:about' as about_url %}{% url 'core:contacts' as contacts_url %}
+  <header class="site-header">
+    <div class="container header-inner">
+      {% include "partials/logo.html" %}
+      <nav class="main-nav" aria-label="{% trans 'Main menu' %}">
+        <a href="{{ courses_url }}"{% if request.path|startswith:courses_url %} aria-current="page"{% endif %}>{% trans "Courses" %}</a>
+        <a href="{{ about_url }}"{% if request.path == about_url %} aria-current="page"{% endif %}>{% trans "About us" %}</a>
+        <a href="{{ news_url }}"{% if request.path|startswith:news_url %} aria-current="page"{% endif %}>{% trans "News" %}</a>
+        <a href="{{ contacts_url }}"{% if request.path == contacts_url %} aria-current="page"{% endif %}>{% trans "Contacts" %}</a>
+      </nav>
+      <div class="header-tools">
+        {% include "partials/lang_switch.html" %}
+        {% include "partials/theme_toggle.html" %}
+        {% if user.is_authenticated %}
+          <a class="btn btn-primary btn-sm" href="{% url 'cabinet:home' %}">{% icon "grid" 16 %}<span class="btn-cabinet-text">{% trans "Cabinet" %}</span></a>
+        {% else %}
+          <a class="btn btn-sm btn-cabinet-text" href="{% url 'accounts:login' %}">{% icon "login" 16 %}{% trans "Log in" %}</a>
+          <a class="btn btn-primary btn-sm btn-enroll" href="{{ home_url }}#enroll">{% trans "Enroll" %}</a>
+        {% endif %}
+        <button type="button" class="btn btn-icon burger" data-mobile-nav-open aria-controls="mobile-nav" aria-expanded="false" aria-label="{% trans 'Open menu' %}">{% icon "menu" 20 %}</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="{% trans 'Menu' %}">
+    <div class="mobile-nav-top">
+      {% include "partials/logo.html" %}
+      <button type="button" class="btn btn-icon" data-mobile-nav-close aria-label="{% trans 'Close menu' %}">{% icon "x" 20 %}</button>
+    </div>
+    <nav aria-label="{% trans 'Main menu' %}">
+      <a href="{{ home_url }}">{% trans "Home" %} {% icon "arrow-up-right" 22 %}</a>
+      <a href="{{ courses_url }}">{% trans "Courses" %} {% icon "arrow-up-right" 22 %}</a>
+      <a href="{{ about_url }}">{% trans "About us" %} {% icon "arrow-up-right" 22 %}</a>
+      <a href="{{ news_url }}">{% trans "News" %} {% icon "arrow-up-right" 22 %}</a>
+      <a href="{{ contacts_url }}">{% trans "Contacts" %} {% icon "arrow-up-right" 22 %}</a>
+    </nav>
+    <div class="mobile-nav-bottom">
+      <div class="row-between">{% include "partials/lang_switch.html" %}{% include "partials/theme_toggle.html" %}</div>
+      {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-lg btn-block" href="{% url 'cabinet:home' %}">{% icon "grid" 18 %}{% trans "Go to cabinet" %}</a>
+      {% else %}
+        <a class="btn btn-accent btn-lg btn-block" href="{{ home_url }}#enroll" data-mobile-nav-close>{% trans "Enroll in a course" %}</a>
+        <a class="btn btn-lg btn-block" href="{% url 'accounts:login' %}">{% icon "login" 18 %}{% trans "Log in" %}</a>
+      {% endif %}
+    </div>
+  </div>
+
+  <main id="main">{% block content %}{% endblock %}</main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          {% include "partials/logo.html" %}
+          <p class="muted" style="margin-top:16px;max-width:36ch">{% trans "We teach children and teenagers to create technology: robots, websites, services and 3D worlds." %}</p>
+          <div class="socials">
+            <a href="{{ SITE.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{% icon "instagram" 18 %}</a>
+            <a href="{{ SITE.telegram }}" target="_blank" rel="noopener" aria-label="Telegram">{% icon "telegram" 18 %}</a>
+            <a href="{{ SITE.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% icon "whatsapp" 18 %}</a>
+          </div>
+        </div>
+        <div>
+          <h4>{% trans "Directions" %}</h4>
+          <ul>
+            <li><a href="{{ courses_url }}?direction=robotics">{% trans "Robotics" %}</a></li>
+            <li><a href="{{ courses_url }}?direction=frontend">Frontend</a></li>
+            <li><a href="{{ courses_url }}?direction=backend">Backend</a></li>
+            <li><a href="{{ courses_url }}?direction=fusion360">Fusion 360</a></li>
+            <li><a href="{{ courses_url }}?direction=blender">Blender</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>{% trans "Center" %}</h4>
+          <ul>
+            <li><a href="{{ about_url }}">{% trans "About us" %}</a></li>
+            <li><a href="{{ news_url }}">{% trans "News" %}</a></li>
+            <li><a href="{{ contacts_url }}">{% trans "Contacts" %}</a></li>
+            <li><a href="{% url 'accounts:login' %}">{% trans "Log in" %}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>{% trans "Contacts" %}</h4>
+          <ul>
+            <li><a href="{{ SITE.phone_href }}">{{ SITE.phone }}</a></li>
+            <li><a href="mailto:{{ SITE.email }}">{{ SITE.email }}</a></li>
+            <li class="muted">{{ SITE.address }}</li>
+            <li class="faint">{{ SITE.hours }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-word" aria-hidden="true">Next<span>—</span>Gen<span>—</span>Hub</div>
+      <div class="footer-bottom">
+        <span>© {% now "Y" %} Next-Generation-Hub. {% trans "All rights reserved." %}</span>
+        <span>{% trans "Made in Bishkek with love for technology" %}</span>
+      </div>
+    </div>
+  </footer>
+
+  {% include "partials/messages.html" %}
+  <script src="{% static 'js/main.js' %}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

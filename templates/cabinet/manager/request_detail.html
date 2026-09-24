@@ -1,0 +1,47 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% url 'cabinet:manager_requests' %}">{% icon "arrow-left" 16 %} {% trans "Requests" %}</a>
+<div class="page-head">
+  <div>
+    <h1>{{ obj.name }}</h1>
+    <p><span class="badge badge-{{ obj.status }}">{{ obj.get_status_display }}</span> <span class="faint" style="margin-left:8px">{% trans "Received" %} {{ obj.created_at|date:"j E Y, H:i" }}</span></p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="tel:{{ obj.phone }}">{% icon "phone" 16 %} {% trans "Call" %}</a>
+    {% if obj.student %}<a class="btn btn-primary" href="{% url 'cabinet:manager_student_edit' obj.student.pk %}">{% icon "user" 16 %} {% trans "Student account" %}</a>
+    {% else %}<a class="btn btn-primary" href="{% url 'cabinet:manager_request_to_student' obj.pk %}">{% icon "user-plus" 16 %} {% trans "Create student from request" %}</a>{% endif %}
+  </div>
+</div>
+<div class="grid grid-main">
+  <form class="card" method="post" novalidate>
+    {% csrf_token %}
+    <div class="card-head"><h2>{% if full %}{% trans "Edit request" %}{% else %}{% trans "Processing" %}{% endif %}</h2>{% if not full %}<a class="link" href="?full=1">{% icon "edit" 14 %} {% trans "Edit all fields" %}</a>{% endif %}</div>
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">{% for field in form %}{% include "partials/field.html" with wide=1 %}{% endfor %}</div>
+    </div>
+    <div class="card-foot">
+      <button type="submit" class="btn btn-primary">{% icon "check" 16 %} {% trans "Save" %}</button>
+    </div>
+  </form>
+  <div class="grid">
+    <section class="card card-pad">
+      <h2 style="font-size:1.05rem">{% trans "Request details" %}</h2>
+      <dl class="kv" style="margin-top:16px">
+        <dt>{% trans "Phone" %}</dt><dd><a href="tel:{{ obj.phone }}">{{ obj.phone }}</a></dd>
+        <dt>Email</dt><dd>{% if obj.email %}<a href="mailto:{{ obj.email }}">{{ obj.email }}</a>{% else %}—{% endif %}</dd>
+        <dt>{% trans "Age" %}</dt><dd>{{ obj.age|default:"—" }}</dd>
+        <dt>{% trans "Course" %}</dt><dd>{{ obj.course|tr:"title"|default:"—" }}</dd>
+        <dt>{% trans "Handled by" %}</dt><dd>{{ obj.handled_by.display_name|default:"—" }}</dd>
+        <dt>{% trans "Updated" %}</dt><dd>{{ obj.updated_at|date:"j E Y, H:i" }}</dd>
+      </dl>
+      {% if obj.message %}<hr><p class="faint" style="font-size:13px;margin-bottom:6px">{% trans "Message" %}</p><p style="margin:0">{{ obj.message|linebreaksbr }}</p>{% endif %}
+    </section>
+    <form class="card card-pad" method="post" action="{% url 'cabinet:manager_request_delete' obj.pk %}" data-confirm="{% trans 'Delete this request permanently?' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger btn-block">{% icon "trash" 16 %} {% trans "Delete request" %}</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

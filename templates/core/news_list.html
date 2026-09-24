@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}{% trans "News" %} — Next-Generation-Hub{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}"><a href="{% url 'core:home' %}">{% trans "Home" %}</a> {% icon "chevron-right" 14 %} <span>{% trans "News" %}</span></nav>
+    <h1>{% trans "News" %}</h1>
+    <p>{% trans "Competitions, student projects, new groups and events of the center." %}</p>
+  </div>
+</section>
+<section class="section-sm">
+  <div class="container">
+    {% if page_obj.object_list %}
+      <div class="news-grid">{% for item in page_obj %}{% include "partials/news_card.html" %}{% endfor %}</div>
+      {% include "partials/pagination.html" %}
+    {% else %}
+      <div class="card empty"><span class="ic">{% icon "news" 28 %}</span><h3>{% trans "No news yet" %}</h3><p>{% trans "Come back later — something interesting is coming soon." %}</p></div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

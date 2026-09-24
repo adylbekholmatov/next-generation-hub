@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}{% trans "Courses" %} — Next-Generation-Hub{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}"><a href="{% url 'core:home' %}">{% trans "Home" %}</a> {% icon "chevron-right" 14 %} <span>{% trans "Courses" %}</span></nav>
+    <h1>{% trans "Courses for kids and teens" %}</h1>
+    <p>{% trans "Five directions, clear programs and a final project in every course. Filter by direction to find your own." %}</p>
+  </div>
+</section>
+<section class="section-sm" style="padding-top:0">
+  <div class="container">
+    <nav class="filter-bar" aria-label="{% trans 'Filter by direction' %}">
+      <a class="chip{% if not active_direction %} is-active{% endif %}" href="{% url 'core:course_list' %}"{% if not active_direction %} aria-current="true"{% endif %}>{% trans "All" %}</a>
+      {% for d in directions %}
+      <a class="chip{% if active_direction == d.code %} is-active{% endif %}" href="?direction={{ d.code }}"{% if active_direction == d.code %} aria-current="true"{% endif %}>{% icon d.code 15 %} {{ d.label }} <span class="count">{{ d.count }}</span></a>
+      {% endfor %}
+    </nav>
+    {% if courses %}
+      <div class="course-grid">{% for course in courses %}{% include "partials/course_card.html" with uid="list" %}{% endfor %}</div>
+    {% else %}
+      <div class="card empty">
+        <span class="ic">{% icon "book" 28 %}</span>
+        <h3>{% trans "No courses in this direction yet" %}</h3>
+        <p>{% trans "Leave a request — we will let you know when a group starts." %}</p>
+        <a class="btn btn-primary" href="{% url 'core:home' %}#enroll">{% trans "Leave a request" %}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

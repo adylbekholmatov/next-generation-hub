@@ -1,0 +1,58 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% url 'cabinet:manager_groups' %}">{% icon "arrow-left" 16 %} {% trans "Groups" %}</a>
+<div class="page-head">
+  <div>
+    <h1>{{ group.name }} {% if not group.is_active %}<span class="badge">{% trans "Archive" %}</span>{% endif %}</h1>
+    <p>{{ group.course|tr:"title" }}</p>
+  </div>
+  <div class="actions">
+    <a class="btn" href="{% url 'cabinet:journal_month' group.pk %}">{% icon "table" 16 %} {% trans "Journal" %}</a>
+    <a class="btn btn-primary" href="{% url 'cabinet:manager_group_edit' group.pk %}">{% icon "edit" 16 %} {% trans "Edit" %}</a>
+  </div>
+</div>
+<div class="grid grid-4 keep-2" style="margin-bottom:20px">
+  <div class="card stat is-ink"><div class="stat-top">{% trans "Attendance" %}<span class="stat-ic">{% icon "chart" 18 %}</span></div><b>{% if group.month_percent is not None %}{{ group.month_percent }}%{% else %}—{% endif %}</b><small>{% trans "this month" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Students" %}<span class="stat-ic">{% icon "users" 18 %}</span></div><b>{{ group.n_students }}</b><small>{% trans "in the group" %}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Teacher" %}<span class="stat-ic">{% icon "user" 18 %}</span></div><b style="font-size:1.1rem;letter-spacing:-.01em">{{ group.teacher.display_name|default:"—" }}</b><small>{{ group.teacher.phone|default:"" }}</small></div>
+  <div class="card stat"><div class="stat-top">{% trans "Schedule" %}<span class="stat-ic">{% icon "calendar" 18 %}</span></div><b style="font-size:1.1rem;letter-spacing:-.01em">{{ group.schedule_display|default:"—" }}</b><small>{% if group.room %}{% trans "Room" %} {{ group.room }} · {% endif %}{% trans "since" %} {{ group.start_date|date:"d.m.Y" }}</small></div>
+</div>
+<div class="grid grid-main">
+  <section class="card">
+    <div class="card-head"><h2>{% trans "Group members" %}</h2><a class="link" href="{% url 'cabinet:manager_group_edit' group.pk %}">{% icon "users" 15 %} {% trans "Change" %}</a></div>
+    {% if students %}
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>{% trans "Student" %}</th><th>{% trans "Phone" %}</th><th></th></tr></thead>
+        <tbody>
+          {% for s in students %}
+          <tr{% if not s.is_active %} class="is-muted-row"{% endif %}>
+            <td><div class="user-cell">{% include "partials/avatar.html" with u=s size="avatar-sm" %}<div style="min-width:0"><b>{{ s.display_name }}</b><small>{{ s.username }}</small></div></div></td>
+            <td class="nowrap">{{ s.phone|default:"—" }}</td>
+            <td class="text-right"><a class="btn btn-ghost btn-icon btn-sm" href="{% url 'cabinet:manager_student_edit' s.pk %}" aria-label="{% trans 'Edit' %}">{% icon "edit" 15 %}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+      {% trans "No students in the group" as t1 %}{% url 'cabinet:manager_group_edit' group.pk as u %}{% trans "Add students" as t3 %}
+      {% include "cabinet/shared/_empty.html" with icon="users" title=t1 action_url=u action_label=t3 %}
+    {% endif %}
+  </section>
+  <div class="grid">
+    <section class="card">
+      <div class="card-head"><h2>{% trans "Video lessons" %}</h2></div>
+      <ul class="list">
+        {% for l in lessons %}<li><span class="n stat-ic" style="width:32px;height:32px;font-size:12px;font-weight:700">{{ l.number }}</span><a class="grow row-link" href="{% url 'cabinet:lesson_detail' l.pk %}">{{ l.title }}</a></li>
+        {% empty %}<li class="faint">{% trans "No lessons yet" %}</li>{% endfor %}
+      </ul>
+    </section>
+    <form class="card card-pad" method="post" action="{% url 'cabinet:manager_group_delete' group.pk %}" data-confirm="{% trans 'Delete this group? If it has attendance records, it will be archived instead.' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger btn-block">{% icon "trash" 16 %} {% trans "Delete group" %}</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

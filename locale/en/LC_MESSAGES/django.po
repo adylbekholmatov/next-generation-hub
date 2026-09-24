@@ -1,0 +1,2467 @@
+# Next-Generation-Hub translations.
+# После правок выполните: python manage.py compilemo
+msgid ""
+msgstr ""
+"Project-Id-Version: Next-Generation-Hub 1.0\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/admin.py
+msgid "Learning center profile"
+msgstr "Learning center profile"
+
+#: accounts/apps.py
+msgid "Accounts"
+msgstr "Accounts"
+
+#: accounts/forms.py
+msgid "About me"
+msgstr "About me"
+
+#: accounts/forms.py
+msgid "At least 6 characters, not too simple."
+msgstr "At least 6 characters, not too simple."
+
+#: accounts/forms.py
+msgid "Current password"
+msgstr "Current password"
+
+#: accounts/forms.py core/forms.py
+msgid "Email"
+msgstr "Email"
+
+#: accounts/forms.py
+msgid "First name"
+msgstr "First name"
+
+#: accounts/forms.py
+msgid "Last name"
+msgstr "Last name"
+
+#: accounts/forms.py templates/accounts/profile.html
+msgid "Login"
+msgstr "Login"
+
+#: accounts/forms.py cabinet/forms.py
+msgid "New password"
+msgstr "New password"
+
+#: accounts/forms.py cabinet/forms.py cabinet/navigation.py
+msgid "Password"
+msgstr "Password"
+
+#: accounts/forms.py core/forms.py templates/accounts/profile.html templates/cabinet/manager/group_detail.html
+msgid "Phone"
+msgstr "Phone"
+
+#: accounts/forms.py
+msgid "Photo"
+msgstr "Photo"
+
+#: accounts/forms.py
+msgid "Repeat new password"
+msgstr "Repeat new password"
+
+#: accounts/forms.py
+msgid "Specialization"
+msgstr "Specialization"
+
+#: accounts/models.py
+msgid "Administrator"
+msgstr "Administrator"
+
+#: accounts/models.py
+msgid "Manager"
+msgstr "Manager"
+
+#: accounts/models.py cabinet/journal.py templates/cabinet/manager/group_detail.html templates/cabinet/manager/request_list.html
+msgid "Student"
+msgstr "Student"
+
+#: accounts/models.py templates/cabinet/manager/group_detail.html
+msgid "Teacher"
+msgstr "Teacher"
+
+#: accounts/models.py
+msgid "about"
+msgstr "about"
+
+#: accounts/models.py core/models.py
+msgid "phone"
+msgstr "phone"
+
+#: accounts/models.py
+msgid "photo"
+msgstr "photo"
+
+#: accounts/models.py
+msgid "role"
+msgstr "role"
+
+#: accounts/models.py
+msgid "specialization"
+msgstr "specialization"
+
+#: accounts/models.py
+msgid "user"
+msgstr "user"
+
+#: accounts/models.py
+msgid "users"
+msgstr "users"
+
+#: accounts/views.py templates/accounts/password_change.html templates/accounts/profile.html
+msgid "Change password"
+msgstr "Change password"
+
+#: accounts/views.py
+msgid "Password changed."
+msgstr "Password changed."
+
+#: accounts/views.py cabinet/navigation.py templates/accounts/password_change.html templates/accounts/profile.html
+msgid "Profile"
+msgstr "Profile"
+
+#: accounts/views.py
+msgid "Profile saved."
+msgstr "Profile saved."
+
+#: cabinet/apps.py
+msgid "Cabinets"
+msgstr "Cabinets"
+
+#: cabinet/forms.py
+msgid "About"
+msgstr "About"
+
+#: cabinet/forms.py
+msgid "Account is active"
+msgstr "Account is active"
+
+#: cabinet/forms.py
+msgid "All groups of the course"
+msgstr "All groups of the course"
+
+#: cabinet/forms.py
+msgid "Call results, agreements…"
+msgstr "Call results, agreements…"
+
+#: cabinet/forms.py
+msgid "Days of week"
+msgstr "Days of week"
+
+#: cabinet/forms.py
+msgid "Full description"
+msgstr "Full description"
+
+#: cabinet/forms.py cabinet/navigation.py cabinet/views/manager.py templates/cabinet/admin/course_list.html
+msgid "Groups"
+msgstr "Groups"
+
+#: cabinet/forms.py
+msgid "Latin letters, digits and . _ - only."
+msgstr "Latin letters, digits and . _ - only."
+
+#: cabinet/forms.py
+msgid "Leave empty to generate"
+msgstr "Leave empty to generate"
+
+#: cabinet/forms.py
+msgid "Leave empty to generate a password automatically."
+msgstr "Leave empty to generate a password automatically."
+
+#: cabinet/forms.py
+msgid "Leave empty to keep the current password."
+msgstr "Leave empty to keep the current password."
+
+#: cabinet/forms.py
+#, python-format
+msgid "MP4, WebM or MOV, up to %(size)s MB."
+msgstr "MP4, WebM or MOV, up to %(size)s MB."
+
+#: cabinet/forms.py
+msgid "Note"
+msgstr "Note"
+
+#: cabinet/forms.py
+msgid "Part of the page address. Leave empty to generate from the title."
+msgstr "Part of the page address. Leave empty to generate from the title."
+
+#: cabinet/forms.py
+msgid "Short description"
+msgstr "Short description"
+
+#: cabinet/forms.py
+msgid "Text"
+msgstr "Text"
+
+#: cabinet/forms.py core/models.py
+msgid "The group belongs to a different course."
+msgstr "The group belongs to a different course."
+
+#: cabinet/forms.py
+msgid "The lesson must end after it starts."
+msgstr "The lesson must end after it starts."
+
+#: cabinet/forms.py
+msgid "The maximum age must not be less than the minimum."
+msgstr "The maximum age must not be less than the minimum."
+
+#: cabinet/forms.py templates/cabinet/manager/news_list.html
+msgid "Title"
+msgstr "Title"
+
+#: cabinet/forms.py core/models.py
+msgid "Upload a video file or paste a YouTube link."
+msgstr "Upload a video file or paste a YouTube link."
+
+#: cabinet/journal.py
+msgid "Attendance, %"
+msgstr "Attendance, %"
+
+#: cabinet/journal.py templates/cabinet/student/dashboard.html
+msgid "Average grade"
+msgstr "Average grade"
+
+#: cabinet/journal.py templates/cabinet/manager/group_form.html templates/cabinet/manager/student_list.html templates/cabinet/shared/journal_month.html
+msgid "Group"
+msgstr "Group"
+
+#: cabinet/navigation.py templates/cabinet/manager/student_form.html
+msgid "Account"
+msgstr "Account"
+
+#: cabinet/navigation.py
+msgid "Administration"
+msgstr "Administration"
+
+#: cabinet/navigation.py cabinet/views/manager.py
+msgid "Attendance journals"
+msgstr "Attendance journals"
+
+#: cabinet/navigation.py cabinet/views/admin.py templates/404.html templates/base.html
+msgid "Courses"
+msgstr "Courses"
+
+#: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/dashboard.html
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: cabinet/navigation.py
+msgid "Django admin"
+msgstr "Django admin"
+
+#: cabinet/navigation.py core/apps.py
+msgid "Learning center"
+msgstr "Learning center"
+
+#: cabinet/navigation.py
+msgid "Management"
+msgstr "Management"
+
+#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/dashboard.html templates/cabinet/teacher/mark.html
+msgid "Mark attendance"
+msgstr "Mark attendance"
+
+#: cabinet/navigation.py cabinet/views/teacher.py templates/cabinet/teacher/mark.html
+msgid "Monthly journal"
+msgstr "Monthly journal"
+
+#: cabinet/navigation.py cabinet/views/student.py templates/cabinet/student/attendance.html templates/cabinet/student/dashboard.html
+msgid "My attendance"
+msgstr "My attendance"
+
+#: cabinet/navigation.py cabinet/views/manager.py templates/base.html templates/cabinet/admin/dashboard.html
+msgid "News"
+msgstr "News"
+
+#: cabinet/navigation.py cabinet/views/manager.py cabinet/views/student.py cabinet/views/teacher.py
+msgid "Overview"
+msgstr "Overview"
+
+#: cabinet/navigation.py cabinet/views/manager.py templates/cabinet/manager/request_detail.html templates/cabinet/manager/request_list.html
+msgid "Requests"
+msgstr "Requests"
+
+#: cabinet/navigation.py cabinet/views/manager.py templates/cabinet/admin/dashboard.html templates/cabinet/manager/group_detail.html
+msgid "Students"
+msgstr "Students"
+
+#: cabinet/navigation.py
+msgid "Studying"
+msgstr "Studying"
+
+#: cabinet/navigation.py
+msgid "Teaching"
+msgstr "Teaching"
+
+#: cabinet/navigation.py cabinet/views/admin.py templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
+msgid "Users"
+msgstr "Users"
+
+#: cabinet/navigation.py cabinet/views/student.py cabinet/views/teacher.py templates/cabinet/admin/dashboard.html
+msgid "Video lessons"
+msgstr "Video lessons"
+
+#: cabinet/views/admin.py
+msgid "Course deleted."
+msgstr "Course deleted."
+
+#: cabinet/views/admin.py
+msgid "Course saved."
+msgstr "Course saved."
+
+#: cabinet/views/admin.py templates/cabinet/admin/course_list.html
+msgid "New course"
+msgstr "New course"
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "New password for %(login)s: %(password)s"
+msgstr "New password for %(login)s: %(password)s"
+
+#: cabinet/views/admin.py templates/cabinet/admin/dashboard.html templates/cabinet/admin/user_list.html
+msgid "New user"
+msgstr "New user"
+
+#: cabinet/views/admin.py
+msgid "The course has groups, so it was hidden from the site instead of being deleted."
+msgstr "The course has groups, so it was hidden from the site instead of being deleted."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User %(name)s blocked."
+msgstr "User %(name)s blocked."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User %(name)s unblocked."
+msgstr "User %(name)s unblocked."
+
+#: cabinet/views/admin.py
+msgid "User created."
+msgstr "User created."
+
+#: cabinet/views/admin.py
+#, python-format
+msgid "User created. Login: %(login)s, password: %(password)s"
+msgstr "User created. Login: %(login)s, password: %(password)s"
+
+#: cabinet/views/admin.py
+msgid "User saved."
+msgstr "User saved."
+
+#: cabinet/views/admin.py
+msgid "You cannot block yourself."
+msgstr "You cannot block yourself."
+
+#: cabinet/views/manager.py
+msgid "A student account has already been created for this request."
+msgstr "A student account has already been created for this request."
+
+#: cabinet/views/manager.py
+#, python-format
+msgid "Account created. Login: %(login)s, password: %(password)s — pass them to the student."
+msgstr "Account created. Login: %(login)s, password: %(password)s — pass them to the student."
+
+#: cabinet/views/manager.py
+msgid "Edit news"
+msgstr "Edit news"
+
+#: cabinet/views/manager.py
+msgid "Group deleted."
+msgstr "Group deleted."
+
+#: cabinet/views/manager.py
+msgid "Group saved."
+msgstr "Group saved."
+
+#: cabinet/views/manager.py templates/cabinet/manager/group_form.html templates/cabinet/manager/group_list.html
+msgid "New group"
+msgstr "New group"
+
+#: cabinet/views/manager.py
+msgid "New news item"
+msgstr "New news item"
+
+#: cabinet/views/manager.py templates/cabinet/manager/dashboard.html templates/cabinet/manager/student_list.html
+msgid "New student"
+msgstr "New student"
+
+#: cabinet/views/manager.py
+msgid "News deleted."
+msgstr "News deleted."
+
+#: cabinet/views/manager.py
+msgid "News saved."
+msgstr "News saved."
+
+#: cabinet/views/manager.py
+msgid "Request deleted."
+msgstr "Request deleted."
+
+#: cabinet/views/manager.py
+msgid "Request updated."
+msgstr "Request updated."
+
+#: cabinet/views/manager.py
+#, python-format
+msgid "Status changed: %(status)s."
+msgstr "Status changed: %(status)s."
+
+#: cabinet/views/manager.py
+msgid "Student created."
+msgstr "Student created."
+
+#: cabinet/views/manager.py
+msgid "Student from request"
+msgstr "Student from request"
+
+#: cabinet/views/manager.py
+msgid "Student saved."
+msgstr "Student saved."
+
+#: cabinet/views/manager.py
+msgid "The group has attendance records, so it was moved to the archive instead."
+msgstr "The group has attendance records, so it was moved to the archive instead."
+
+#: cabinet/views/teacher.py
+msgid "Edit lesson"
+msgstr "Edit lesson"
+
+#: cabinet/views/teacher.py
+#, python-format
+msgid "Journal saved: %(n)s students."
+msgstr "Journal saved: %(n)s students."
+
+#: cabinet/views/teacher.py
+msgid "Lesson deleted."
+msgstr "Lesson deleted."
+
+#: cabinet/views/teacher.py
+msgid "Lesson saved."
+msgstr "Lesson saved."
+
+#: cabinet/views/teacher.py
+msgid "Lesson uploaded."
+msgstr "Lesson uploaded."
+
+#: cabinet/views/teacher.py
+msgid "New video lesson"
+msgstr "New video lesson"
+
+#: cabinet/views/teacher.py templates/cabinet/teacher/mark.html
+msgid "You cannot mark a lesson in the future."
+msgstr "You cannot mark a lesson in the future."
+
+#: core/context_processors.py
+msgid "Bishkek, Chui Avenue 155, 3rd floor"
+msgstr "Bishkek, Chui Avenue 155, 3rd floor"
+
+#: core/context_processors.py
+msgid "Mon–Sat, 9:00–20:00"
+msgstr "Mon–Sat, 9:00–20:00"
+
+#: core/forms.py
+msgid "Aibek Asanov"
+msgstr "Aibek Asanov"
+
+#: core/forms.py templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
+msgid "Comment"
+msgstr "Comment"
+
+#: core/forms.py templates/cabinet/admin/course_list.html templates/cabinet/manager/request_detail.html templates/cabinet/manager/request_list.html
+msgid "Course"
+msgstr "Course"
+
+#: core/forms.py
+msgid "Enter a valid phone number, for example +996 555 123 456."
+msgstr "Enter a valid phone number, for example +996 555 123 456."
+
+#: core/forms.py
+msgid "Not decided yet — help me choose"
+msgstr "Not decided yet — help me choose"
+
+#: core/forms.py
+msgid "Questions, convenient time to call…"
+msgstr "Questions, convenient time to call…"
+
+#: core/forms.py
+msgid "Student's age"
+msgstr "Student's age"
+
+#: core/forms.py
+msgid "Your name"
+msgstr "Your name"
+
+#: core/models.py
+msgid "3D modeling: Blender"
+msgstr "3D modeling: Blender"
+
+#: core/models.py
+msgid "3D modeling: Fusion 360"
+msgstr "3D modeling: Fusion 360"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "A"
+msgstr "A"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Absent"
+msgstr "Absent"
+
+#: core/models.py
+msgid "Advanced"
+msgstr "Advanced"
+
+#: core/models.py
+msgid "Arduino, sensors, motors and real robots you build with your own hands."
+msgstr "Arduino, sensors, motors and real robots you build with your own hands."
+
+#: core/models.py
+msgid "Backend"
+msgstr "Backend"
+
+#: core/models.py
+msgid "Beginner"
+msgstr "Beginner"
+
+#: core/models.py
+msgid "Blender"
+msgstr "Blender"
+
+#: core/models.py
+msgid "Comma-separated numbers: 0 = Monday … 6 = Sunday."
+msgstr "Comma-separated numbers: 0 = Monday … 6 = Sunday."
+
+#: core/models.py
+msgid "Contacted"
+msgstr "Contacted"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "E"
+msgstr "E"
+
+#: core/models.py
+msgid "Engineering 3D design, drawings and models ready for 3D printing."
+msgstr "Engineering 3D design, drawings and models ready for 3D printing."
+
+#: core/models.py
+msgid "Enrolled"
+msgstr "Enrolled"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Excused"
+msgstr "Excused"
+
+#: core/models.py
+msgid "File"
+msgstr "File"
+
+#: core/models.py
+msgid "Fri"
+msgstr "Fri"
+
+#: core/models.py
+msgid "Frontend"
+msgstr "Frontend"
+
+#: core/models.py
+msgid "Fusion 360"
+msgstr "Fusion 360"
+
+#: core/models.py
+msgid "HTML, CSS and JavaScript: interfaces that people love to use."
+msgstr "HTML, CSS and JavaScript: interfaces that people love to use."
+
+#: core/models.py
+msgid "Intermediate"
+msgstr "Intermediate"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "L"
+msgstr "L"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Late"
+msgstr "Late"
+
+#: core/models.py
+msgid "Leave empty to show the lesson to all groups of the course."
+msgstr "Leave empty to show the lesson to all groups of the course."
+
+#: core/models.py
+msgid "Modeling, materials, light and animation for games and film."
+msgstr "Modeling, materials, light and animation for games and film."
+
+#: core/models.py
+msgid "Mon"
+msgstr "Mon"
+
+#: core/models.py
+msgid "New"
+msgstr "New"
+
+#: core/models.py
+msgctxt "attendance"
+msgid "P"
+msgstr "P"
+
+#: core/models.py templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Present"
+msgstr "Present"
+
+#: core/models.py
+msgid "Programming: Backend"
+msgstr "Programming: Backend"
+
+#: core/models.py
+msgid "Programming: Frontend"
+msgstr "Programming: Frontend"
+
+#: core/models.py
+msgid "Python, Django, databases and APIs — the engine of every service."
+msgstr "Python, Django, databases and APIs — the engine of every service."
+
+#: core/models.py
+msgid "Rejected"
+msgstr "Rejected"
+
+#: core/models.py templates/base.html
+msgid "Robotics"
+msgstr "Robotics"
+
+#: core/models.py
+msgid "Sat"
+msgstr "Sat"
+
+#: core/models.py
+msgid "Sun"
+msgstr "Sun"
+
+#: core/models.py templates/cabinet/teacher/lesson_form.html
+#, python-format
+msgid "The video is too large. Maximum size is %(size)s MB."
+msgstr "The video is too large. Maximum size is %(size)s MB."
+
+#: core/models.py
+msgid "This does not look like a YouTube video link."
+msgstr "This does not look like a YouTube video link."
+
+#: core/models.py
+msgid "Thu"
+msgstr "Thu"
+
+#: core/models.py
+msgid "Tue"
+msgstr "Tue"
+
+#: core/models.py
+#, python-format
+msgid "Unsupported video format. Allowed: %(formats)s."
+msgstr "Unsupported video format. Allowed: %(formats)s."
+
+#: core/models.py
+msgid "Wed"
+msgstr "Wed"
+
+#: core/models.py
+msgid "YouTube link"
+msgstr "YouTube link"
+
+#: core/models.py templates/cabinet/admin/dashboard.html templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+msgid "active"
+msgstr "active"
+
+#: core/models.py
+msgid "age"
+msgstr "age"
+
+#: core/models.py
+msgid "age from"
+msgstr "age from"
+
+#: core/models.py
+msgid "age to"
+msgstr "age to"
+
+#: core/models.py
+msgid "attendance"
+msgstr "attendance"
+
+#: core/models.py
+msgid "attendance record"
+msgstr "attendance record"
+
+#: core/models.py
+msgid "author"
+msgstr "author"
+
+#: core/models.py
+msgid "comment"
+msgstr "comment"
+
+#: core/models.py
+msgid "course"
+msgstr "course"
+
+#: core/models.py
+msgid "courses"
+msgstr "courses"
+
+#: core/models.py
+msgid "cover"
+msgstr "cover"
+
+#: core/models.py
+msgid "created"
+msgstr "created"
+
+#: core/models.py
+msgid "date"
+msgstr "date"
+
+#: core/models.py
+msgid "days of week"
+msgstr "days of week"
+
+#: core/models.py
+msgid "description"
+msgstr "description"
+
+#: core/models.py templates/core/home.html
+msgid "direction"
+msgid_plural "directions"
+msgstr[0] "direction"
+msgstr[1] "directions"
+
+#: core/models.py
+msgid "duration, months"
+msgstr "duration, months"
+
+#: core/models.py
+msgid "email"
+msgstr "email"
+
+#: core/models.py
+msgid "end time"
+msgstr "end time"
+
+#: core/models.py
+msgid "enrollment request"
+msgstr "enrollment request"
+
+#: core/models.py
+msgid "enrollment requests"
+msgstr "enrollment requests"
+
+#: core/models.py
+msgid "full description (EN)"
+msgstr "full description (EN)"
+
+#: core/models.py
+msgid "full description (KY)"
+msgstr "full description (KY)"
+
+#: core/models.py
+msgid "full description (RU)"
+msgstr "full description (RU)"
+
+#: core/models.py templates/cabinet/shared/journal_month.html
+msgid "grade"
+msgstr "grade"
+
+#: core/models.py
+msgid "group"
+msgstr "group"
+
+#: core/models.py templates/cabinet/admin/dashboard.html
+msgid "groups"
+msgstr "groups"
+
+#: core/models.py
+msgid "handled by"
+msgstr "handled by"
+
+#: core/models.py
+msgid "image"
+msgstr "image"
+
+#: core/models.py
+msgid "lesson number"
+msgstr "lesson number"
+
+#: core/models.py
+msgid "lessons per week"
+msgstr "lessons per week"
+
+#: core/models.py
+msgid "level"
+msgstr "level"
+
+#: core/models.py
+msgid "manager note"
+msgstr "manager note"
+
+#: core/models.py
+msgid "marked by"
+msgstr "marked by"
+
+#: core/models.py
+msgid "materials"
+msgstr "materials"
+
+#: core/models.py
+msgid "message"
+msgstr "message"
+
+#: core/models.py
+msgid "name"
+msgstr "name"
+
+#: core/models.py
+msgid "news"
+msgstr "news"
+
+#: core/models.py
+msgid "news item"
+msgstr "news item"
+
+#: core/models.py
+msgid "order"
+msgstr "order"
+
+#: core/models.py
+msgid "pinned"
+msgstr "pinned"
+
+#: core/models.py
+msgid "price, KGS per month"
+msgstr "price, KGS per month"
+
+#: core/models.py
+msgid "publication date"
+msgstr "publication date"
+
+#: core/models.py templates/cabinet/admin/dashboard.html
+msgid "published"
+msgstr "published"
+
+#: core/models.py
+msgid "received"
+msgstr "received"
+
+#: core/models.py templates/core/course_detail.html
+msgid "room"
+msgstr "room"
+
+#: core/models.py
+msgid "short description (EN)"
+msgstr "short description (EN)"
+
+#: core/models.py
+msgid "short description (KY)"
+msgstr "short description (KY)"
+
+#: core/models.py
+msgid "short description (RU)"
+msgstr "short description (RU)"
+
+#: core/models.py
+msgid "slug"
+msgstr "slug"
+
+#: core/models.py
+msgid "start date"
+msgstr "start date"
+
+#: core/models.py
+msgid "start time"
+msgstr "start time"
+
+#: core/models.py
+msgid "status"
+msgstr "status"
+
+#: core/models.py templates/core/home.html
+msgid "student"
+msgid_plural "students"
+msgstr[0] "student"
+msgstr[1] "students"
+
+#: core/models.py
+msgid "student account"
+msgstr "student account"
+
+#: core/models.py
+msgid "students"
+msgstr "students"
+
+#: core/models.py
+msgid "teacher"
+msgstr "teacher"
+
+#: core/models.py
+msgid "teachers"
+msgstr "teachers"
+
+#: core/models.py
+msgid "text (EN)"
+msgstr "text (EN)"
+
+#: core/models.py
+msgid "text (KY)"
+msgstr "text (KY)"
+
+#: core/models.py
+msgid "text (RU)"
+msgstr "text (RU)"
+
+#: core/models.py
+msgid "title"
+msgstr "title"
+
+#: core/models.py
+msgid "title (EN)"
+msgstr "title (EN)"
+
+#: core/models.py
+msgid "title (KY)"
+msgstr "title (KY)"
+
+#: core/models.py
+msgid "title (RU)"
+msgstr "title (RU)"
+
+#: core/models.py
+msgid "video file"
+msgstr "video file"
+
+#: core/models.py
+msgid "video lesson"
+msgstr "video lesson"
+
+#: core/models.py
+msgid "video lessons"
+msgstr "video lessons"
+
+#: templates/403.html
+msgid "Access denied"
+msgstr "Access denied"
+
+#: templates/403.html templates/accounts/login.html templates/base.html
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/403.html
+msgid "My cabinet"
+msgstr "My cabinet"
+
+#: templates/403.html
+msgid "This section is not available for your role. If you think this is a mistake, contact the administrator."
+msgstr "This section is not available for your role. If you think this is a mistake, contact the administrator."
+
+#: templates/403.html templates/404.html templates/core/enroll_success.html
+msgid "To the home page"
+msgstr "To the home page"
+
+#: templates/404.html
+msgid "Page not found"
+msgstr "Page not found"
+
+#: templates/404.html
+msgid "The page may have been moved or deleted. Try starting from the home page."
+msgstr "The page may have been moved or deleted. Try starting from the home page."
+
+#: templates/accounts/login.html
+msgid "Demo accounts"
+msgstr "Demo accounts"
+
+#: templates/accounts/login.html
+msgid "One cabinet for the whole learning process"
+msgstr "One cabinet for the whole learning process"
+
+#: templates/accounts/login.html
+msgid "To the website"
+msgstr "To the website"
+
+#: templates/accounts/login.html
+msgid "Use the login and password issued by the learning center."
+msgstr "Use the login and password issued by the learning center."
+
+#: templates/accounts/login.html
+msgid "Video lessons, attendance journal, groups and requests — everything in one place for students, teachers and managers."
+msgstr "Video lessons, attendance journal, groups and requests — everything in one place for students, teachers and managers."
+
+#: templates/accounts/login.html
+msgid "after"
+msgstr "after"
+
+#: templates/accounts/password_change.html
+msgid "After changing the password you will stay logged in on this device."
+msgstr "After changing the password you will stay logged in on this device."
+
+#: templates/accounts/profile.html templates/cabinet/admin/user_list.html
+msgid "Last login"
+msgstr "Last login"
+
+#: templates/accounts/profile.html templates/cabinet/admin/user_form.html
+msgid "Registered"
+msgstr "Registered"
+
+#: templates/accounts/profile.html templates/cabinet/admin/user_form.html templates/cabinet/manager/news_form.html templates/cabinet/manager/request_detail.html
+msgid "Save"
+msgstr "Save"
+
+#: templates/accounts/profile.html
+msgid "Your personal data and photo."
+msgstr "Your personal data and photo."
+
+#: templates/base.html templates/core/about.html
+msgid "About us"
+msgstr "About us"
+
+#: templates/base.html
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+#: templates/base.html templates/cabinet/base.html
+msgid "Cabinet"
+msgstr "Cabinet"
+
+#: templates/base.html
+msgid "Center"
+msgstr "Center"
+
+#: templates/base.html templates/cabinet/base.html
+msgid "Close menu"
+msgstr "Close menu"
+
+#: templates/base.html templates/cabinet/admin/user_list.html templates/core/contacts.html templates/core/home.html
+msgid "Contacts"
+msgstr "Contacts"
+
+#: templates/base.html templates/core/about.html templates/core/home.html
+msgid "Directions"
+msgstr "Directions"
+
+#: templates/base.html
+msgid "Enroll"
+msgstr "Enroll"
+
+#: templates/base.html
+msgid "Enroll in a course"
+msgstr "Enroll in a course"
+
+#: templates/base.html
+msgid "Go to cabinet"
+msgstr "Go to cabinet"
+
+#: templates/base.html templates/core/about.html templates/core/contacts.html templates/core/course_detail.html
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html
+msgid "Learning center in Bishkek: robotics, Frontend and Backend programming, 3D modeling in Fusion 360 and Blender for kids and teens."
+msgstr "Learning center in Bishkek: robotics, Frontend and Backend programming, 3D modeling in Fusion 360 and Blender for kids and teens."
+
+#: templates/base.html
+msgid "Made in Bishkek with love for technology"
+msgstr "Made in Bishkek with love for technology"
+
+#: templates/base.html
+msgid "Main menu"
+msgstr "Main menu"
+
+#: templates/base.html
+msgid "Menu"
+msgstr "Menu"
+
+#: templates/base.html
+msgid "Next-Generation-Hub — robotics, programming and 3D modeling courses"
+msgstr "Next-Generation-Hub — robotics, programming and 3D modeling courses"
+
+#: templates/base.html templates/cabinet/base.html
+msgid "Open menu"
+msgstr "Open menu"
+
+#: templates/base.html templates/cabinet/base.html
+msgid "Skip to content"
+msgstr "Skip to content"
+
+#: templates/base.html
+msgid "We teach children and teenagers to create technology: robots, websites, services and 3D worlds."
+msgstr "We teach children and teenagers to create technology: robots, websites, services and 3D worlds."
+
+#: templates/cabinet/admin/course_form.html templates/cabinet/admin/course_list.html templates/cabinet/manager/news_form.html templates/cabinet/manager/news_list.html
+msgid "Open on the website"
+msgstr "Open on the website"
+
+#: templates/cabinet/admin/course_form.html
+msgid "Parameters"
+msgstr "Parameters"
+
+#: templates/cabinet/admin/course_form.html templates/cabinet/manager/news_form.html
+msgid "Russian text is required. If there is no translation, the Russian version is shown."
+msgstr "Russian text is required. If there is no translation, the Russian version is shown."
+
+#: templates/cabinet/admin/course_form.html
+msgid "Save course"
+msgstr "Save course"
+
+#: templates/cabinet/admin/course_form.html templates/cabinet/admin/dashboard.html templates/core/course_detail.html
+msgid "Teachers"
+msgstr "Teachers"
+
+#: templates/cabinet/admin/course_form.html
+msgid "Texts"
+msgstr "Texts"
+
+#: templates/cabinet/admin/course_list.html templates/cabinet/admin/user_list.html templates/cabinet/manager/news_list.html templates/cabinet/manager/request_list.html
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/cabinet/admin/course_list.html
+msgid "Courses shown on the website. The order sets the position in the list."
+msgstr "Courses shown on the website. The order sets the position in the list."
+
+#: templates/cabinet/admin/course_list.html templates/cabinet/manager/news_list.html templates/cabinet/shared/_lesson_card.html
+msgid "Delete"
+msgstr "Delete"
+
+#: templates/cabinet/admin/course_list.html
+msgid "Delete this course? If it has groups, it will be hidden instead."
+msgstr "Delete this course? If it has groups, it will be hidden instead."
+
+#: templates/cabinet/admin/course_list.html
+msgid "Direction"
+msgstr "Direction"
+
+#: templates/cabinet/admin/course_list.html templates/cabinet/admin/user_list.html templates/cabinet/manager/group_detail.html templates/cabinet/manager/news_list.html
+msgid "Edit"
+msgstr "Edit"
+
+#: templates/cabinet/admin/course_list.html
+msgid "Hidden"
+msgstr "Hidden"
+
+#: templates/cabinet/admin/course_list.html
+msgid "KGS"
+msgstr "KGS"
+
+#: templates/cabinet/admin/course_list.html templates/cabinet/shared/journal_month.html
+msgid "Lessons"
+msgstr "Lessons"
+
+#: templates/cabinet/admin/course_list.html
+msgid "No courses yet"
+msgstr "No courses yet"
+
+#: templates/cabinet/admin/course_list.html
+msgid "On the website"
+msgstr "On the website"
+
+#: templates/cabinet/admin/course_list.html
+msgid "Price"
+msgstr "Price"
+
+#: templates/cabinet/admin/course_list.html templates/cabinet/manager/news_list.html templates/cabinet/manager/request_list.html templates/cabinet/manager/student_list.html
+msgid "Status"
+msgstr "Status"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "8 weeks"
+msgstr "8 weeks"
+
+#: templates/cabinet/admin/dashboard.html templates/cabinet/admin/user_list.html templates/cabinet/manager/dashboard.html templates/cabinet/manager/group_list.html
+msgid "All"
+msgstr "All"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Attendance by group"
+msgstr "Attendance by group"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Average attendance"
+msgstr "Average attendance"
+
+#: templates/cabinet/admin/dashboard.html templates/cabinet/shared/journal_month.html
+msgid "Journals"
+msgstr "Journals"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Key indicators of the learning center."
+msgstr "Key indicators of the learning center."
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Latest requests"
+msgstr "Latest requests"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Latest video lessons"
+msgstr "Latest video lessons"
+
+#: templates/cabinet/admin/dashboard.html templates/cabinet/manager/dashboard.html
+msgid "New requests"
+msgstr "New requests"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "No data yet"
+msgstr "No data yet"
+
+#: templates/cabinet/admin/dashboard.html templates/cabinet/manager/group_detail.html templates/cabinet/student/lessons.html templates/cabinet/teacher/dashboard.html
+msgid "No lessons yet"
+msgstr "No lessons yet"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "No requests yet"
+msgstr "No requests yet"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Requests by week"
+msgstr "Requests by week"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Share of attended lessons over the last 30 days across all groups."
+msgstr "Share of attended lessons over the last 30 days across all groups."
+
+#: templates/cabinet/admin/dashboard.html
+msgid "Students by direction"
+msgstr "Students by direction"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "active accounts"
+msgstr "active accounts"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "in the team"
+msgstr "in the team"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "last 30 days"
+msgstr "last 30 days"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "on the website"
+msgstr "on the website"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "total"
+msgstr "total"
+
+#: templates/cabinet/admin/dashboard.html
+msgid "waiting for a call"
+msgstr "waiting for a call"
+
+#: templates/cabinet/admin/user_form.html
+msgid "A blocked user cannot log in, but all their data is kept."
+msgstr "A blocked user cannot log in, but all their data is kept."
+
+#: templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
+msgid "Block"
+msgstr "Block"
+
+#: templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
+msgid "Block this user? They will not be able to log in."
+msgstr "Block this user? They will not be able to log in."
+
+#: templates/cabinet/admin/user_form.html
+msgid "Create user"
+msgstr "Create user"
+
+#: templates/cabinet/admin/user_form.html
+msgid "Enter a new password or leave the field empty — a random one will be generated and shown once."
+msgstr "Enter a new password or leave the field empty — a random one will be generated and shown once."
+
+#: templates/cabinet/admin/user_form.html
+msgid "Reset password"
+msgstr "Reset password"
+
+#: templates/cabinet/admin/user_form.html
+msgid "Set password"
+msgstr "Set password"
+
+#: templates/cabinet/admin/user_form.html
+msgid "The user is blocked."
+msgstr "The user is blocked."
+
+#: templates/cabinet/admin/user_form.html templates/cabinet/admin/user_list.html
+msgid "Unblock"
+msgstr "Unblock"
+
+#: templates/cabinet/admin/user_list.html
+msgid "Access"
+msgstr "Access"
+
+#: templates/cabinet/admin/user_list.html templates/cabinet/manager/group_list.html templates/cabinet/manager/student_list.html
+msgid "Active"
+msgstr "Active"
+
+#: templates/cabinet/admin/user_list.html
+msgid "All accounts: roles, access and passwords."
+msgstr "All accounts: roles, access and passwords."
+
+#: templates/cabinet/admin/user_list.html templates/cabinet/manager/request_list.html templates/cabinet/manager/student_list.html templates/cabinet/teacher/lesson_list.html
+msgid "Apply"
+msgstr "Apply"
+
+#: templates/cabinet/admin/user_list.html templates/cabinet/manager/student_list.html
+msgid "Blocked"
+msgstr "Blocked"
+
+#: templates/cabinet/admin/user_list.html
+msgid "Filter by role"
+msgstr "Filter by role"
+
+#: templates/cabinet/admin/user_list.html
+msgid "Name, login, email, phone…"
+msgstr "Name, login, email, phone…"
+
+#: templates/cabinet/admin/user_list.html
+msgid "No users found"
+msgstr "No users found"
+
+#: templates/cabinet/admin/user_list.html
+msgid "Only blocked"
+msgstr "Only blocked"
+
+#: templates/cabinet/admin/user_list.html
+msgid "Role"
+msgstr "Role"
+
+#: templates/cabinet/admin/user_list.html templates/cabinet/manager/group_form.html templates/cabinet/manager/request_list.html templates/cabinet/manager/student_form.html
+msgid "Search"
+msgstr "Search"
+
+#: templates/cabinet/admin/user_list.html
+msgid "User"
+msgstr "User"
+
+#: templates/cabinet/admin/user_list.html
+msgid "it's you"
+msgstr "it's you"
+
+#: templates/cabinet/base.html
+msgid "Cabinet menu"
+msgstr "Cabinet menu"
+
+#: templates/cabinet/base.html
+msgid "Log out"
+msgstr "Log out"
+
+#: templates/cabinet/base.html
+msgid "Website"
+msgstr "Website"
+
+#: templates/cabinet/base.html
+msgid "new"
+msgstr "new"
+
+#: templates/cabinet/manager/dashboard.html
+#, python-format
+msgid "%(n)s request in the last 7 days."
+msgid_plural "%(n)s requests in the last 7 days."
+msgstr[0] "%(n)s request in the last 7 days."
+msgstr[1] "%(n)s requests in the last 7 days."
+
+#: templates/cabinet/manager/dashboard.html templates/cabinet/shared/_group_card.html templates/cabinet/teacher/mark.html
+#, python-format
+msgid "%(n)s student"
+msgid_plural "%(n)s students"
+msgstr[0] "%(n)s student"
+msgstr[1] "%(n)s students"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "Active students"
+msgstr "Active students"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "All requests"
+msgstr "All requests"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "All requests are processed. Great job!"
+msgstr "All requests are processed. Great job!"
+
+#: templates/cabinet/manager/dashboard.html templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+#, python-format
+msgid "Hello, %(name)s!"
+msgstr "Hello, %(name)s!"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "No groups yet"
+msgstr "No groups yet"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "No new requests"
+msgstr "No new requests"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "Student list"
+msgstr "Student list"
+
+#: templates/cabinet/manager/dashboard.html
+msgid "requests"
+msgstr "requests"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "Add students"
+msgstr "Add students"
+
+#: templates/cabinet/manager/group_detail.html templates/cabinet/manager/group_list.html
+msgid "Archive"
+msgstr "Archive"
+
+#: templates/cabinet/manager/group_detail.html templates/cabinet/student/attendance.html
+msgid "Attendance"
+msgstr "Attendance"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "Change"
+msgstr "Change"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "Delete group"
+msgstr "Delete group"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "Delete this group? If it has attendance records, it will be archived instead."
+msgstr "Delete this group? If it has attendance records, it will be archived instead."
+
+#: templates/cabinet/manager/group_detail.html
+msgid "Group members"
+msgstr "Group members"
+
+#: templates/cabinet/manager/group_detail.html templates/cabinet/shared/journal_month.html templates/cabinet/teacher/dashboard.html
+msgid "Journal"
+msgstr "Journal"
+
+#: templates/cabinet/manager/group_detail.html templates/cabinet/shared/journal_month.html
+msgid "No students in the group"
+msgstr "No students in the group"
+
+#: templates/cabinet/manager/group_detail.html templates/cabinet/shared/_group_card.html templates/cabinet/student/dashboard.html
+msgid "Room"
+msgstr "Room"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "Schedule"
+msgstr "Schedule"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "in the group"
+msgstr "in the group"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "since"
+msgstr "since"
+
+#: templates/cabinet/manager/group_detail.html
+msgid "this month"
+msgstr "this month"
+
+#: templates/cabinet/manager/group_form.html
+msgid "Edit group"
+msgstr "Edit group"
+
+#: templates/cabinet/manager/group_form.html
+msgid "Find a student…"
+msgstr "Find a student…"
+
+#: templates/cabinet/manager/group_form.html
+msgid "No students yet"
+msgstr "No students yet"
+
+#: templates/cabinet/manager/group_form.html
+msgid "Save group"
+msgstr "Save group"
+
+#: templates/cabinet/manager/group_form.html templates/cabinet/manager/student_form.html
+msgid "selected"
+msgstr "selected"
+
+#: templates/cabinet/manager/group_list.html
+msgid "Composition, teacher and schedule of each group."
+msgstr "Composition, teacher and schedule of each group."
+
+#: templates/cabinet/manager/group_list.html
+msgid "Create group"
+msgstr "Create group"
+
+#: templates/cabinet/manager/group_list.html
+msgid "Filter"
+msgstr "Filter"
+
+#: templates/cabinet/manager/group_list.html
+msgid "No groups"
+msgstr "No groups"
+
+#: templates/cabinet/manager/news_form.html
+msgid "Publication"
+msgstr "Publication"
+
+#: templates/cabinet/manager/news_list.html
+msgid "Add news"
+msgstr "Add news"
+
+#: templates/cabinet/manager/news_list.html templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
+msgid "Date"
+msgstr "Date"
+
+#: templates/cabinet/manager/news_list.html
+msgid "Delete this news item?"
+msgstr "Delete this news item?"
+
+#: templates/cabinet/manager/news_list.html templates/cabinet/shared/_lesson_card.html templates/cabinet/teacher/dashboard.html
+msgid "Draft"
+msgstr "Draft"
+
+#: templates/cabinet/manager/news_list.html
+msgid "Languages"
+msgstr "Languages"
+
+#: templates/cabinet/manager/news_list.html
+msgid "News is published on the website in three languages."
+msgstr "News is published on the website in three languages."
+
+#: templates/cabinet/manager/news_list.html templates/core/news_list.html
+msgid "No news yet"
+msgstr "No news yet"
+
+#: templates/cabinet/manager/news_list.html templates/cabinet/shared/_lesson_card.html
+msgid "Published"
+msgstr "Published"
+
+#: templates/cabinet/manager/request_detail.html templates/core/course_detail.html
+msgid "Age"
+msgstr "Age"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Call"
+msgstr "Call"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Create student from request"
+msgstr "Create student from request"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Delete request"
+msgstr "Delete request"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Delete this request permanently?"
+msgstr "Delete this request permanently?"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Edit all fields"
+msgstr "Edit all fields"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Edit request"
+msgstr "Edit request"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Handled by"
+msgstr "Handled by"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Message"
+msgstr "Message"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Processing"
+msgstr "Processing"
+
+#: templates/cabinet/manager/request_detail.html templates/cabinet/manager/request_list.html
+msgid "Received"
+msgstr "Received"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Request details"
+msgstr "Request details"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Student account"
+msgstr "Student account"
+
+#: templates/cabinet/manager/request_detail.html
+msgid "Updated"
+msgstr "Updated"
+
+#: templates/cabinet/manager/request_list.html templates/cabinet/teacher/lesson_list.html templates/core/home.html
+msgid "All courses"
+msgstr "All courses"
+
+#: templates/cabinet/manager/request_list.html
+msgid "Client"
+msgstr "Client"
+
+#: templates/cabinet/manager/request_list.html templates/cabinet/manager/student_form.html
+msgid "Create student"
+msgstr "Create student"
+
+#: templates/cabinet/manager/request_list.html
+msgid "Filter by status"
+msgstr "Filter by status"
+
+#: templates/cabinet/manager/request_list.html
+msgid "Name, phone or email…"
+msgstr "Name, phone or email…"
+
+#: templates/cabinet/manager/request_list.html
+msgid "No requests found"
+msgstr "No requests found"
+
+#: templates/cabinet/manager/request_list.html
+msgid "Open"
+msgstr "Open"
+
+#: templates/cabinet/manager/request_list.html
+msgid "Requests from the website. Change the status as you process them."
+msgstr "Requests from the website. Change the status as you process them."
+
+#: templates/cabinet/manager/request_list.html
+msgid "Try changing the filters."
+msgstr "Try changing the filters."
+
+#: templates/cabinet/manager/request_list.html
+msgid "y.o."
+msgstr "y.o."
+
+#: templates/cabinet/manager/student_form.html
+msgid "Find a group…"
+msgstr "Find a group…"
+
+#: templates/cabinet/manager/student_form.html templates/cabinet/shared/journal_groups.html
+msgid "No active groups"
+msgstr "No active groups"
+
+#: templates/cabinet/manager/student_form.html
+msgid "Request"
+msgstr "Request"
+
+#: templates/cabinet/manager/student_form.html
+#, python-format
+msgid "The data is taken from the request of %(name)s. After saving, the request will be marked as “Enrolled”."
+msgstr "The data is taken from the request of %(name)s. After saving, the request will be marked as “Enrolled”."
+
+#: templates/cabinet/manager/student_list.html
+#, python-format
+msgid "%(n)s student found"
+msgid_plural "%(n)s students found"
+msgstr[0] "%(n)s student found"
+msgstr[1] "%(n)s students found"
+
+#: templates/cabinet/manager/student_list.html
+msgid "Add student"
+msgstr "Add student"
+
+#: templates/cabinet/manager/student_list.html templates/cabinet/shared/_lesson_card.html templates/cabinet/teacher/dashboard.html
+msgid "All groups"
+msgstr "All groups"
+
+#: templates/cabinet/manager/student_list.html
+msgid "Everyone"
+msgstr "Everyone"
+
+#: templates/cabinet/manager/student_list.html
+msgid "Name, login, phone…"
+msgstr "Name, login, phone…"
+
+#: templates/cabinet/manager/student_list.html
+msgid "No students found"
+msgstr "No students found"
+
+#: templates/cabinet/manager/student_list.html
+msgid "State"
+msgstr "State"
+
+#: templates/cabinet/manager/student_list.html
+msgid "Without a group"
+msgstr "Without a group"
+
+#: templates/cabinet/manager/student_list.html
+msgid "no group"
+msgstr "no group"
+
+#: templates/cabinet/shared/_group_card.html
+msgid "Attendance this month"
+msgstr "Attendance this month"
+
+#: templates/cabinet/shared/_group_card.html
+msgid "no marks"
+msgstr "no marks"
+
+#: templates/cabinet/shared/_lesson_card.html
+msgid "Delete this lesson? The video file will be deleted too."
+msgstr "Delete this lesson? The video file will be deleted too."
+
+#: templates/cabinet/shared/_lesson_card.html
+msgid "Watch"
+msgstr "Watch"
+
+#: templates/cabinet/shared/journal_groups.html
+msgid "Choose a group to open its monthly journal."
+msgstr "Choose a group to open its monthly journal."
+
+#: templates/cabinet/shared/journal_groups.html
+msgid "Viewing mode: journals are filled in by teachers."
+msgstr "Viewing mode: journals are filled in by teachers."
+
+#: templates/cabinet/shared/journal_month.html
+#, python-format
+msgid "Attendance %% = (present + late) / all marks excluding excused absences. A number in a cell is the grade."
+msgstr "Attendance %% = (present + late) / all marks excluding excused absences. A number in a cell is the grade."
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Attendance journal"
+msgstr "Attendance journal"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Current month"
+msgstr "Current month"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Group attendance"
+msgstr "Group attendance"
+
+#: templates/cabinet/shared/journal_month.html
+#, python-format
+msgid "Group, %%"
+msgstr "Group, %%"
+
+#: templates/cabinet/shared/journal_month.html templates/cabinet/teacher/dashboard.html
+msgid "Mark"
+msgstr "Mark"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Mark a lesson"
+msgstr "Mark a lesson"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Marks"
+msgstr "Marks"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Month"
+msgstr "Month"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Next month"
+msgstr "Next month"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "No lessons this month"
+msgstr "No lessons this month"
+
+#: templates/cabinet/shared/journal_month.html templates/cabinet/teacher/mark.html
+msgid "Not marked"
+msgstr "Not marked"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Previous month"
+msgstr "Previous month"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "Set the group schedule or mark the first lesson — it will appear here."
+msgstr "Set the group schedule or mark the first lesson — it will appear here."
+
+#: templates/cabinet/shared/journal_month.html
+msgid "avg. grade"
+msgstr "avg. grade"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "for the month"
+msgstr "for the month"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "in the journal"
+msgstr "in the journal"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "in the month"
+msgstr "in the month"
+
+#: templates/cabinet/shared/journal_month.html
+msgid "saved"
+msgstr "saved"
+
+#: templates/cabinet/shared/lesson_detail.html
+#, python-format
+msgid "%(n)s lesson"
+msgid_plural "%(n)s lessons"
+msgstr[0] "%(n)s lesson"
+msgstr[1] "%(n)s lessons"
+
+#: templates/cabinet/shared/lesson_detail.html
+msgid "Download materials"
+msgstr "Download materials"
+
+#: templates/cabinet/shared/lesson_detail.html templates/cabinet/teacher/lesson_form.html
+msgid "Lesson"
+msgstr "Lesson"
+
+#: templates/cabinet/shared/lesson_detail.html
+msgid "Next lesson"
+msgstr "Next lesson"
+
+#: templates/cabinet/shared/lesson_detail.html
+msgid "Previous"
+msgstr "Previous"
+
+#: templates/cabinet/shared/lesson_detail.html
+msgid "Your browser does not support video playback."
+msgstr "Your browser does not support video playback."
+
+#: templates/cabinet/student/attendance.html
+msgid "All marks and grades from the journal."
+msgstr "All marks and grades from the journal."
+
+#: templates/cabinet/student/attendance.html templates/cabinet/teacher/mark.html
+msgid "Grade"
+msgstr "Grade"
+
+#: templates/cabinet/student/attendance.html
+msgid "How it is calculated"
+msgstr "How it is calculated"
+
+#: templates/cabinet/student/attendance.html templates/cabinet/student/dashboard.html
+msgid "No marks yet"
+msgstr "No marks yet"
+
+#: templates/cabinet/student/attendance.html
+msgid "Present and late count as attended. Excused absences are not counted."
+msgstr "Present and late count as attended. Excused absences are not counted."
+
+#: templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+msgid "All lessons"
+msgstr "All lessons"
+
+#: templates/cabinet/student/dashboard.html
+msgid "My groups and schedule"
+msgstr "My groups and schedule"
+
+#: templates/cabinet/student/dashboard.html
+msgid "New lessons"
+msgstr "New lessons"
+
+#: templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+msgid "No lessons in the next 7 days"
+msgstr "No lessons in the next 7 days"
+
+#: templates/cabinet/student/dashboard.html
+msgid "Recent marks"
+msgstr "Recent marks"
+
+#: templates/cabinet/student/dashboard.html
+msgid "The manager will add you to a group — the schedule will appear here."
+msgstr "The manager will add you to a group — the schedule will appear here."
+
+#: templates/cabinet/student/dashboard.html
+msgid "Today"
+msgstr "Today"
+
+#: templates/cabinet/student/dashboard.html templates/cabinet/teacher/dashboard.html
+msgid "Upcoming lessons"
+msgstr "Upcoming lessons"
+
+#: templates/cabinet/student/dashboard.html
+msgid "Watch lessons"
+msgstr "Watch lessons"
+
+#: templates/cabinet/student/dashboard.html
+msgid "You are not in a group yet"
+msgstr "You are not in a group yet"
+
+#: templates/cabinet/student/dashboard.html
+msgid "Your groups, lessons and progress."
+msgstr "Your groups, lessons and progress."
+
+#: templates/cabinet/student/dashboard.html
+msgid "available"
+msgstr "available"
+
+#: templates/cabinet/student/dashboard.html
+msgid "for all time"
+msgstr "for all time"
+
+#: templates/cabinet/student/dashboard.html
+msgid "out of 5"
+msgstr "out of 5"
+
+#: templates/cabinet/student/lessons.html
+msgid "Recordings of the lessons of your courses. Watch at any time."
+msgstr "Recordings of the lessons of your courses. Watch at any time."
+
+#: templates/cabinet/student/lessons.html
+msgid "When the teacher uploads the first lesson, it will appear here."
+msgstr "When the teacher uploads the first lesson, it will appear here."
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "7 days"
+msgstr "7 days"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "Attendance structure"
+msgstr "Attendance structure"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "Attendance, 30 days"
+msgstr "Attendance, 30 days"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "Marked"
+msgstr "Marked"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "My groups"
+msgstr "My groups"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "Recent video lessons"
+msgstr "Recent video lessons"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "The manager will assign you to a group — it will appear here."
+msgstr "The manager will assign you to a group — it will appear here."
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "Upload a video file or add a YouTube link."
+msgstr "Upload a video file or add a YouTube link."
+
+#: templates/cabinet/teacher/dashboard.html templates/cabinet/teacher/lesson_list.html
+msgid "Upload lesson"
+msgstr "Upload lesson"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "You have no groups yet"
+msgstr "You have no groups yet"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "in my groups"
+msgstr "in my groups"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "present and late"
+msgstr "present and late"
+
+#: templates/cabinet/teacher/dashboard.html
+msgid "uploaded"
+msgstr "uploaded"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Could not save the lesson. Check the form and try again."
+msgstr "Could not save the lesson. Check the form and try again."
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Drag a video here or click to choose"
+msgstr "Drag a video here or click to choose"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Materials"
+msgstr "Materials"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Network error. Check your connection and try again."
+msgstr "Network error. Check your connection and try again."
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Presentation, code, 3D model — any file"
+msgstr "Presentation, code, 3D model — any file"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Preview"
+msgstr "Preview"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Publish lesson"
+msgstr "Publish lesson"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Save changes"
+msgstr "Save changes"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Upload a video file or paste a YouTube link — one of the two is enough."
+msgstr "Upload a video file or paste a YouTube link — one of the two is enough."
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Upload progress"
+msgstr "Upload progress"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Uploading…"
+msgstr "Uploading…"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "Video"
+msgstr "Video"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "or"
+msgstr "or"
+
+#: templates/cabinet/teacher/lesson_form.html
+msgid "remove"
+msgstr "remove"
+
+#: templates/cabinet/teacher/lesson_list.html
+msgid "All lessons of all teachers."
+msgstr "All lessons of all teachers."
+
+#: templates/cabinet/teacher/lesson_list.html
+msgid "No lessons found"
+msgstr "No lessons found"
+
+#: templates/cabinet/teacher/lesson_list.html
+msgid "Only your lessons are shown here."
+msgstr "Only your lessons are shown here."
+
+#: templates/cabinet/teacher/lesson_list.html
+msgid "Search by title…"
+msgstr "Search by title…"
+
+#: templates/cabinet/teacher/lesson_list.html
+msgid "Upload the first video lesson — students of the group will see it in their cabinet."
+msgstr "Upload the first video lesson — students of the group will see it in their cabinet."
+
+#: templates/cabinet/teacher/mark.html
+msgid "Ask the manager to add students to the group."
+msgstr "Ask the manager to add students to the group."
+
+#: templates/cabinet/teacher/mark.html
+msgid "Choose a group"
+msgstr "Choose a group"
+
+#: templates/cabinet/teacher/mark.html
+msgid "Choose a group and date, mark each student and save."
+msgstr "Choose a group and date, mark each student and save."
+
+#: templates/cabinet/teacher/mark.html
+msgid "Everyone is present"
+msgstr "Everyone is present"
+
+#: templates/cabinet/teacher/mark.html
+msgid "Optional"
+msgstr "Optional"
+
+#: templates/cabinet/teacher/mark.html
+msgid "Select a group and a date above to open the list of students."
+msgstr "Select a group and a date above to open the list of students."
+
+#: templates/cabinet/teacher/mark.html
+msgid "Show"
+msgstr "Show"
+
+#: templates/cabinet/teacher/mark.html
+msgid "The lesson is already marked. You can change the marks and save again."
+msgstr "The lesson is already marked. You can change the marks and save again."
+
+#: templates/cabinet/teacher/mark.html
+msgid "There are no students in the group"
+msgstr "There are no students in the group"
+
+#: templates/cabinet/teacher/mark.html
+#, python-format
+msgid "This day is not in the group schedule (%(schedule)s). You can still mark an extra lesson."
+msgstr "This day is not in the group schedule (%(schedule)s). You can still mark an extra lesson."
+
+#: templates/cabinet/teacher/mark.html
+msgid "When the manager assigns you a group, you can mark attendance here."
+msgstr "When the manager assigns you a group, you can mark attendance here."
+
+#: templates/cabinet/teacher/mark.html
+msgid "You have no active groups"
+msgstr "You have no active groups"
+
+#: templates/core/about.html
+msgid "A place where children create technology"
+msgstr "A place where children create technology"
+
+#: templates/core/about.html templates/core/contacts.html templates/core/course_detail.html templates/core/course_list.html
+msgid "Breadcrumbs"
+msgstr "Breadcrumbs"
+
+#: templates/core/about.html
+msgid "Come to a trial lesson"
+msgstr "Come to a trial lesson"
+
+#: templates/core/about.html templates/core/home.html
+msgid "Enrollment is open"
+msgstr "Enrollment is open"
+
+#: templates/core/about.html
+msgid "Meet the teacher, see the laboratory and choose a direction together with your child."
+msgstr "Meet the teacher, see the laboratory and choose a direction together with your child."
+
+#: templates/core/about.html
+msgid "Next-Generation-Hub is a learning center in Bishkek where kids and teens learn engineering and digital professions through practice."
+msgstr "Next-Generation-Hub is a learning center in Bishkek where kids and teens learn engineering and digital professions through practice."
+
+#: templates/core/about.html
+msgid "Our teachers"
+msgstr "Our teachers"
+
+#: templates/core/about.html templates/core/home.html
+msgid "Team"
+msgstr "Team"
+
+#: templates/core/about.html
+msgid "We believe that every child can not only consume technology, but also create it. Our task is to give tools, a mentor and an environment where it is interesting to try."
+msgstr "We believe that every child can not only consume technology, but also create it. Our task is to give tools, a mentor and an environment where it is interesting to try."
+
+#: templates/core/about.html
+msgid "We started in 2021 with a small robotics club. Today there are five directions, our own laboratory with 3D printers and electronics kits, and graduates who win olympiads and enter technical universities."
+msgstr "We started in 2021 with a small robotics club. Today there are five directions, our own laboratory with 3D printers and electronics kits, and graduates who win olympiads and enter technical universities."
+
+#: templates/core/about.html
+msgid "What we teach"
+msgstr "What we teach"
+
+#: templates/core/about.html
+msgid "directions of study"
+msgstr "directions of study"
+
+#: templates/core/about.html
+msgid "free trial lesson"
+msgstr "free trial lesson"
+
+#: templates/core/about.html
+msgid "of time is practice"
+msgstr "of time is practice"
+
+#: templates/core/about.html
+msgid "students max per group"
+msgstr "students max per group"
+
+#: templates/core/contacts.html templates/core/home.html
+msgid "Address"
+msgstr "Address"
+
+#: templates/core/contacts.html
+msgid "Call, write or come to the center — we will be happy to show the laboratory and answer questions."
+msgstr "Call, write or come to the center — we will be happy to show the laboratory and answer questions."
+
+#: templates/core/contacts.html
+msgid "Feedback"
+msgstr "Feedback"
+
+#: templates/core/contacts.html
+msgid "Have questions? Leave a request"
+msgstr "Have questions? Leave a request"
+
+#: templates/core/contacts.html
+msgid "We will call you back, tell you about the courses and pick a convenient group."
+msgstr "We will call you back, tell you about the courses and pick a convenient group."
+
+#: templates/core/contacts.html templates/core/home.html
+msgid "Working hours"
+msgstr "Working hours"
+
+#: templates/core/course_detail.html templates/partials/course_card.html
+#, python-format
+msgid "%(ages)s years"
+msgstr "%(ages)s years"
+
+#: templates/core/course_detail.html templates/partials/course_card.html
+#, python-format
+msgid "%(months)s month"
+msgid_plural "%(months)s months"
+msgstr[0] "%(months)s month"
+msgstr[1] "%(months)s months"
+
+#: templates/core/course_detail.html
+#, python-format
+msgid "%(n)s lesson a week"
+msgid_plural "%(n)s lessons a week"
+msgstr[0] "%(n)s lesson a week"
+msgstr[1] "%(n)s lessons a week"
+
+#: templates/core/course_detail.html
+msgid "About the course"
+msgstr "About the course"
+
+#: templates/core/course_detail.html
+msgid "Cost"
+msgstr "Cost"
+
+#: templates/core/course_detail.html
+msgid "Duration"
+msgstr "Duration"
+
+#: templates/core/course_detail.html
+msgid "Frequency"
+msgstr "Frequency"
+
+#: templates/core/course_detail.html
+msgid "Groups and schedule"
+msgstr "Groups and schedule"
+
+#: templates/core/course_detail.html templates/partials/course_card.html
+msgid "KGS / month"
+msgstr "KGS / month"
+
+#: templates/core/course_detail.html
+msgid "Level"
+msgstr "Level"
+
+#: templates/core/course_detail.html templates/partials/course_card.html
+msgid "More"
+msgstr "More"
+
+#: templates/core/course_detail.html
+msgid "Other courses"
+msgstr "Other courses"
+
+#: templates/core/course_detail.html
+msgid "The first trial lesson is free"
+msgstr "The first trial lesson is free"
+
+#: templates/core/course_list.html
+msgid "Courses for kids and teens"
+msgstr "Courses for kids and teens"
+
+#: templates/core/course_list.html
+msgid "Filter by direction"
+msgstr "Filter by direction"
+
+#: templates/core/course_list.html
+msgid "Five directions, clear programs and a final project in every course. Filter by direction to find your own."
+msgstr "Five directions, clear programs and a final project in every course. Filter by direction to find your own."
+
+#: templates/core/course_list.html
+msgid "Leave a request"
+msgstr "Leave a request"
+
+#: templates/core/course_list.html
+msgid "Leave a request — we will let you know when a group starts."
+msgstr "Leave a request — we will let you know when a group starts."
+
+#: templates/core/course_list.html
+msgid "No courses in this direction yet"
+msgstr "No courses in this direction yet"
+
+#: templates/core/enroll_error.html
+msgid "Back"
+msgstr "Back"
+
+#: templates/core/enroll_error.html
+msgid "Check the form"
+msgstr "Check the form"
+
+#: templates/core/enroll_error.html
+msgid "Please correct the errors in the form and send it again."
+msgstr "Please correct the errors in the form and send it again."
+
+#: templates/core/enroll_success.html
+msgid "Look at the courses"
+msgstr "Look at the courses"
+
+#: templates/core/enroll_success.html
+msgid "Request sent"
+msgstr "Request sent"
+
+#: templates/core/enroll_success.html
+msgid "Thank you!"
+msgstr "Thank you!"
+
+#: templates/core/enroll_success.html
+#, python-format
+msgid "Thank you, %(name)s!"
+msgstr "Thank you, %(name)s!"
+
+#: templates/core/enroll_success.html
+msgid "Your request has been received. A manager will call you back within a working day to choose a convenient time for the trial lesson."
+msgstr "Your request has been received. A manager will call you back within a working day to choose a convenient time for the trial lesson."
+
+#: templates/core/home.html
+msgid "60 minutes of practice, not a lecture"
+msgstr "60 minutes of practice, not a lecture"
+
+#: templates/core/home.html
+msgid "A personal cabinet with recordings of lessons, materials and homework."
+msgstr "A personal cabinet with recordings of lessons, materials and homework."
+
+#: templates/core/home.html templates/core/news_detail.html
+msgid "All news"
+msgstr "All news"
+
+#: templates/core/home.html
+msgid "Arduino and ESP kits, 3D printers and powerful computers for every student."
+msgstr "Arduino and ESP kits, 3D printers and powerful computers for every student."
+
+#: templates/core/home.html
+msgid "Attendance and grades in the online journal — parents always know how things are going."
+msgstr "Attendance and grades in the online journal — parents always know how things are going."
+
+#: templates/core/home.html
+msgid "Choose what inspires you: from the first LED on an Arduino to your own web service or animated 3D scene."
+msgstr "Choose what inspires you: from the first LED on an Arduino to your own web service or animated 3D scene."
+
+#: templates/core/home.html
+msgid "Come visit us"
+msgstr "Come visit us"
+
+#: templates/core/home.html
+msgid "Come with your child, meet the teacher, try the equipment and choose a direction without obligations."
+msgstr "Come with your child, meet the teacher, try the equipment and choose a direction without obligations."
+
+#: templates/core/home.html
+msgid "Engineers, developers and 3D artists who work on real projects and love to share their experience."
+msgstr "Engineers, developers and 3D artists who work on real projects and love to share their experience."
+
+#: templates/core/home.html
+msgid "Every module ends with a project that goes into the student's portfolio."
+msgstr "Every module ends with a project that goes into the student's portfolio."
+
+#: templates/core/home.html
+msgid "Five paths into technology"
+msgstr "Five paths into technology"
+
+#: templates/core/home.html
+msgid "Free trial lesson"
+msgstr "Free trial lesson"
+
+#: templates/core/home.html
+msgid "Groups up to 10"
+msgstr "Groups up to 10"
+
+#: templates/core/home.html
+msgid "Learning by making"
+msgstr "Learning by making"
+
+#: templates/core/home.html templates/partials/logo.html
+msgid "Learning center · Bishkek"
+msgstr "Learning center · Bishkek"
+
+#: templates/core/home.html
+msgid "Life of the center"
+msgstr "Life of the center"
+
+#: templates/core/home.html
+msgid "Popular programs"
+msgstr "Popular programs"
+
+#: templates/core/home.html
+msgid "Real equipment"
+msgstr "Real equipment"
+
+#: templates/core/home.html
+msgid "Robotics, programming and 3D modeling for kids and teens aged 8–17. Small groups, real projects and teachers from the industry."
+msgstr "Robotics, programming and 3D modeling for kids and teens aged 8–17. Small groups, real projects and teachers from the industry."
+
+#: templates/core/home.html
+msgid "Selection of a course by age and interests"
+msgstr "Selection of a course by age and interests"
+
+#: templates/core/home.html
+msgid "Start with a free trial lesson"
+msgstr "Start with a free trial lesson"
+
+#: templates/core/home.html
+msgid "Teachers who practice"
+msgstr "Teachers who practice"
+
+#: templates/core/home.html
+msgid "The child leaves with a small finished project"
+msgstr "The child leaves with a small finished project"
+
+#: templates/core/home.html
+msgid "The teacher has time for everyone, and nobody gets lost."
+msgstr "The teacher has time for everyone, and nobody gets lost."
+
+#: templates/core/home.html
+msgid "Transparent progress"
+msgstr "Transparent progress"
+
+#: templates/core/home.html
+msgid "Video lessons 24/7"
+msgstr "Video lessons 24/7"
+
+#: templates/core/home.html
+msgid "We raise <em>engineers</em> of the next generation"
+msgstr "We raise <em>engineers</em> of the next generation"
+
+#: templates/core/home.html
+msgid "Why us"
+msgstr "Why us"
+
+#: templates/core/home.html
+msgid "mentor"
+msgid_plural "mentors"
+msgstr[0] "mentor"
+msgstr[1] "mentors"
+
+#: templates/core/home.html
+msgid "since 2021"
+msgstr "since 2021"
+
+#: templates/core/news_detail.html templates/partials/news_card.html
+msgid "Pinned"
+msgstr "Pinned"
+
+#: templates/core/news_detail.html
+msgid "Read also"
+msgstr "Read also"
+
+#: templates/core/news_list.html
+msgid "Come back later — something interesting is coming soon."
+msgstr "Come back later — something interesting is coming soon."
+
+#: templates/core/news_list.html
+msgid "Competitions, student projects, new groups and events of the center."
+msgstr "Competitions, student projects, new groups and events of the center."
+
+#: templates/partials/enroll_form.html
+msgid "By clicking the button you agree to the processing of personal data."
+msgstr "By clicking the button you agree to the processing of personal data."
+
+#: templates/partials/enroll_form.html
+msgid "Leave your contacts — a manager will call you back within a working day."
+msgstr "Leave your contacts — a manager will call you back within a working day."
+
+#: templates/partials/enroll_form.html
+msgid "Send request"
+msgstr "Send request"
+
+#: templates/partials/enroll_form.html
+msgid "Sign up for a free trial lesson"
+msgstr "Sign up for a free trial lesson"
+
+#: templates/partials/lang_switch.html
+msgid "Language"
+msgstr "Language"
+
+#: templates/partials/lang_tabs.html
+msgid "Content language"
+msgstr "Content language"
+
+#: templates/partials/logo.html
+msgid "home page"
+msgstr "home page"
+
+#: templates/partials/messages.html
+msgid "Close"
+msgstr "Close"
+
+#: templates/partials/pagination.html
+msgid "Next page"
+msgstr "Next page"
+
+#: templates/partials/pagination.html
+msgid "Pages"
+msgstr "Pages"
+
+#: templates/partials/pagination.html
+msgid "Previous page"
+msgstr "Previous page"
+
+#: templates/partials/theme_toggle.html
+msgid "Switch theme"
+msgstr "Switch theme"

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}{% trans "About us" %} — Next-Generation-Hub{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}"><a href="{% url 'core:home' %}">{% trans "Home" %}</a> {% icon "chevron-right" 14 %} <span>{% trans "About us" %}</span></nav>
+    <h1>{% trans "A place where children create technology" %}</h1>
+    <p>{% trans "Next-Generation-Hub is a learning center in Bishkek where kids and teens learn engineering and digital professions through practice." %}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container about-grid">
+    <div>
+      <p class="big-quote">{% trans "We believe that every child can not only consume technology, but also create it. Our task is to give tools, a mentor and an environment where it is interesting to try." %}</p>
+      <p class="muted" style="margin-top:28px;font-size:17px">{% trans "We started in 2021 with a small robotics club. Today there are five directions, our own laboratory with 3D printers and electronics kits, and graduates who win olympiads and enter technical universities." %}</p>
+    </div>
+    <div class="numbers">
+      <div class="number-card is-ink reveal"><b>5</b><span>{% trans "directions of study" %}</span></div>
+      <div class="number-card reveal"><b>10</b><span>{% trans "students max per group" %}</span></div>
+      <div class="number-card reveal"><b>80%</b><span>{% trans "of time is practice" %}</span></div>
+      <div class="number-card is-accent reveal"><b>1</b><span>{% trans "free trial lesson" %}</span></div>
+    </div>
+  </div>
+</section>
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head"><div><span class="eyebrow">{% trans "Directions" %}</span><h2>{% trans "What we teach" %}</h2></div></div>
+    <div class="directions">
+      {% for d in directions %}
+      <a class="direction-card reveal" href="{% url 'core:course_list' %}?direction={{ d.code }}">
+        <span class="num">0{{ forloop.counter }}</span>
+        <span class="go" aria-hidden="true">{% icon "arrow-up-right" 18 %}</span>
+        <span class="direction-icon">{% icon d.code 28 %}</span>
+        <h3>{{ d.label }}</h3>
+        <p>{{ d.tagline }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% if teachers %}
+<section class="section">
+  <div class="container">
+    <div class="section-head"><div><span class="eyebrow">{% trans "Team" %}</span><h2>{% trans "Our teachers" %}</h2></div></div>
+    <div class="teacher-grid">
+      {% for t in teachers %}
+      <article class="teacher-card reveal">
+        <div class="teacher-photo">{% if t.photo %}<img src="{{ t.photo.url }}" alt="{{ t.display_name }}" loading="lazy">{% else %}<span class="teacher-initials" aria-hidden="true">{{ t.initials }}</span>{% endif %}</div>
+        <div><h3>{{ t.display_name }}</h3><p>{{ t.specialization|default:_("Teacher") }}</p>{% if t.about %}<p class="faint" style="margin-top:8px">{{ t.about|truncatewords:24 }}</p>{% endif %}</div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+<section class="section" style="padding-top:0" id="enroll">
+  <div class="container">
+    <div class="cta">
+      <div>
+        <span class="eyebrow">{% trans "Enrollment is open" %}</span>
+        <h2 style="margin-top:14px">{% trans "Come to a trial lesson" %}</h2>
+        <p>{% trans "Meet the teacher, see the laboratory and choose a direction together with your child." %}</p>
+      </div>
+      {% include "partials/enroll_form.html" %}
+    </div>
+  </div>
+</section>
+{% endblock %}

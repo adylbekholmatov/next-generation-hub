@@ -1,0 +1,47 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div><h1>{% trans "Students" %}</h1><p>{% blocktrans count n=page_obj.paginator.count %}{{ n }} student found{% plural %}{{ n }} students found{% endblocktrans %}</p></div>
+  <div class="actions"><a class="btn btn-primary" href="{% url 'cabinet:manager_student_create' %}">{% icon "user-plus" 16 %} {% trans "New student" %}</a></div>
+</div>
+<form class="toolbar" method="get" role="search">
+  <label class="search"><span class="sr-only">{% trans "Search" %}</span>{% icon "search" 18 %}<input type="search" name="q" value="{{ q }}" placeholder="{% trans 'Name, login, phone…' %}"></label>
+  <label class="sr-only" for="s-group">{% trans "Group" %}</label>
+  <select id="s-group" name="group" data-autosubmit>
+    <option value="">{% trans "All groups" %}</option>
+    {% for g in groups %}<option value="{{ g.pk }}"{% if group_filter == g.pk|stringformat:"s" %} selected{% endif %}>{{ g.name }}</option>{% endfor %}
+  </select>
+  <label class="sr-only" for="s-state">{% trans "State" %}</label>
+  <select id="s-state" name="state" data-autosubmit>
+    <option value="">{% trans "Everyone" %}</option>
+    <option value="nogroup"{% if state == "nogroup" %} selected{% endif %}>{% trans "Without a group" %}</option>
+    <option value="inactive"{% if state == "inactive" %} selected{% endif %}>{% trans "Blocked" %}</option>
+  </select>
+  <button class="btn" type="submit">{% icon "filter" 16 %} {% trans "Apply" %}</button>
+</form>
+<div class="card">
+  {% if page_obj.object_list %}
+  <div class="table-wrap">
+    <table class="table table-stack">
+      <thead><tr><th>{% trans "Student" %}</th><th>{% trans "Phone" %}</th><th>{% trans "Groups" %}</th><th>{% trans "Status" %}</th><th class="text-right">{% trans "Actions" %}</th></tr></thead>
+      <tbody>
+        {% for s in page_obj %}
+        <tr{% if not s.is_active %} class="is-muted-row"{% endif %}>
+          <td><div class="user-cell">{% include "partials/avatar.html" with u=s %}<div style="min-width:0"><a class="row-link" href="{% url 'cabinet:manager_student_edit' s.pk %}"><b>{{ s.display_name }}</b></a><small>{{ s.username }}</small></div></div></td>
+          <td data-label="{% trans 'Phone' %}" class="nowrap">{{ s.phone|default:"—" }}</td>
+          <td data-label="{% trans 'Groups' %}">{% for g in s.study_groups.all %}<span class="chip" style="margin:2px">{{ g.name }}</span>{% empty %}<span class="faint">{% trans "no group" %}</span>{% endfor %}</td>
+          <td data-label="{% trans 'Status' %}">{% if s.is_active %}<span class="badge badge-ok">{% trans "Active" %}</span>{% else %}<span class="badge badge-bad">{% trans "Blocked" %}</span>{% endif %}</td>
+          <td class="text-right"><div class="actions"><a class="btn btn-xs" href="{% url 'cabinet:manager_student_edit' s.pk %}">{% icon "edit" 14 %} {% trans "Edit" %}</a></div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    {% trans "No students found" as t1 %}{% url 'cabinet:manager_student_create' as u %}{% trans "Add student" as t3 %}
+    {% include "cabinet/shared/_empty.html" with icon="graduation" title=t1 action_url=u action_label=t3 %}
+  {% endif %}
+</div>
+{% include "partials/pagination.html" %}
+{% endblock %}

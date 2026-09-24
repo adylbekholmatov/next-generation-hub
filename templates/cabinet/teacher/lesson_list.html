@@ -1,0 +1,29 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% trans "Video lessons" %}</h1>
+    <p>{% if user.is_admin_role %}{% trans "All lessons of all teachers." %}{% else %}{% trans "Only your lessons are shown here." %}{% endif %}</p>
+  </div>
+  <div class="actions"><a class="btn btn-primary" href="{% url 'cabinet:teacher_lesson_create' %}">{% icon "upload" 16 %} {% trans "Upload lesson" %}</a></div>
+</div>
+<form class="toolbar" method="get" role="search">
+  <label class="search"><span class="sr-only">{% trans "Search" %}</span>{% icon "search" 18 %}<input type="search" name="q" value="{{ q }}" placeholder="{% trans 'Search by title…' %}"></label>
+  <label class="sr-only" for="f-course">{% trans "Course" %}</label>
+  <select id="f-course" name="course" data-autosubmit>
+    <option value="">{% trans "All courses" %}</option>
+    {% for c in courses %}<option value="{{ c.pk }}"{% if course_filter == c.pk|stringformat:"s" %} selected{% endif %}>{{ c|tr:"title" }}</option>{% endfor %}
+  </select>
+  <noscript><button class="btn">{% trans "Apply" %}</button></noscript>
+</form>
+{% if page_obj.object_list %}
+  <div class="grid grid-cards">{% for lesson in page_obj %}{% include "cabinet/shared/_lesson_card.html" with manage=1 %}{% endfor %}</div>
+  {% include "partials/pagination.html" %}
+{% else %}
+  <div class="card">
+    {% trans "No lessons found" as t1 %}{% trans "Upload the first video lesson — students of the group will see it in their cabinet." as t2 %}{% url 'cabinet:teacher_lesson_create' as u %}{% trans "Upload lesson" as t3 %}
+    {% include "cabinet/shared/_empty.html" with icon="video" title=t1 text=t2 action_url=u action_label=t3 %}
+  </div>
+{% endif %}
+{% endblock %}

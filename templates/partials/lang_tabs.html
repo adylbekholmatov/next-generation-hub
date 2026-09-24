@@ -1,0 +1,14 @@
+{% load i18n %}<div class="lang-tabs span-2" data-lang-tabs>
+  <div class="lang-tabs-nav" role="tablist" aria-label="{% trans 'Content language' %}">
+    {% for pane in form.lang_panes %}
+    <button type="button" role="tab" id="tab-{{ pane.code }}" aria-controls="pane-{{ pane.code }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">
+      <span class="dot{% if pane.has_errors %} is-error{% endif %}" aria-hidden="true"></span>{{ pane.label }}{% if pane.required %}<span class="req" aria-hidden="true" style="color:var(--bad)">*</span>{% endif %}
+    </button>
+    {% endfor %}
+  </div>
+  {% for pane in form.lang_panes %}
+  <div class="lang-pane" role="tabpanel" id="pane-{{ pane.code }}" aria-labelledby="tab-{{ pane.code }}"{% if not forloop.first %} hidden{% endif %} lang="{{ pane.code }}">
+    {% for field in pane.fields %}{% include "partials/field.html" with wide=1 %}{% endfor %}
+  </div>
+  {% endfor %}
+</div>

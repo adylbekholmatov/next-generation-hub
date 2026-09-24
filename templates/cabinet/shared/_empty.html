@@ -1,0 +1,6 @@
+{% load core_tags %}<div class="empty">
+  <span class="ic">{% icon icon|default:"inbox" 28 %}</span>
+  <h3>{{ title }}</h3>
+  {% if text %}<p>{{ text }}</p>{% endif %}
+  {% if action_url %}<a class="btn btn-primary" href="{{ action_url }}">{% icon "plus" 16 %} {{ action_label }}</a>{% endif %}
+</div>

@@ -1,0 +1,36 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div><h1>{% trans "News" %}</h1><p>{% trans "News is published on the website in three languages." %}</p></div>
+  <div class="actions"><a class="btn btn-primary" href="{% url 'cabinet:manager_news_create' %}">{% icon "plus" 16 %} {% trans "Add news" %}</a></div>
+</div>
+<div class="card">
+  {% if page_obj.object_list %}
+  <div class="table-wrap">
+    <table class="table table-stack">
+      <thead><tr><th>{% trans "Title" %}</th><th>{% trans "Languages" %}</th><th>{% trans "Date" %}</th><th>{% trans "Status" %}</th><th class="text-right">{% trans "Actions" %}</th></tr></thead>
+      <tbody>
+        {% for n in page_obj %}
+        <tr>
+          <td><a class="row-link" href="{% url 'cabinet:manager_news_edit' n.pk %}">{{ n|tr:"title"|truncatechars:80 }}</a>{% if n.is_pinned %} <span class="badge badge-accent no-dot">{% icon "pin" 12 %}</span>{% endif %}</td>
+          <td data-label="{% trans 'Languages' %}"><span class="row" style="gap:4px"><span class="badge no-dot badge-ok">RU</span>{% if n.title_ky %}<span class="badge no-dot badge-ok">KY</span>{% else %}<span class="badge no-dot">KY</span>{% endif %}{% if n.title_en %}<span class="badge no-dot badge-ok">EN</span>{% else %}<span class="badge no-dot">EN</span>{% endif %}</span></td>
+          <td data-label="{% trans 'Date' %}" class="nowrap">{{ n.published_at|date:"d.m.Y" }}</td>
+          <td data-label="{% trans 'Status' %}">{% if n.is_published %}<span class="badge badge-ok">{% trans "Published" %}</span>{% else %}<span class="badge">{% trans "Draft" %}</span>{% endif %}</td>
+          <td class="text-right"><div class="actions">
+            {% if n.is_published %}<a class="btn btn-ghost btn-icon btn-sm" href="{{ n.get_absolute_url }}" target="_blank" rel="noopener" aria-label="{% trans 'Open on the website' %}">{% icon "external" 15 %}</a>{% endif %}
+            <a class="btn btn-ghost btn-icon btn-sm" href="{% url 'cabinet:manager_news_edit' n.pk %}" aria-label="{% trans 'Edit' %}">{% icon "edit" 15 %}</a>
+            <form method="post" action="{% url 'cabinet:manager_news_delete' n.pk %}" data-confirm="{% trans 'Delete this news item?' %}">{% csrf_token %}<button class="btn btn-ghost btn-icon btn-sm btn-danger" aria-label="{% trans 'Delete' %}">{% icon "trash" 15 %}</button></form>
+          </div></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    {% trans "No news yet" as t1 %}{% url 'cabinet:manager_news_create' as u %}{% trans "Add news" as t3 %}
+    {% include "cabinet/shared/_empty.html" with icon="news" title=t1 action_url=u action_label=t3 %}
+  {% endif %}
+</div>
+{% include "partials/pagination.html" %}
+{% endblock %}

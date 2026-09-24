@@ -1,0 +1,44 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% url 'cabinet:admin_courses' %}">{% icon "arrow-left" 16 %} {% trans "Courses" %}</a>
+<div class="page-head">
+  <div><h1>{{ page_title }}</h1><p>{% trans "Russian text is required. If there is no translation, the Russian version is shown." %}</p></div>
+  {% if course and course.is_active %}<div class="actions"><a class="btn" href="{{ course.get_absolute_url }}" target="_blank" rel="noopener">{% icon "external" 16 %} {% trans "Open on the website" %}</a></div>{% endif %}
+</div>
+<form class="grid grid-main" method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Texts" %}</h2></div>
+      <div class="card-body">
+        {% include "partials/form_errors.html" %}
+        <div class="form-grid">{% include "partials/lang_tabs.html" %}</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Teachers" %}</h2></div>
+      <div class="card-body">{% include "partials/field.html" with field=form.teachers %}</div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Parameters" %}</h2></div>
+      <div class="card-body form-grid">
+        {% include "partials/field.html" with field=form.direction wide=1 %}
+        {% include "partials/field.html" with field=form.level wide=1 %}
+        {% include "partials/field.html" with field=form.age_from %}
+        {% include "partials/field.html" with field=form.age_to %}
+        {% include "partials/field.html" with field=form.duration_months %}
+        {% include "partials/field.html" with field=form.lessons_per_week %}
+        {% include "partials/field.html" with field=form.price %}
+        {% include "partials/field.html" with field=form.order %}
+        {% include "partials/field.html" with field=form.slug wide=1 %}
+        {% include "partials/field.html" with field=form.cover %}
+        {% include "partials/field.html" with field=form.is_active wide=1 %}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">{% icon "check" 18 %} {% trans "Save course" %}</button>
+  </div>
+</form>
+{% endblock %}

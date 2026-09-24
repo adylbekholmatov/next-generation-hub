@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+db.sqlite3
+media/*
+!media/.gitkeep
+staticfiles/
+.idea/
+.vscode/
+*.log
+# .mo файлы переводов намеренно коммитятся — чтобы на Windows не нужен был gettext.

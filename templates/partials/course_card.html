@@ -1,0 +1,16 @@
+{% load i18n core_tags %}<a class="course-card reveal" href="{{ course.get_absolute_url }}">
+  {% include "partials/cover.html" with uid=uid %}
+  <div class="course-card-body">
+    <div class="course-meta">
+      <span class="chip">{{ course.get_level_display }}</span>
+      <span class="chip">{% blocktrans with ages=course.age_range %}{{ ages }} years{% endblocktrans %}</span>
+      <span class="chip">{% blocktrans count months=course.duration_months %}{{ months }} month{% plural %}{{ months }} months{% endblocktrans %}</span>
+    </div>
+    <h3>{{ course|tr:"title" }}</h3>
+    <p>{{ course|tr:"short"|truncatechars:140 }}</p>
+    <div class="course-foot">
+      <span class="price">{{ course.price|intcomma_space }} <small>{% trans "KGS / month" %}</small></span>
+      <span class="link">{% trans "More" %} {% icon "arrow-right" 16 %}</span>
+    </div>
+  </div>
+</a>

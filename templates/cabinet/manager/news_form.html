@@ -1,0 +1,27 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% url 'cabinet:manager_news' %}">{% icon "arrow-left" 16 %} {% trans "News" %}</a>
+<div class="page-head">
+  <div><h1>{{ page_title }}</h1><p>{% trans "Russian text is required. If there is no translation, the Russian version is shown." %}</p></div>
+  {% if item and item.is_published %}<div class="actions"><a class="btn" href="{{ item.get_absolute_url }}" target="_blank" rel="noopener">{% icon "external" 16 %} {% trans "Open on the website" %}</a></div>{% endif %}
+</div>
+<form class="grid grid-main" method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+  <div class="card">
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">{% include "partials/lang_tabs.html" %}</div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Publication" %}</h2></div>
+      <div class="card-body form-grid">
+        {% for field in form.common_fields %}{% include "partials/field.html" with wide=1 %}{% endfor %}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">{% icon "check" 18 %} {% trans "Save" %}</button>
+  </div>
+</form>
+{% endblock %}

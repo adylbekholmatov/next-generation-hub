@@ -1,0 +1,40 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{% trans "Profile" %}</h1>
+    <p>{% trans "Your personal data and photo." %}</p>
+  </div>
+  <div class="actions"><a class="btn" href="{% url 'accounts:password_change' %}">{% icon "key" 16 %} {% trans "Change password" %}</a></div>
+</div>
+<div class="grid grid-main">
+  <form class="card" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">
+        {% for field in form %}{% include "partials/field.html" %}{% endfor %}
+      </div>
+    </div>
+    <div class="card-foot"><button type="submit" class="btn btn-primary">{% icon "check" 16 %} {% trans "Save" %}</button></div>
+  </form>
+  <aside class="card card-pad">
+    <div class="profile-head">
+      {% include "partials/avatar.html" with u=user size="avatar-xl" %}
+      <div>
+        <h2 style="font-size:1.3rem;margin:0 0 6px">{{ user.display_name }}</h2>
+        <span class="badge badge-role-{{ user.role }} no-dot">{{ user.get_role_display }}</span>
+      </div>
+    </div>
+    <hr>
+    <dl class="kv">
+      <dt>{% trans "Login" %}</dt><dd>{{ user.username }}</dd>
+      <dt>{% trans "Phone" %}</dt><dd>{{ user.phone|default:"—" }}</dd>
+      <dt>Email</dt><dd>{{ user.email|default:"—" }}</dd>
+      <dt>{% trans "Registered" %}</dt><dd>{{ user.date_joined|date:"j E Y" }}</dd>
+      <dt>{% trans "Last login" %}</dt><dd>{{ user.last_login|date:"j E Y, H:i"|default:"—" }}</dd>
+    </dl>
+  </aside>
+</div>
+{% endblock %}

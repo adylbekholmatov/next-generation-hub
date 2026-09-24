@@ -1,0 +1,19 @@
+{% load i18n core_tags %}<a class="card group-card" href="{{ href }}">
+  <div class="top">
+    <span class="ic">{% icon g.course.direction 22 %}</span>
+    {% if g.month_percent is not None %}<span class="pct {{ g.month_percent|percent_level }}" title="{% trans 'Attendance this month' %}">{{ g.month_percent }}%</span>{% elif pct is not None %}<span class="pct {{ pct|percent_level }}">{{ pct }}%</span>{% else %}<span class="badge no-dot">{% trans "no marks" %}</span>{% endif %}
+  </div>
+  <div>
+    <h3>{{ g.name }}</h3>
+    <span class="muted" style="font-size:14px">{{ g.course|tr:"title" }}</span>
+  </div>
+  <div class="meta">
+    <span>{% icon "calendar" 15 %} {{ g.schedule_display|default:_("Schedule not set") }}</span>
+    {% if g.room %}<span>{% icon "map-pin" 15 %} {% trans "Room" %} {{ g.room }}</span>{% endif %}
+    {% if show_teacher and g.teacher %}<span>{% icon "user" 15 %} {{ g.teacher.display_name }}</span>{% endif %}
+  </div>
+  <div class="foot">
+    <span class="muted">{% icon "users" 15 %} {% blocktrans count n=g.n_students|default:0 %}{{ n }} student{% plural %}{{ n }} students{% endblocktrans %}</span>
+    <span class="link">{{ link_label|default:_("Open") }} {% icon "arrow-right" 15 %}</span>
+  </div>
+</a>

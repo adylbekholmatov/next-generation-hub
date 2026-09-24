@@ -1,0 +1,46 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% if user.is_student %}{% url 'cabinet:student_lessons' %}{% else %}{% url 'cabinet:teacher_lessons' %}{% endif %}">{% icon "arrow-left" 16 %} {% trans "Video lessons" %}</a>
+<div class="grid grid-main">
+  <div class="grid">
+    <div class="player">
+      {% if lesson.video_file %}
+        <video controls preload="metadata" playsinline controlslist="nodownload">
+          <source src="{{ lesson.video_file.url }}" type="{{ lesson.video_mime }}">
+          {% trans "Your browser does not support video playback." %}
+        </video>
+      {% elif lesson.youtube_embed_url %}
+        <iframe src="{{ lesson.youtube_embed_url }}" title="{{ lesson.title }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      {% endif %}
+    </div>
+    <div class="card card-pad">
+      <div class="row-between" style="align-items:flex-start">
+        <div>
+          <span class="eyebrow">{% trans "Lesson" %} {{ lesson.number }} · {{ lesson.course|tr:"title" }}</span>
+          <h1 style="font-size:clamp(1.3rem,2.4vw,1.8rem);margin:12px 0 6px">{{ lesson.title }}</h1>
+          <span class="faint" style="font-size:14px">{% if lesson.teacher %}{{ lesson.teacher.display_name }} · {% endif %}{{ lesson.created_at|date:"j E Y" }}{% if lesson.group %} · {{ lesson.group.name }}{% endif %}</span>
+        </div>
+        {% if can_edit %}<a class="btn btn-sm" href="{% url 'cabinet:teacher_lesson_edit' lesson.pk %}">{% icon "edit" 15 %} {% trans "Edit" %}</a>{% endif %}
+      </div>
+      {% if lesson.description %}<hr><div class="prose" style="font-size:15.5px">{{ lesson.description|linebreaks }}</div>{% endif %}
+      {% if lesson.materials %}
+      <hr>
+      <a class="btn" href="{{ lesson.materials.url }}" download>{% icon "download" 16 %} {% trans "Download materials" %} <span class="faint">{{ lesson.materials_name|truncatechars:40 }}</span></a>
+      {% endif %}
+      <div class="row-between" style="margin-top:24px">
+        {% if prev_lesson %}<a class="btn btn-sm" href="{% url 'cabinet:lesson_detail' prev_lesson.pk %}">{% icon "arrow-left" 15 %} {% trans "Previous" %}</a>{% else %}<span></span>{% endif %}
+        {% if next_lesson %}<a class="btn btn-primary btn-sm" href="{% url 'cabinet:lesson_detail' next_lesson.pk %}">{% trans "Next lesson" %} {% icon "arrow-right" 15 %}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+  <aside class="card">
+    <div class="card-head"><h2>{{ lesson.course|tr:"title" }}</h2><span class="faint" style="font-size:13px">{% blocktrans count n=siblings|length %}{{ n }} lesson{% plural %}{{ n }} lessons{% endblocktrans %}</span></div>
+    <ol class="playlist">
+      {% for item in siblings %}
+      <li><a href="{% url 'cabinet:lesson_detail' item.pk %}"{% if item.pk == lesson.pk %} aria-current="true"{% endif %}><span class="n">{{ item.number }}</span><span class="grow">{{ item.title }}</span>{% if item.pk == lesson.pk %}{% icon "play" 14 %}{% endif %}</a></li>
+      {% endfor %}
+    </ol>
+  </aside>
+</div>
+{% endblock %}

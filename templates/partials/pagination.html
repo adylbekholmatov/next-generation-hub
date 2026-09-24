@@ -1,0 +1,11 @@
+{% load i18n core_tags %}{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="{% trans 'Pages' %}">
+  {% if page_obj.has_previous %}<a href="{% query page=page_obj.previous_page_number %}" aria-label="{% trans 'Previous page' %}">{% icon "chevron-left" 16 %}</a>{% endif %}
+  {% for n in page_obj.paginator.page_range %}
+    {% if n == page_obj.number %}<span class="is-current" aria-current="page">{{ n }}</span>
+    {% elif n == 1 or n == page_obj.paginator.num_pages or n >= page_obj.number|add:-2 and n <= page_obj.number|add:2 %}<a href="{% query page=n %}">{{ n }}</a>
+    {% elif n == page_obj.number|add:-3 or n == page_obj.number|add:3 %}<span class="gap">…</span>{% endif %}
+  {% endfor %}
+  {% if page_obj.has_next %}<a href="{% query page=page_obj.next_page_number %}" aria-label="{% trans 'Next page' %}">{% icon "chevron-right" 16 %}</a>{% endif %}
+</nav>
+{% endif %}

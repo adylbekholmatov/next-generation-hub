@@ -1,0 +1,13 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head"><div><h1>{% trans "Video lessons" %}</h1><p>{% trans "Recordings of the lessons of your courses. Watch at any time." %}</p></div></div>
+{% for course, items in by_course %}
+<section style="margin-bottom:36px">
+  <div class="row" style="margin-bottom:16px"><span class="stat-ic">{% icon course.direction 18 %}</span><h2 style="font-size:1.2rem;margin:0">{{ course|tr:"title" }}</h2><span class="badge no-dot">{{ items|length }}</span></div>
+  <div class="grid grid-cards">{% for lesson in items %}{% include "cabinet/shared/_lesson_card.html" %}{% endfor %}</div>
+</section>
+{% empty %}
+<div class="card">{% trans "No lessons yet" as t1 %}{% trans "When the teacher uploads the first lesson, it will appear here." as t2 %}{% include "cabinet/shared/_empty.html" with icon="video" title=t1 text=t2 %}</div>
+{% endfor %}
+{% endblock %}

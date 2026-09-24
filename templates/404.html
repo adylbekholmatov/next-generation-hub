@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}404 — {% trans "Page not found" %}{% endblock %}
+{% block content %}
+<section class="result-page">
+  <div class="container" style="max-width:620px">
+    <p class="result-code">404</p>
+    <h1 style="font-size:clamp(1.6rem,4vw,2.4rem)">{% trans "Page not found" %}</h1>
+    <p class="muted" style="font-size:17px">{% trans "The page may have been moved or deleted. Try starting from the home page." %}</p>
+    <div class="row" style="justify-content:center;margin-top:24px">
+      <a class="btn btn-primary" href="{% url 'core:home' %}">{% trans "To the home page" %}</a>
+      <a class="btn" href="{% url 'core:course_list' %}">{% trans "Courses" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

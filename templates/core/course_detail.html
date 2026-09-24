@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}{{ course|tr:"title" }} — Next-Generation-Hub{% endblock %}
+{% block description %}{{ course|tr:"short" }}{% endblock %}
+{% block content %}
+<section class="page-hero" style="border-bottom:0;padding-bottom:0">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="{% trans 'Breadcrumbs' %}"><a href="{% url 'core:home' %}">{% trans "Home" %}</a> {% icon "chevron-right" 14 %} <a href="{% url 'core:course_list' %}">{% trans "Courses" %}</a> {% icon "chevron-right" 14 %} <span>{{ course.get_direction_display }}</span></nav>
+  </div>
+</section>
+<section class="section-sm" style="padding-top:24px">
+  <div class="container course-hero">
+    <div>
+      <span class="eyebrow">{{ course.get_direction_display }}</span>
+      <h1 style="margin:16px 0 20px">{{ course|tr:"title" }}</h1>
+      <p class="hero-lead" style="margin-bottom:28px">{{ course|tr:"short" }}</p>
+      <div class="card" style="overflow:hidden;margin-bottom:32px">{% include "partials/cover.html" with uid="detail" %}</div>
+      <div class="course-facts" style="margin-bottom:40px">
+        <div><span>{% trans "Age" %}</span><b>{% blocktrans with ages=course.age_range %}{{ ages }} years{% endblocktrans %}</b></div>
+        <div><span>{% trans "Level" %}</span><b>{{ course.get_level_display }}</b></div>
+        <div><span>{% trans "Duration" %}</span><b>{% blocktrans count months=course.duration_months %}{{ months }} month{% plural %}{{ months }} months{% endblocktrans %}</b></div>
+        <div><span>{% trans "Frequency" %}</span><b>{% blocktrans count n=course.lessons_per_week %}{{ n }} lesson a week{% plural %}{{ n }} lessons a week{% endblocktrans %}</b></div>
+      </div>
+      <h2 style="font-size:1.6rem">{% trans "About the course" %}</h2>
+      <div class="prose">{{ course|tr:"description"|linebreaks }}</div>
+
+      {% if course.teachers.all %}
+      <h2 style="font-size:1.6rem;margin-top:48px">{% trans "Teachers" %}</h2>
+      <div class="grid grid-2" style="margin-top:20px">
+        {% for t in course.teachers.all %}
+        <div class="card card-pad row" style="flex-wrap:nowrap">
+          {% include "partials/avatar.html" with u=t size="avatar-lg" %}
+          <div class="grow"><b style="display:block">{{ t.display_name }}</b><span class="muted" style="font-size:14px">{{ t.specialization }}</span></div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if groups %}
+      <h2 style="font-size:1.6rem;margin-top:48px">{% trans "Groups and schedule" %}</h2>
+      <div class="card" style="margin-top:20px">
+        <ul class="list">
+          {% for g in groups %}
+          <li><span class="stat-ic">{% icon "calendar" 18 %}</span><div class="grow"><b>{{ g.name }}</b><div class="muted" style="font-size:14px">{{ g.schedule_display|default:"—" }}{% if g.room %} · {% trans "room" %} {{ g.room }}{% endif %}</div></div></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    <aside class="sticky-card">
+      <div class="card card-pad" style="margin-bottom:16px">
+        <span class="muted" style="font-size:14px">{% trans "Cost" %}</span>
+        <div class="price" style="font-size:2.2rem;margin:6px 0 4px">{{ course.price|intcomma_space }} <small>{% trans "KGS / month" %}</small></div>
+        <span class="faint" style="font-size:13px">{% trans "The first trial lesson is free" %}</span>
+      </div>
+      {% include "partials/enroll_form.html" %}
+    </aside>
+  </div>
+</section>
+{% if related %}
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-head"><div><span class="eyebrow">{% trans "More" %}</span><h2>{% trans "Other courses" %}</h2></div></div>
+    <div class="course-grid">{% for course in related %}{% include "partials/course_card.html" with uid="rel" %}{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

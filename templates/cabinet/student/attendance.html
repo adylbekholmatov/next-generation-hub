@@ -1,0 +1,39 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<div class="page-head"><div><h1>{% trans "My attendance" %}</h1><p>{% trans "All marks and grades from the journal." %}</p></div></div>
+<div class="grid grid-main" style="margin-bottom:20px">
+  <section class="card card-pad row" style="gap:28px;align-items:center">
+    <div class="ring {{ percent|percent_level }}" style="--p: {{ percent|default:0 }}"><b>{% if percent is not None %}{{ percent }}%{% else %}—{% endif %}</b></div>
+    <div class="grow">
+      <h2 style="font-size:1.1rem">{% trans "Attendance" %}</h2>
+      <div class="legend">{% for c in counts %}<span><i class="c-{{ c.key }}"></i>{{ c.label }} <b>{{ c.count }}</b></span>{% endfor %}</div>
+    </div>
+  </section>
+  <section class="card card-pad">
+    <h2 style="font-size:1.05rem">{% trans "How it is calculated" %}</h2>
+    <p class="muted" style="font-size:14px;margin:0">{% trans "Present and late count as attended. Excused absences are not counted." %}</p>
+  </section>
+</div>
+<div class="card">
+  {% if page_obj.object_list %}
+  <div class="table-wrap">
+    <table class="table table-stack">
+      <thead><tr><th>{% trans "Date" %}</th><th>{% trans "Group" %}</th><th>{% trans "Status" %}</th><th>{% trans "Grade" %}</th><th>{% trans "Comment" %}</th></tr></thead>
+      <tbody>
+        {% for r in page_obj %}
+        <tr>
+          <td class="nowrap"><b>{{ r.date|date:"j E Y" }}</b><div class="faint" style="font-size:13px">{{ r.date|date:"l" }}</div></td>
+          <td data-label="{% trans 'Group' %}">{{ r.group.name }}<div class="faint" style="font-size:13px">{{ r.group.course|tr:"title" }}</div></td>
+          <td data-label="{% trans 'Status' %}"><span class="badge badge-{{ r.status }}">{{ r.get_status_display }}</span></td>
+          <td data-label="{% trans 'Grade' %}">{% if r.grade %}<span class="jmark {{ r.status }}">{{ r.grade }}</span>{% else %}<span class="faint">—</span>{% endif %}</td>
+          <td data-label="{% trans 'Comment' %}" class="muted">{{ r.comment|default:"—" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}{% trans "No marks yet" as t1 %}{% include "cabinet/shared/_empty.html" with icon="calendar" title=t1 %}{% endif %}
+</div>
+{% include "partials/pagination.html" %}
+{% endblock %}

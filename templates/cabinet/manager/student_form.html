@@ -1,0 +1,44 @@
+{% extends "cabinet/base.html" %}
+{% load i18n core_tags %}
+{% block content %}
+<a class="back-link" href="{% if from_request %}{% url 'cabinet:manager_request_detail' from_request.pk %}{% else %}{% url 'cabinet:manager_students' %}{% endif %}">{% icon "arrow-left" 16 %} {% if from_request %}{% trans "Request" %}{% else %}{% trans "Students" %}{% endif %}</a>
+<div class="page-head">
+  <div>
+    <h1>{{ page_title }}</h1>
+    {% if from_request %}<p>{% blocktrans with name=from_request.name %}The data is taken from the request of {{ name }}. After saving, the request will be marked as “Enrolled”.{% endblocktrans %}</p>{% endif %}
+  </div>
+</div>
+<form class="grid grid-main" method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+  <div class="card">
+    <div class="card-head"><h2>{% trans "Account" %}</h2></div>
+    <div class="card-body">
+      {% include "partials/form_errors.html" %}
+      <div class="form-grid">
+        {% include "partials/field.html" with field=form.first_name %}
+        {% include "partials/field.html" with field=form.last_name %}
+        {% include "partials/field.html" with field=form.username %}
+        {% include "partials/field.html" with field=form.password %}
+        {% include "partials/field.html" with field=form.phone %}
+        {% include "partials/field.html" with field=form.email %}
+        {% include "partials/field.html" with field=form.about %}
+        {% include "partials/field.html" with field=form.photo %}
+        {% include "partials/field.html" with field=form.is_active wide=1 %}
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-head"><h2>{% trans "Groups" %}</h2><span class="faint" style="font-size:13px">{% trans "selected" %}: <b id="groups-count">0</b></span></div>
+      <div class="card-body">
+        <label class="search" style="max-width:none;margin-bottom:12px"><span class="sr-only">{% trans "Search" %}</span>{% icon "search" 18 %}<input type="search" data-filter-list="groups-list" data-counter="groups-count" placeholder="{% trans 'Find a group…' %}"></label>
+        <div class="check-list is-column" id="groups-list" role="group" aria-label="{% trans 'Groups' %}">
+          {% for opt in form.groups_field %}<label for="{{ opt.id_for_label }}">{{ opt.tag }} {{ opt.choice_label }}</label>{% empty %}<span class="faint" style="padding:12px">{% trans "No active groups" %}</span>{% endfor %}
+        </div>
+        {% if form.groups_field.errors %}<ul class="errors">{% for e in form.groups_field.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">{% icon "check" 18 %} {% if student %}{% trans "Save" %}{% else %}{% trans "Create student" %}{% endif %}</button>
+  </div>
+</form>
+{% endblock %}
