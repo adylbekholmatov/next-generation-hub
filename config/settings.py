@@ -140,7 +140,13 @@ def _find_database_url():
         for key in sorted(os.environ):
             if key.endswith("_" + suffix) and env(key):
                 return env(key)
-    return None
+    # Любой другой префикс (STORAGE_URL, NEON_URL…): ищем строку подключения PostgreSQL по значению,
+    # прямое подключение (UNPOOLED / NON_POOLING) в приоритете.
+    candidates = sorted(
+        (key for key in os.environ if (env(key) or "").startswith(("postgres://", "postgresql://"))),
+        key=lambda k: (not any(mark in k for mark in ("UNPOOLED", "NON_POOLING")), k),
+    )
+    return env(candidates[0]) if candidates else None
 
 
 def _database_from_url(url):
