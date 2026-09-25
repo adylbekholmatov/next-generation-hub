@@ -2,6 +2,6 @@ Django>=5.2,<6.0
 Pillow>=11.0
 openpyxl>=3.1
 whitenoise>=6.7
-# Для продакшена:
+psycopg[binary]>=3.2
+# Для VPS:
 # gunicorn>=23.0
-# psycopg[binary]>=3.2

@@ -8,6 +8,7 @@ Next-Generation-Hub — настройки проекта.
 import os
 import shutil
 from pathlib import Path
+from urllib.parse import parse_qs, unquote, urlparse
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -122,8 +123,56 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 # --- База данных ------------------------------------------------------------
-# По умолчанию SQLite. Для PostgreSQL задайте DB_ENGINE=postgres и DB_* (см. README).
-if env("DB_ENGINE", "sqlite").lower() in {"postgres", "postgresql"}:
+# Порядок выбора:
+# 1. строка подключения DATABASE_URL (её сам добавляет Vercel при подключении Neon);
+# 2. DB_ENGINE=postgres и DB_* (см. README);
+# 3. SQLite (на Vercel без внешней базы — временная демо-копия в /tmp).
+# Прямое (не pooled) подключение предпочтительнее: миграции используют блокировки сессии.
+DATABASE_URL_KEYS = ("DATABASE_URL_UNPOOLED", "POSTGRES_URL_NON_POOLING", "DATABASE_URL", "POSTGRES_URL")
+
+
+def _find_database_url():
+    for key in DATABASE_URL_KEYS:
+        if env(key):
+            return env(key)
+    # Vercel Storage может добавить префикс к именам: STORAGE_DATABASE_URL и т. п.
+    for suffix in DATABASE_URL_KEYS:
+        for key in sorted(os.environ):
+            if key.endswith("_" + suffix) and env(key):
+                return env(key)
+    return None
+
+
+def _database_from_url(url):
+    parsed = urlparse(url)
+    if parsed.scheme in {"postgres", "postgresql"}:
+        options = {key: values[-1] for key, values in parse_qs(parsed.query).items()}
+        options.setdefault("sslmode", "prefer" if parsed.hostname in {"localhost", "127.0.0.1"} else "require")
+        return {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": unquote(parsed.path.lstrip("/")),
+            "USER": unquote(parsed.username or ""),
+            "PASSWORD": unquote(parsed.password or ""),
+            "HOST": parsed.hostname or "",
+            "PORT": str(parsed.port or 5432),
+            "OPTIONS": options,
+            # Serverless: соединение не держим между запросами.
+            "CONN_MAX_AGE": 0 if ON_VERCEL else 60,
+            # Через пулер (PgBouncer) серверные курсоры не работают.
+            "DISABLE_SERVER_SIDE_CURSORS": "pooler" in (parsed.hostname or ""),
+        }
+    if parsed.scheme == "sqlite":
+        path = unquote(parsed.path)
+        if len(path) > 2 and path[0] == "/" and path[2] == ":":  # /C:/... на Windows
+            path = path[1:]
+        return {"ENGINE": "django.db.backends.sqlite3", "NAME": path}
+    raise ImproperlyConfigured(f"Unsupported database URL scheme: {parsed.scheme}")
+
+
+DATABASE_URL = _find_database_url()
+if DATABASE_URL:
+    DATABASES = {"default": _database_from_url(DATABASE_URL)}
+elif env("DB_ENGINE", "sqlite").lower() in {"postgres", "postgresql"}:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -149,8 +198,14 @@ else:
         }
     }
 
+# Временная демо-база: на Vercel без внешней БД (изменения сбрасываются).
+USING_DEMO_DATABASE = ON_VERCEL and DATABASES["default"]["ENGINE"].endswith("sqlite3")
+# Автоматически применять миграции и заполнять пустую базу демо-данными при старте
+# (нужно на Vercel, где нет доступа к консоли). Выключить: DJANGO_AUTO_MIGRATE=False.
+AUTO_MIGRATE = env_bool("DJANGO_AUTO_MIGRATE", ON_VERCEL and not USING_DEMO_DATABASE)
+
 if ON_VERCEL:
-    # У каждого экземпляра функции своя копия базы, поэтому сессии — в подписанных cookie.
+    # Serverless: сессии в подписанных cookie, чтобы не зависеть от экземпляра функции.
     SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 AUTH_USER_MODEL = "accounts.User"

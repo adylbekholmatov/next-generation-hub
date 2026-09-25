@@ -7,6 +7,7 @@
 import datetime
 import random
 
+from django.contrib.auth.hashers import make_password
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils import timezone
@@ -313,7 +314,11 @@ class Command(BaseCommand):
 
     def _make_user(self, username, password, role, first, last, **extra):
         user = User(username=username, role=role, first_name=first, last_name=last, **extra)
-        user.set_password(password)
+        # У демо-аккаунтов одной роли общий пароль: хешируем его один раз (PBKDF2 медленный).
+        cache = self.__dict__.setdefault("_hashes", {})
+        if password not in cache:
+            cache[password] = make_password(password)
+        user.password = cache[password]
         user.save()
         return user
 
@@ -450,7 +455,7 @@ class Command(BaseCommand):
             )
 
     def _print_accounts(self):
-        line = "─" * 52
+        line = "-" * 52
         self.stdout.write(self.style.SUCCESS("\nДемо-данные созданы."))
         self.stdout.write(line)
         self.stdout.write(f"{'Роль':<14}{'Логин':<22}Пароль")
