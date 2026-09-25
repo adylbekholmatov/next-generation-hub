@@ -458,8 +458,8 @@ msgid "Journal saved: %(n)s students."
 msgstr "Журнал сохранён: отмечено студентов — %(n)s."
 
 #: core/context_processors.py
-msgid "Osh, Lenin street 205, 2nd floor"
-msgstr "Ош, ул. Ленина 205, 2 этаж"
+msgid "Osh, Gapar Aitiev street 14a"
+msgstr "Ош, ул. Гапара Айтиева, 14а"
 
 #: core/context_processors.py
 msgid "Mon–Sat, 9:00–20:00"
@@ -2362,6 +2362,14 @@ msgstr "Язык содержимого"
 #: templates/partials/logo.html
 msgid "home page"
 msgstr "главная страница"
+
+#: templates/partials/map.html
+msgid "Learning center on the map"
+msgstr "Учебный центр на карте"
+
+#: templates/partials/map.html
+msgid "Open in 2GIS"
+msgstr "Открыть в 2ГИС"
 
 #: templates/partials/messages.html
 msgid "Close"

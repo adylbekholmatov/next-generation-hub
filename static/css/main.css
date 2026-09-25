@@ -460,6 +460,8 @@ a.chip:hover { border-color: var(--text); color: var(--text); }
 .cta-points li { display: flex; gap: 12px; align-items: center; color: var(--ink-text); }
 .cta-points li .icon { color: var(--ink-text); opacity: .9; }
 .cta .form-card { position: relative; z-index: 1; }
+.cta .form-card p { max-width: none; font-size: 15px; color: var(--text-2); }
+.cta .form-card p.faint { font-size: 12.5px; color: var(--text-3); }
 
 .form-card { background: var(--surface); color: var(--text); border-radius: var(--radius-lg); padding: clamp(20px, 3vw, 32px); box-shadow: var(--shadow-lg); }
 
@@ -473,6 +475,13 @@ a.contact-item:hover { border-color: var(--text); transform: translateY(-2px); }
 .contact-item .ic { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--bg-soft); }
 .contact-item span { color: var(--text-3); font-size: 13px; }
 .contact-item b { font-weight: 600; font-size: 16px; line-height: 1.35; word-break: break-word; }
+
+/* Карта */
+.map-card { margin-top: 16px; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
+.map-card iframe { display: block; width: 100%; height: clamp(260px, 36vw, 400px); border: 0; background: var(--bg-soft); }
+.map-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-top: 1px solid var(--line); }
+.map-address { display: inline-flex; align-items: center; gap: 8px; color: var(--text-2); }
+.map-address b { color: var(--text); font-weight: 600; }
 
 /* Страницы */
 .page-hero { padding: clamp(28px, 4vw, 56px) 0 clamp(20px, 3vw, 32px); border-bottom: 1px solid var(--line); }

@@ -274,7 +274,10 @@ SITE_HOURS = env("SITE_HOURS", "")
 SITE_INSTAGRAM = env("SITE_INSTAGRAM", "https://instagram.com/nextgenhub.kg")
 SITE_TELEGRAM = env("SITE_TELEGRAM", "https://t.me/nextgenhub_kg")
 SITE_WHATSAPP = env("SITE_WHATSAPP", "https://wa.me/996555123456")
-SITE_MAP_URL = env("SITE_MAP_URL", "https://2gis.kg/osh")
+SITE_MAP_URL = env("SITE_MAP_URL", "https://go.2gis.com/fdRkC")  # карточка центра в 2ГИС
+# Точка на встроенной карте (Ош, ул. Гапара Айтиева, 14а).
+SITE_MAP_LAT = env("SITE_MAP_LAT", "40.524921")
+SITE_MAP_LON = env("SITE_MAP_LON", "72.772097")
 
 # --- Сообщения --------------------------------------------------------------
 from django.contrib.messages import constants as message_constants  # noqa: E402

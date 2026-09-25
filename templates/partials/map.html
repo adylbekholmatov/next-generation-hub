@@ -1,0 +1,7 @@
+{% load i18n core_tags %}<div class="map-card">
+  <iframe src="{{ SITE.map_embed }}" title="{% trans 'Learning center on the map' %}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  <div class="map-bar">
+    <span class="map-address">{% icon "map-pin" 18 %} <b>{{ SITE.address }}</b></span>
+    <a class="btn btn-primary btn-sm" href="{{ SITE.map_url }}" target="_blank" rel="noopener">{% trans "Open in 2GIS" %} {% icon "external" 15 %}</a>
+  </div>
+</div>

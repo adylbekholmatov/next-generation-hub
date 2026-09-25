@@ -138,6 +138,7 @@
       <a class="contact-item" href="{{ SITE.map_url }}" target="_blank" rel="noopener"><span class="ic">{% icon "map-pin" 20 %}</span><span>{% trans "Address" %}</span><b>{{ SITE.address }}</b></a>
       <div class="contact-item"><span class="ic">{% icon "clock" 20 %}</span><span>{% trans "Working hours" %}</span><b>{{ SITE.hours }}</b></div>
     </div>
+    {% include "partials/map.html" %}
   </div>
 </section>
 {% endblock %}
