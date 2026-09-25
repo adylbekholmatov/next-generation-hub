@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.conf import settings
+from django.db import connection
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
@@ -127,3 +130,13 @@ def error_403(request, exception=None):
 def error_404(request, exception=None):
     return render(request, "404.html", status=404)
 
+
+
+def health(request):
+    """Техническая проверка для хостинга: тип базы без адресов и паролей."""
+    return JsonResponse({
+        "status": "ok",
+        "database": connection.vendor,
+        "demo_database": settings.USING_DEMO_DATABASE,
+        "courses": Course.objects.count(),
+    })
