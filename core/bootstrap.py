@@ -10,7 +10,7 @@ import io
 import logging
 
 from django.core.management import call_command
-from django.db import connection
+from django.db import ProgrammingError, connection
 from django.db.migrations.executor import MigrationExecutor
 
 logger = logging.getLogger(__name__)
@@ -31,7 +31,15 @@ def ensure_database():
                 cursor.execute("SELECT pg_advisory_lock(%s)", [LOCK_ID])
         if _pending_migrations():
             logger.warning("Applying database migrations…")
-            call_command("migrate", interactive=False, verbosity=1)
+            try:
+                call_command("migrate", interactive=False, verbosity=1)
+            except ProgrammingError as exc:
+                if "already exists" not in str(exc):
+                    raise
+                # Таблицы уже есть, а записи о миграциях нет (прерванный первый запуск):
+                # отмечаем начальные миграции выполненными и применяем остальное.
+                logger.warning("Tables already exist, retrying with --fake-initial: %s", exc)
+                call_command("migrate", interactive=False, fake_initial=True, verbosity=1)
 
         from django.contrib.auth import get_user_model
 
