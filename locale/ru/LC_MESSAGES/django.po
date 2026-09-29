@@ -962,6 +962,10 @@ msgid "Log in"
 msgstr "Войти"
 
 #: templates/403.html
+msgid "Log in as another user"
+msgstr "Войти под другим аккаунтом"
+
+#: templates/403.html templates/accounts/logout.html
 msgid "My cabinet"
 msgstr "Мой кабинет"
 
@@ -972,6 +976,11 @@ msgstr "Этот раздел недоступен для вашей роли. �
 #: templates/403.html templates/404.html templates/core/enroll_success.html
 msgid "To the home page"
 msgstr "На главную"
+
+#: templates/403.html
+#, python-format
+msgid "You are logged in as %(name)s (%(role)s). This section is not available for this role — log out and sign in with another account."
+msgstr "Вы вошли как %(name)s (%(role)s). Этот раздел недоступен для этой роли — выйдите и войдите под другим аккаунтом."
 
 #: templates/404.html
 msgid "Page not found"
@@ -1004,6 +1013,19 @@ msgstr "Видеоуроки, журнал посещаемости, групп�
 #: templates/accounts/login.html
 msgid "after"
 msgstr "после"
+
+#: templates/accounts/logout.html templates/cabinet/base.html
+msgid "Log out"
+msgstr "Выйти"
+
+#: templates/accounts/logout.html
+msgid "Log out?"
+msgstr "Выйти из аккаунта?"
+
+#: templates/accounts/logout.html
+#, python-format
+msgid "You are logged in as %(name)s."
+msgstr "Вы вошли как %(name)s."
 
 #: templates/accounts/password_change.html
 msgid "After changing the password you will stay logged in on this device."
@@ -1348,10 +1370,6 @@ msgstr "это вы"
 #: templates/cabinet/base.html
 msgid "Cabinet menu"
 msgstr "Меню кабинета"
-
-#: templates/cabinet/base.html
-msgid "Log out"
-msgstr "Выйти"
 
 #: templates/cabinet/base.html
 msgid "Website"

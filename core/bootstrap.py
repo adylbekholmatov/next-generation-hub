@@ -7,6 +7,7 @@
 advisory lock, поэтому миграции выполнит только один экземпляр, остальные подождут.
 """
 import io
+import os
 import logging
 
 from django.core.management import call_command
@@ -21,6 +22,30 @@ LOCK_ID = 7_406_251_901  # произвольный номер блокиров�
 def _pending_migrations():
     executor = MigrationExecutor(connection)
     return executor.migration_plan(executor.loader.graph.leaf_nodes())
+
+
+def reset_admin_password():
+    """Восстановление доступа без консоли: переменная окружения DJANGO_ADMIN_PASSWORD.
+
+    Если она задана, аккаунт администратора (логин из DJANGO_ADMIN_USERNAME, по умолчанию
+    admin) создаётся или получает этот пароль, роль администратора и снимается блокировка.
+    После входа переменную нужно удалить из настроек хостинга.
+    """
+    password = os.environ.get("DJANGO_ADMIN_PASSWORD", "").strip()
+    if not password:
+        return
+    from django.contrib.auth import get_user_model
+
+    User = get_user_model()
+    username = os.environ.get("DJANGO_ADMIN_USERNAME", "").strip() or "admin"
+    user = User.objects.filter(username=username).first() or User(username=username)
+    if user.pk and user.is_active and user.is_superuser and user.check_password(password):
+        return  # уже восстановлен
+    user.role = User.Role.ADMIN
+    user.is_active = user.is_staff = user.is_superuser = True
+    user.set_password(password)
+    user.save()
+    logger.warning("Administrator account %r restored from DJANGO_ADMIN_PASSWORD.", username)
 
 
 def ensure_database():
@@ -48,6 +73,8 @@ def ensure_database():
             output = io.StringIO()
             call_command("seed", stdout=output)
             logger.warning(output.getvalue())
+
+        reset_admin_password()
     finally:
         if use_lock:
             with connection.cursor() as cursor:

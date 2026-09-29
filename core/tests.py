@@ -33,8 +33,9 @@ class EnrollmentTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertFalse(EnrollmentRequest.objects.exists())
 
-    def test_get_not_allowed(self):
-        self.assertEqual(self.client.get(reverse("core:enroll")).status_code, 405)
+    def test_get_redirects_to_form(self):
+        response = self.client.get(reverse("core:enroll"))
+        self.assertRedirects(response, reverse("core:home") + "#enroll", fetch_redirect_response=False)
 
 
 class PublicPagesTests(TestCase):

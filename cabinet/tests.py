@@ -266,3 +266,40 @@ class ManagerTests(BaseData):
         self.client.post(reverse("cabinet:manager_request_status", args=[req.pk]), {"status": "contacted"})
         req.refresh_from_db()
         self.assertEqual((req.status, req.handled_by), ("contacted", self.manager))
+
+
+class FriendlyErrorsTests(BaseData):
+    def test_logout_get_shows_confirmation(self):
+        self.login(self.teacher)
+        response = self.client.get(reverse("accounts:logout"))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'action="%s"' % reverse("accounts:logout"))
+        self.assertEqual(self.client.post(reverse("accounts:logout")).status_code, 302)
+        self.assertRedirects(self.client.get(reverse("accounts:logout")), reverse("core:home"), fetch_redirect_response=False)
+
+    def test_forbidden_page_names_current_user(self):
+        self.login(self.teacher)
+        response = self.client.get(reverse("cabinet:admin_dashboard"))
+        self.assertEqual(response.status_code, 403)
+        self.assertContains(response, self.teacher.display_name, status_code=403)
+        self.assertContains(response, reverse("accounts:logout"), status_code=403)
+
+
+class AdminRecoveryTests(TestCase):
+    def test_env_password_restores_admin(self):
+        import os
+        from unittest import mock
+
+        from core.bootstrap import reset_admin_password
+
+        blocked = make_user("admin", User.Role.MANAGER, is_active=False)
+        with mock.patch.dict(os.environ, {"DJANGO_ADMIN_PASSWORD": "N3w-secret-pass"}):
+            reset_admin_password()
+        blocked.refresh_from_db()
+        self.assertTrue(blocked.is_active and blocked.is_superuser)
+        self.assertEqual(blocked.role, User.Role.ADMIN)
+        self.assertTrue(blocked.check_password("N3w-secret-pass"))
+        with mock.patch.dict(os.environ, {"DJANGO_ADMIN_PASSWORD": ""}):
+            reset_admin_password()  # без переменной ничего не меняется
+        blocked.refresh_from_db()
+        self.assertTrue(blocked.check_password("N3w-secret-pass"))

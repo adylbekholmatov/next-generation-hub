@@ -6,7 +6,8 @@ from django.db import connection
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.http import url_has_allowed_host_and_scheme
-from django.views.decorators.http import require_POST
+from django.urls import reverse
+from django.views.decorators.http import require_http_methods
 
 from .forms import EnrollmentForm
 from .models import Course, Direction, Group, News, directions
@@ -102,8 +103,11 @@ def contacts(request):
     return render(request, "core/contacts.html", {"form": EnrollmentForm()})
 
 
-@require_POST
+@require_http_methods(["GET", "POST"])
 def enroll(request):
+    if request.method == "GET":
+        # Прямой переход (обновление страницы, смена языка после ошибки) — ведём к форме заявки.
+        return redirect(reverse("core:home") + "#enroll")
     form = EnrollmentForm(request.POST)
     back = request.POST.get("next") or "/"
     if not url_has_allowed_host_and_scheme(back, allowed_hosts={request.get_host()}):

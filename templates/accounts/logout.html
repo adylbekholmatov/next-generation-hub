@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n core_tags %}
+{% block title %}{% trans "Log out" %} — Next-Generation-Hub{% endblock %}
+{% block content %}
+<section class="result-page">
+  <div class="container" style="max-width:520px">
+    <div class="result-icon is-muted">{% icon "logout" 40 %}</div>
+    <h1 style="font-size:clamp(1.5rem,3vw,2rem)">{% trans "Log out?" %}</h1>
+    <p class="muted">{% blocktrans with name=user.display_name %}You are logged in as {{ name }}.{% endblocktrans %}</p>
+    <div class="row" style="justify-content:center;margin-top:24px">
+      <form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}<button type="submit" class="btn btn-primary">{% icon "logout" 16 %} {% trans "Log out" %}</button></form>
+      <a class="btn" href="{% url 'cabinet:home' %}">{% icon "grid" 16 %} {% trans "My cabinet" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -960,6 +960,10 @@ msgid "Log in"
 msgstr "Log in"
 
 #: templates/403.html
+msgid "Log in as another user"
+msgstr "Log in as another user"
+
+#: templates/403.html templates/accounts/logout.html
 msgid "My cabinet"
 msgstr "My cabinet"
 
@@ -970,6 +974,11 @@ msgstr "This section is not available for your role. If you think this is a mist
 #: templates/403.html templates/404.html templates/core/enroll_success.html
 msgid "To the home page"
 msgstr "To the home page"
+
+#: templates/403.html
+#, python-format
+msgid "You are logged in as %(name)s (%(role)s). This section is not available for this role — log out and sign in with another account."
+msgstr "You are logged in as %(name)s (%(role)s). This section is not available for this role — log out and sign in with another account."
 
 #: templates/404.html
 msgid "Page not found"
@@ -1002,6 +1011,19 @@ msgstr "Video lessons, attendance journal, groups and requests — everything in
 #: templates/accounts/login.html
 msgid "after"
 msgstr "after"
+
+#: templates/accounts/logout.html templates/cabinet/base.html
+msgid "Log out"
+msgstr "Log out"
+
+#: templates/accounts/logout.html
+msgid "Log out?"
+msgstr "Log out?"
+
+#: templates/accounts/logout.html
+#, python-format
+msgid "You are logged in as %(name)s."
+msgstr "You are logged in as %(name)s."
 
 #: templates/accounts/password_change.html
 msgid "After changing the password you will stay logged in on this device."
@@ -1346,10 +1368,6 @@ msgstr "it's you"
 #: templates/cabinet/base.html
 msgid "Cabinet menu"
 msgstr "Cabinet menu"
-
-#: templates/cabinet/base.html
-msgid "Log out"
-msgstr "Log out"
 
 #: templates/cabinet/base.html
 msgid "Website"

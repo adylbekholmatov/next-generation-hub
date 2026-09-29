@@ -16,7 +16,14 @@ class LoginView(auth_views.LoginView):
 
 
 class LogoutView(auth_views.LogoutView):
-    pass
+    """Выход только POST-запросом (защита от CSRF); при обычном переходе — страница с кнопкой."""
+
+    http_method_names = ["get", "post", "options"]
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect("core:home")
+        return render(request, "accounts/logout.html")
 
 
 class PasswordChangeView(auth_views.PasswordChangeView):

@@ -960,6 +960,10 @@ msgid "Log in"
 msgstr "Кирүү"
 
 #: templates/403.html
+msgid "Log in as another user"
+msgstr "Башка аккаунт менен кирүү"
+
+#: templates/403.html templates/accounts/logout.html
 msgid "My cabinet"
 msgstr "Менин кабинетим"
 
@@ -970,6 +974,11 @@ msgstr "Бул бөлүм сиздин ролуңуз үчүн жеткилик�
 #: templates/403.html templates/404.html templates/core/enroll_success.html
 msgid "To the home page"
 msgstr "Башкы бетке"
+
+#: templates/403.html
+#, python-format
+msgid "You are logged in as %(name)s (%(role)s). This section is not available for this role — log out and sign in with another account."
+msgstr "Сиз %(name)s (%(role)s) катары кирдиңиз. Бул бөлүм бул рол үчүн жеткиликсиз — чыгып, башка аккаунт менен кириңиз."
 
 #: templates/404.html
 msgid "Page not found"
@@ -1002,6 +1011,19 @@ msgstr "Видеосабактар, катышуу журналы, топтор 
 #: templates/accounts/login.html
 msgid "after"
 msgstr "кийин"
+
+#: templates/accounts/logout.html templates/cabinet/base.html
+msgid "Log out"
+msgstr "Чыгуу"
+
+#: templates/accounts/logout.html
+msgid "Log out?"
+msgstr "Аккаунттан чыгасызбы?"
+
+#: templates/accounts/logout.html
+#, python-format
+msgid "You are logged in as %(name)s."
+msgstr "Сиз %(name)s катары кирдиңиз."
 
 #: templates/accounts/password_change.html
 msgid "After changing the password you will stay logged in on this device."
@@ -1346,10 +1368,6 @@ msgstr "бул сиз"
 #: templates/cabinet/base.html
 msgid "Cabinet menu"
 msgstr "Кабинеттин менюсу"
-
-#: templates/cabinet/base.html
-msgid "Log out"
-msgstr "Чыгуу"
 
 #: templates/cabinet/base.html
 msgid "Website"
